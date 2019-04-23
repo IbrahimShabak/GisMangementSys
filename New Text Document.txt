@@ -1,0 +1,8 @@
+data source= 4dapps.net\SQL2017
+initial catalog= ProjectsDBGIS2019
+user id= sa
+password= 4Dapp2018
+
+AdminApp
+"data source=4dapps.net\SQL2017;initial catalog=AdminApp;persist security info=True;user id=sa;password=4Dapp2018;"
+

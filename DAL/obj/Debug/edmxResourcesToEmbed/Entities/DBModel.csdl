@@ -1,0 +1,633 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ContractsChange">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectID" Type="String" Nullable="false" />
+    <Property Name="InvoiceID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PaidAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ChangeOrderAmount" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="ProjectTBL" Relationship="Self.FK_ContractsChange_ProjectTBL" FromRole="ContractsChange" ToRole="ProjectTBL" />
+    <Property Name="ChangedDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="OriginalAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="NewAmount" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="DeliverableStage">
+    <Key>
+      <PropertyRef Name="DeliverableID" />
+    </Key>
+    <Property Name="DeliverableID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StageID" Type="Int32" />
+    <Property Name="DeliverableArName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DeliverableEnName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="DeliverableBudget" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="StageProject" Relationship="Self.FK_DeliverableStage_StageProject" FromRole="DeliverableStage" ToRole="StageProject" />
+  </EntityType>
+  <EntityType Name="OegType">
+    <Key>
+      <PropertyRef Name="OrgTypeID" />
+    </Key>
+    <Property Name="OrgTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeArName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TypeEnName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OrganizationsProjects" Relationship="Self.FK_OrganizationsProject_OegType" FromRole="OegType" ToRole="OrganizationsProject" />
+  </EntityType>
+  <EntityType Name="OrganizationBasic">
+    <Key>
+      <PropertyRef Name="OrgID" />
+    </Key>
+    <Property Name="OrgID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrgArName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OrgEnName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LandLineNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PepoleTBLs" Relationship="Self.FK_PepoleTBL_OrganizationBasics" FromRole="OrganizationBasics" ToRole="PepoleTBL" />
+  </EntityType>
+  <EntityType Name="OrganizationsProject">
+    <Key>
+      <PropertyRef Name="SerNum" />
+    </Key>
+    <Property Name="SerNum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PeopleID" Type="Int32" />
+    <Property Name="ProjectID" Type="String" />
+    <Property Name="OrgTypeID" Type="Int32" />
+    <NavigationProperty Name="OegType" Relationship="Self.FK_OrganizationsProject_OegType" FromRole="OrganizationsProject" ToRole="OegType" />
+    <NavigationProperty Name="PepoleTBL" Relationship="Self.FK_OrganizationsProject_PepoleTBL" FromRole="OrganizationsProject" ToRole="PepoleTBL" />
+    <NavigationProperty Name="ProjectTBL" Relationship="Self.FK_OrganizationsProject_ProjectTBL" FromRole="OrganizationsProject" ToRole="ProjectTBL" />
+    <NavigationProperty Name="ProjectTBL1" Relationship="DBModel.FK_OrganizationsProject_ProjectTBL1" FromRole="OrganizationsProject" ToRole="ProjectTBL" />
+  </EntityType>
+  <EntityType Name="PepoleTBL">
+    <Key>
+      <PropertyRef Name="PeopleID" />
+    </Key>
+    <Property Name="PeopleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ArName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EnName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MobilePhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="LandLineExt" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="EmailAdress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="OrgID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="OrganizationBasic" Relationship="Self.FK_PepoleTBL_OrganizationBasics" FromRole="PepoleTBL" ToRole="OrganizationBasics" />
+    <NavigationProperty Name="OrganizationsProjects" Relationship="Self.FK_OrganizationsProject_PepoleTBL" FromRole="PepoleTBL" ToRole="OrganizationsProject" />
+  </EntityType>
+  <EntityType Name="PositionInProject">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ArName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EnName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ProjectManagers" Relationship="Self.FK_ProjectManager_PositionInProject" FromRole="PositionInProject" ToRole="ProjectManager" />
+    <NavigationProperty Name="ProjectEmployees" Relationship="DBModel.FK_ProjectManager_PositionInProject1" FromRole="PositionInProject" ToRole="ProjectEmployee" />
+  </EntityType>
+  <EntityType Name="ProjectManager">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmpID" Type="Int32" />
+    <Property Name="StartFromPM" Type="DateTime" Precision="3" />
+    <Property Name="EndToPM" Type="DateTime" Precision="3" />
+    <Property Name="PositionInProject" Type="Int32" />
+    <NavigationProperty Name="PositionInProject1" Relationship="Self.FK_ProjectManager_PositionInProject" FromRole="ProjectManager" ToRole="PositionInProject" />
+    <NavigationProperty Name="ProjectTBL" Relationship="Self.FK_ProjectManager_ProjectTBL" FromRole="ProjectManager" ToRole="ProjectTBL" />
+    <Property Name="EmpIDStr" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ProjectTBL">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="String" Nullable="false" />
+    <Property Name="ArName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="EnName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="MainContractAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActiveProject" Type="Boolean" />
+    <NavigationProperty Name="ContractsChanges" Relationship="Self.FK_ContractsChange_ProjectTBL" FromRole="ProjectTBL" ToRole="ContractsChange" />
+    <NavigationProperty Name="OrganizationsProjects" Relationship="Self.FK_OrganizationsProject_ProjectTBL" FromRole="ProjectTBL" ToRole="OrganizationsProject" />
+    <NavigationProperty Name="ProjectManagers" Relationship="Self.FK_ProjectManager_ProjectTBL" FromRole="ProjectTBL" ToRole="ProjectManager" />
+    <NavigationProperty Name="StageProjects" Relationship="Self.FK_StageProject_ProjectTBL" FromRole="ProjectTBL" ToRole="StageProject" />
+    <Property Name="ProjectNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OrganizationsProjects1" Relationship="DBModel.FK_OrganizationsProject_ProjectTBL1" FromRole="ProjectTBL" ToRole="OrganizationsProject" />
+    <NavigationProperty Name="ProjectEmployees" Relationship="DBModel.FK_ProjectEmployees_ProjectTBL" FromRole="ProjectTBL" ToRole="ProjectEmployee" />
+  </EntityType>
+  <EntityType Name="StageProject">
+    <Key>
+      <PropertyRef Name="StageID" />
+    </Key>
+    <Property Name="StageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectID" Type="String" Nullable="false" />
+    <Property Name="StageArName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StageEnName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="StageBudget" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="DeliverableStages" Relationship="Self.FK_DeliverableStage_StageProject" FromRole="StageProject" ToRole="DeliverableStage" />
+    <NavigationProperty Name="ProjectTBL" Relationship="Self.FK_StageProject_ProjectTBL" FromRole="StageProject" ToRole="ProjectTBL" />
+  </EntityType>
+  <EntityType Name="TicketDetection">
+    <Key>
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="TicketID" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ValidTill" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="StillValied" Type="Boolean" Nullable="false" />
+    <Property Name="PermissionRul" Type="Int32" Nullable="false" />
+    <Property Name="ActionsTaken" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MACAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LocationX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LocationY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DeviceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="EnEmployeesOfProjectsView">
+    <Key>
+      <PropertyRef Name="Project_Number" />
+    </Key>
+    <Property Name="Employee_ID" Type="Int32" />
+    <Property Name="Project_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Project_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Job_In_the_Project" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Project_Start_Date" Type="DateTime" Precision="3" />
+    <Property Name="Employee_Join_the_Project_In" Type="DateTime" Precision="3" />
+    <Property Name="Leave_the_Project_In" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="EnProStgDlivView">
+    <Key>
+      <PropertyRef Name="Project_Number" />
+    </Key>
+    <Property Name="Project_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Project_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Project_Start_Date" Type="DateTime" Precision="3" />
+    <Property Name="Stage_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Stage_Start_Date" Type="DateTime" Precision="3" />
+    <Property Name="Stage_End_Date" Type="DateTime" Precision="3" />
+    <Property Name="Deliverable_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Deliverable_Start_Date" Type="DateTime" Precision="3" />
+    <Property Name="Deliverable_End_Date" Type="DateTime" Precision="3" />
+    <Property Name="Project_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Stage_Budget" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Deliverable_Budget" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <Association Name="FK_ContractsChange_ProjectTBL">
+    <End Role="ProjectTBL" Type="Self.ProjectTBL" Multiplicity="0..1" />
+    <End Role="ContractsChange" Type="Self.ContractsChange" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectTBL">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="ContractsChange">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeliverableStage_StageProject">
+    <End Role="StageProject" Type="Self.StageProject" Multiplicity="0..1" />
+    <End Role="DeliverableStage" Type="Self.DeliverableStage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StageProject">
+        <PropertyRef Name="StageID" />
+      </Principal>
+      <Dependent Role="DeliverableStage">
+        <PropertyRef Name="StageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrganizationsProject_OegType">
+    <End Role="OegType" Type="Self.OegType" Multiplicity="0..1" />
+    <End Role="OrganizationsProject" Type="Self.OrganizationsProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OegType">
+        <PropertyRef Name="OrgTypeID" />
+      </Principal>
+      <Dependent Role="OrganizationsProject">
+        <PropertyRef Name="OrgTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PepoleTBL_OrganizationBasics">
+    <End Role="OrganizationBasics" Type="Self.OrganizationBasic" Multiplicity="0..1" />
+    <End Role="PepoleTBL" Type="Self.PepoleTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrganizationBasics">
+        <PropertyRef Name="OrgID" />
+      </Principal>
+      <Dependent Role="PepoleTBL">
+        <PropertyRef Name="OrgID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrganizationsProject_PepoleTBL">
+    <End Role="PepoleTBL" Type="Self.PepoleTBL" Multiplicity="0..1" />
+    <End Role="OrganizationsProject" Type="Self.OrganizationsProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PepoleTBL">
+        <PropertyRef Name="PeopleID" />
+      </Principal>
+      <Dependent Role="OrganizationsProject">
+        <PropertyRef Name="PeopleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrganizationsProject_ProjectTBL">
+    <End Role="ProjectTBL" Type="Self.ProjectTBL" Multiplicity="0..1" />
+    <End Role="OrganizationsProject" Type="Self.OrganizationsProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectTBL">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="OrganizationsProject">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectManager_PositionInProject">
+    <End Role="PositionInProject" Type="Self.PositionInProject" Multiplicity="0..1" />
+    <End Role="ProjectManager" Type="Self.ProjectManager" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PositionInProject">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProjectManager">
+        <PropertyRef Name="PositionInProject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectManager_ProjectTBL">
+    <End Role="ProjectTBL" Type="Self.ProjectTBL" Multiplicity="0..1" />
+    <End Role="ProjectManager" Type="Self.ProjectManager" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectTBL">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="ProjectManager">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StageProject_ProjectTBL">
+    <End Role="ProjectTBL" Type="Self.ProjectTBL" Multiplicity="0..1" />
+    <End Role="StageProject" Type="Self.StageProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectTBL">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="StageProject">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ContractsChanges" EntityType="Self.ContractsChange" />
+    <EntitySet Name="DeliverableStages" EntityType="Self.DeliverableStage" />
+    <EntitySet Name="OegTypes" EntityType="Self.OegType" />
+    <EntitySet Name="OrganizationBasics" EntityType="Self.OrganizationBasic" />
+    <EntitySet Name="OrganizationsProjects" EntityType="Self.OrganizationsProject" />
+    <EntitySet Name="PepoleTBLs" EntityType="Self.PepoleTBL" />
+    <EntitySet Name="PositionInProjects" EntityType="Self.PositionInProject" />
+    <EntitySet Name="ProjectManagers" EntityType="Self.ProjectManager" />
+    <EntitySet Name="ProjectTBLs" EntityType="Self.ProjectTBL" />
+    <EntitySet Name="StageProjects" EntityType="Self.StageProject" />
+    <EntitySet Name="TicketDetections" EntityType="Self.TicketDetection" />
+    <EntitySet Name="EnEmployeesOfProjectsViews" EntityType="Self.EnEmployeesOfProjectsView" />
+    <EntitySet Name="EnProStgDlivViews" EntityType="Self.EnProStgDlivView" />
+    <AssociationSet Name="FK_ContractsChange_ProjectTBL" Association="Self.FK_ContractsChange_ProjectTBL">
+      <End Role="ProjectTBL" EntitySet="ProjectTBLs" />
+      <End Role="ContractsChange" EntitySet="ContractsChanges" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeliverableStage_StageProject" Association="Self.FK_DeliverableStage_StageProject">
+      <End Role="StageProject" EntitySet="StageProjects" />
+      <End Role="DeliverableStage" EntitySet="DeliverableStages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrganizationsProject_OegType" Association="Self.FK_OrganizationsProject_OegType">
+      <End Role="OegType" EntitySet="OegTypes" />
+      <End Role="OrganizationsProject" EntitySet="OrganizationsProjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PepoleTBL_OrganizationBasics" Association="Self.FK_PepoleTBL_OrganizationBasics">
+      <End Role="OrganizationBasics" EntitySet="OrganizationBasics" />
+      <End Role="PepoleTBL" EntitySet="PepoleTBLs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrganizationsProject_PepoleTBL" Association="Self.FK_OrganizationsProject_PepoleTBL">
+      <End Role="PepoleTBL" EntitySet="PepoleTBLs" />
+      <End Role="OrganizationsProject" EntitySet="OrganizationsProjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrganizationsProject_ProjectTBL" Association="Self.FK_OrganizationsProject_ProjectTBL">
+      <End Role="ProjectTBL" EntitySet="ProjectTBLs" />
+      <End Role="OrganizationsProject" EntitySet="OrganizationsProjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectManager_PositionInProject" Association="Self.FK_ProjectManager_PositionInProject">
+      <End Role="PositionInProject" EntitySet="PositionInProjects" />
+      <End Role="ProjectManager" EntitySet="ProjectManagers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectManager_ProjectTBL" Association="Self.FK_ProjectManager_ProjectTBL">
+      <End Role="ProjectTBL" EntitySet="ProjectTBLs" />
+      <End Role="ProjectManager" EntitySet="ProjectManagers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StageProject_ProjectTBL" Association="Self.FK_StageProject_ProjectTBL">
+      <End Role="ProjectTBL" EntitySet="ProjectTBLs" />
+      <End Role="StageProject" EntitySet="StageProjects" />
+    </AssociationSet>
+    <FunctionImport Name="SelectAllContractsChange" EntitySet="ContractsChanges" ReturnType="Collection(DBModel.ContractsChange)" />
+    <FunctionImport Name="SelectAllDeliverableStage" EntitySet="DeliverableStages" ReturnType="Collection(DBModel.DeliverableStage)" />
+    <FunctionImport Name="SelectAllOegType" EntitySet="OegTypes" ReturnType="Collection(DBModel.OegType)" />
+    <FunctionImport Name="SelectAllOrganizationBasics" EntitySet="OrganizationBasics" ReturnType="Collection(DBModel.OrganizationBasic)" />
+    <FunctionImport Name="SelectAllOrganizationProject" EntitySet="OrganizationsProjects" ReturnType="Collection(DBModel.OrganizationsProject)" />
+    <FunctionImport Name="SelectAllPepoleTBL" EntitySet="PepoleTBLs" ReturnType="Collection(DBModel.PepoleTBL)" />
+    <FunctionImport Name="SelectAllProjectTBL" EntitySet="ProjectTBLs" ReturnType="Collection(DBModel.ProjectTBL)" />
+    <FunctionImport Name="SelectAllStageProject" EntitySet="StageProjects" ReturnType="Collection(DBModel.StageProject)" />
+    <FunctionImport Name="SelectlikeContractChange" EntitySet="ContractsChanges" ReturnType="Collection(DBModel.ContractsChange)">
+      <Parameter Name="ChangedDescription" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SelectlikeDeliverableStage" EntitySet="DeliverableStages" ReturnType="Collection(DBModel.DeliverableStage)">
+      <Parameter Name="DeliverableArName" Mode="In" Type="String" />
+      <Parameter Name="DeliverableEnName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SelectlikePepoleTBL" EntitySet="PepoleTBLs" ReturnType="Collection(DBModel.PepoleTBL)">
+      <Parameter Name="ArName" Mode="In" Type="String" />
+      <Parameter Name="EnName" Mode="In" Type="String" />
+      <Parameter Name="MobilePhone" Mode="In" Type="String" />
+      <Parameter Name="EmailAdress" Mode="In" Type="String" />
+      <Parameter Name="OrgID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectLikeProjectTBL" EntitySet="ProjectTBLs" ReturnType="Collection(DBModel.ProjectTBL)">
+      <Parameter Name="ProjectNumber" Mode="In" Type="String" />
+      <Parameter Name="ArName" Mode="In" Type="String" />
+      <Parameter Name="EnName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SelectParamContractChange" EntitySet="ContractsChanges" ReturnType="Collection(DBModel.ContractsChange)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="ProjectID" Mode="In" Type="Int32" />
+      <Parameter Name="ChangedDescription" Mode="In" Type="String" />
+      <Parameter Name="OriginalAmount" Mode="In" Type="Decimal" />
+      <Parameter Name="NewAmount" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="SelectParamDeliverableStage" EntitySet="DeliverableStages" ReturnType="Collection(DBModel.DeliverableStage)">
+      <Parameter Name="DeliverableID" Mode="In" Type="Int32" />
+      <Parameter Name="StageID" Mode="In" Type="Int32" />
+      <Parameter Name="DeliverableArName" Mode="In" Type="String" />
+      <Parameter Name="DeliverableEnName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SelectParamOrganizationBasics" EntitySet="OrganizationBasics" ReturnType="Collection(DBModel.OrganizationBasic)">
+      <Parameter Name="OrgID" Mode="In" Type="Int32" />
+      <Parameter Name="OrgArName" Mode="In" Type="String" />
+      <Parameter Name="OrgEnName" Mode="In" Type="String" />
+      <Parameter Name="LandLineNumber" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SelectParamOrganizationProject" EntitySet="OrganizationsProjects" ReturnType="Collection(DBModel.OrganizationsProject)">
+      <Parameter Name="SerNum" Mode="In" Type="Int32" />
+      <Parameter Name="PeopleID" Mode="In" Type="Int32" />
+      <Parameter Name="ProjectID" Mode="In" Type="String" />
+      <Parameter Name="OrgTypeID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectParamPepoleTBL" EntitySet="PepoleTBLs" ReturnType="Collection(DBModel.PepoleTBL)">
+      <Parameter Name="PeopleID" Mode="In" Type="Int32" />
+      <Parameter Name="ArName" Mode="In" Type="String" />
+      <Parameter Name="EnName" Mode="In" Type="String" />
+      <Parameter Name="MobilePhone" Mode="In" Type="String" />
+      <Parameter Name="LandLineExt" Mode="In" Type="String" />
+      <Parameter Name="EmailAdress" Mode="In" Type="String" />
+      <Parameter Name="OrgID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectParamProjectTBL" EntitySet="ProjectTBLs" ReturnType="Collection(DBModel.ProjectTBL)">
+      <Parameter Name="ProjectID" Mode="In" Type="Int32" />
+      <Parameter Name="ProjectNumber" Mode="In" Type="String" />
+      <Parameter Name="ArName" Mode="In" Type="String" />
+      <Parameter Name="EnName" Mode="In" Type="String" />
+      <Parameter Name="MainContractAmount" Mode="In" Type="Decimal" />
+      <Parameter Name="IsActiveProject" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="SelectParamStageProject" EntitySet="StageProjects" ReturnType="Collection(DBModel.StageProject)">
+      <Parameter Name="StageID" Mode="In" Type="Int32" />
+      <Parameter Name="ProjectID" Mode="In" Type="Int32" />
+      <Parameter Name="StageArName" Mode="In" Type="String" />
+      <Parameter Name="StageEnName" Mode="In" Type="String" />
+      <Parameter Name="StageBudget" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <EntitySet Name="ArProStgDlivViews" EntityType="DBModel.ArProStgDlivView" />
+    <FunctionImport Name="SelectLikeStageProject" EntitySet="StageProjects" ReturnType="Collection(DBModel.StageProject)">
+      <Parameter Name="StageArName" Mode="In" Type="String" />
+      <Parameter Name="StageEnName" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="ProjectEmployees" EntityType="DBModel.ProjectEmployee" />
+    <AssociationSet Name="FK_OrganizationsProject_ProjectTBL1" Association="DBModel.FK_OrganizationsProject_ProjectTBL1">
+      <End Role="ProjectTBL" EntitySet="ProjectTBLs" />
+      <End Role="OrganizationsProject" EntitySet="OrganizationsProjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectManager_PositionInProject1" Association="DBModel.FK_ProjectManager_PositionInProject1">
+      <End Role="PositionInProject" EntitySet="PositionInProjects" />
+      <End Role="ProjectEmployee" EntitySet="ProjectEmployees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectEmployees_ProjectTBL" Association="DBModel.FK_ProjectEmployees_ProjectTBL">
+      <End Role="ProjectTBL" EntitySet="ProjectTBLs" />
+      <End Role="ProjectEmployee" EntitySet="ProjectEmployees" />
+    </AssociationSet>
+    <FunctionImport Name="SelectAllProjectEmployees" EntitySet="ProjectEmployees" ReturnType="Collection(DBModel.ProjectEmployee)" />
+    <FunctionImport Name="SelectlikeProjectEmployees" EntitySet="ProjectEmployees" ReturnType="Collection(DBModel.ProjectEmployee)">
+      <Parameter Name="ProjectID" Mode="In" Type="Int32" />
+      <Parameter Name="EmpID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectParamProjectEmployees" EntitySet="ProjectEmployees" ReturnType="Collection(DBModel.ProjectEmployee)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="ProjectID" Mode="In" Type="Int32" />
+      <Parameter Name="EmpID" Mode="In" Type="Int32" />
+      <Parameter Name="PositionInProject" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="SelectAllDeliverableStage_Result">
+    <Property Type="Int32" Name="Deliverable_ID" Nullable="false" />
+    <Property Type="Int32" Name="Belong_To_Stage" Nullable="true" />
+    <Property Type="String" Name="Arabic_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="English_Name" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Start_Date" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="End_Date" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="Buget" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="SelectAllOegType_Result">
+    <Property Type="Int32" Name="Organization_Type_ID" Nullable="false" />
+    <Property Type="String" Name="Type_By_Arabic" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Type_By_English" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectAllOrganizationBasics_Result">
+    <Property Type="Int32" Name="Organization_ID" Nullable="false" />
+    <Property Type="String" Name="Organization_Arabic_Name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Organization_English_Name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Telephone_Land_Line_Number" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="SelectAllOrganizationProject_Result">
+    <Property Type="Int32" Name="C_" Nullable="false" />
+    <Property Type="Int32" Name="Person_Number" Nullable="true" />
+    <Property Type="String" Name="Project_Number" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Organization_Type" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SelectAllPepoleTBL_Result">
+    <Property Type="Int32" Name="Person_ID" Nullable="false" />
+    <Property Type="String" Name="Person_Arabic_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Person_English_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Mobile_Number" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Land_Line_Ext" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Type_in_this_Project" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SelectAllProjectTBL_Result">
+    <Property Type="String" Name="Project_Number" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Project_Arabic_Name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Project_English_Name" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="Project_Start_Date" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="The_Contract_Amount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="DateTime" Name="Project_End_Date" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="Project_Runing_Status" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SelectBetweenContractChange_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="ProjectID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="InvoiceID" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="InvoiceAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="PaidAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="ChangeOrderAmount" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="SelectLikeProjectTBL_Result">
+    <Property Type="String" Name="ProjectID" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ArName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="EnName" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="MainContractAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsActiveProject" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SelectParamDeliverableStage_Result">
+    <Property Type="Int32" Name="DeliverableID" Nullable="false" />
+    <Property Type="Int32" Name="StageID" Nullable="true" />
+    <Property Type="String" Name="DeliverableArName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DeliverableEnName" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="DeliverableBudget" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="SelectParamOrganizationBasics_Result">
+    <Property Type="Int32" Name="OrgID" Nullable="false" />
+    <Property Type="String" Name="OrgArName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="OrgEnName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="LandLineNumber" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="SelectParamOrganizationProject_Result">
+    <Property Type="Int32" Name="SerNum" Nullable="false" />
+    <Property Type="Int32" Name="PeopleID" Nullable="true" />
+    <Property Type="String" Name="ProjectID" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="OrgTypeID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SelectParamPepoleTBL_Result">
+    <Property Type="Int32" Name="PeopleID" Nullable="false" />
+    <Property Type="String" Name="ArName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="EnName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="MobilePhone" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="LandLineExt" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="EmailAdress" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="OrgID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SelectParamProjectTBL_Result">
+    <Property Type="String" Name="ProjectID" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ArName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="EnName" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="MainContractAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsActiveProject" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="ArProStgDlivView">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ArName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="StageArName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StageStartDate" Type="DateTime" Precision="3" />
+    <Property Name="StageEndDate" Type="DateTime" Precision="3" />
+    <Property Name="DeliverableArName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DeliverableStartDate" Type="DateTime" Precision="3" />
+    <Property Name="DeliverableEndDate" Type="DateTime" Precision="3" />
+    <Property Name="MainContractAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="StageBudget" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="DeliverableBudget" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="ProjectEmployee">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectID" Type="Int32" Nullable="false" />
+    <Property Name="EmpID" Type="Int32" Nullable="false" />
+    <Property Name="StartFrom" Type="DateTime" Precision="3" />
+    <Property Name="EndTo" Type="DateTime" Precision="3" />
+    <Property Name="PositionInProject" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PositionInProject1" Relationship="DBModel.FK_ProjectManager_PositionInProject1" FromRole="ProjectEmployee" ToRole="PositionInProject" />
+    <NavigationProperty Name="ProjectTBL" Relationship="DBModel.FK_ProjectEmployees_ProjectTBL" FromRole="ProjectEmployee" ToRole="ProjectTBL" />
+  </EntityType>
+  <Association Name="FK_OrganizationsProject_ProjectTBL1">
+    <End Type="DBModel.ProjectTBL" Role="ProjectTBL" Multiplicity="0..1" />
+    <End Type="DBModel.OrganizationsProject" Role="OrganizationsProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectTBL">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="OrganizationsProject">
+        <PropertyRef Name="PeopleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectManager_PositionInProject1">
+    <End Type="DBModel.PositionInProject" Role="PositionInProject" Multiplicity="1" />
+    <End Type="DBModel.ProjectEmployee" Role="ProjectEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PositionInProject">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProjectEmployee">
+        <PropertyRef Name="PositionInProject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectEmployees_ProjectTBL">
+    <End Type="DBModel.ProjectTBL" Role="ProjectTBL" Multiplicity="1" />
+    <End Type="DBModel.ProjectEmployee" Role="ProjectEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectTBL">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="ProjectEmployee">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="SelectAllProjectEmployees_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="ProjectID" Nullable="false" />
+    <Property Type="Int32" Name="EmpID" Nullable="false" />
+    <Property Type="DateTime" Name="StartFrom" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="EndTo" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="PositionInProject" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SelectlikeProjectEmployees_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="ProjectID" Nullable="false" />
+    <Property Type="Int32" Name="EmpID" Nullable="false" />
+    <Property Type="DateTime" Name="StartFrom" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="EndTo" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="PositionInProject" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SelectParamProjectEmployees_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="ProjectID" Nullable="false" />
+    <Property Type="Int32" Name="EmpID" Nullable="false" />
+    <Property Type="DateTime" Name="StartFrom" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="EndTo" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="PositionInProject" Nullable="false" />
+  </ComplexType>
+</Schema>

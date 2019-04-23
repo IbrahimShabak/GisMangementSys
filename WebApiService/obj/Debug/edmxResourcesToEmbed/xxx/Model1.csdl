@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjectsDBGIS2019Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="OrganizationBasic">
+    <Key>
+      <PropertyRef Name="OrgID" />
+    </Key>
+    <Property Name="OrgID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrgArName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="OrgEnName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LandLineNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="ProjectsDBGIS2019Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="OrganizationBasics" EntityType="Self.OrganizationBasic" />
+  </EntityContainer>
+</Schema>

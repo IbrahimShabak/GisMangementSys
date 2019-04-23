@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="17e01fa95ac747689e7217dcfc175b4b" Name="Diagram1">
+        <EntityTypeShape EntityType="EmployeeDBGIS2019Model.DivisionTBL" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeeDBGIS2019Model.EmployeeOffType" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeeDBGIS2019Model.EmployeeTBL" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeeDBGIS2019Model.JobTitleTBL" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeeDBGIS2019Model.NationalityTBL" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <AssociationConnector Association="EmployeeDBGIS2019Model.FK_EmployeeTBL_DivisionTBL" ManuallyRouted="false" />
+        <AssociationConnector Association="EmployeeDBGIS2019Model.FK_EmployeeTBL_EmployeeOffType" ManuallyRouted="false" />
+        <AssociationConnector Association="EmployeeDBGIS2019Model.FK_EmployeeTBL_JobTitleTBL" ManuallyRouted="false" />
+        <AssociationConnector Association="EmployeeDBGIS2019Model.FK_EmployeeTBL_NationalityTBL" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

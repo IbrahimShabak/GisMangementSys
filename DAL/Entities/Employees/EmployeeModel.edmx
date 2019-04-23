@@ -1,0 +1,601 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EmployeeDBGIS2019Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DivisionTBL">
+          <Key>
+            <PropertyRef Name="DivisionID" />
+          </Key>
+          <Property Name="DivisionID" Type="int" Nullable="false" />
+          <Property Name="ArName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EnName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EmployeeOffType">
+          <Key>
+            <PropertyRef Name="EmployeeOffTypeID" />
+          </Key>
+          <Property Name="EmployeeOffTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EnName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EmployeeTBL">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="ArName" Type="nvarchar" MaxLength="200" />
+          <Property Name="EnName" Type="nvarchar" MaxLength="200" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="BithDate" Type="datetime" />
+          <Property Name="NationalityID" Type="int" />
+          <Property Name="DivisionID" Type="int" />
+          <Property Name="JobTitleID" Type="int" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="IsActiveStatus" Type="bit" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="OffDate" Type="datetime" />
+          <Property Name="OffTypeID" Type="int" />
+        </EntityType>
+        <EntityType Name="JobTitleTBL">
+          <Key>
+            <PropertyRef Name="JobTitleID" />
+          </Key>
+          <Property Name="JobTitleID" Type="int" Nullable="false" />
+          <Property Name="ArName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EnName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NationalityTBL">
+          <Key>
+            <PropertyRef Name="NationalityID" />
+          </Key>
+          <Property Name="NationalityID" Type="int" Nullable="false" />
+          <Property Name="ArName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EnName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_EmployeeTBL_DivisionTBL">
+          <End Role="DivisionTBL" Type="Self.DivisionTBL" Multiplicity="0..1" />
+          <End Role="EmployeeTBL" Type="Self.EmployeeTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DivisionTBL">
+              <PropertyRef Name="DivisionID" />
+            </Principal>
+            <Dependent Role="EmployeeTBL">
+              <PropertyRef Name="DivisionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeTBL_EmployeeOffType">
+          <End Role="EmployeeOffType" Type="Self.EmployeeOffType" Multiplicity="0..1" />
+          <End Role="EmployeeTBL" Type="Self.EmployeeTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeOffType">
+              <PropertyRef Name="EmployeeOffTypeID" />
+            </Principal>
+            <Dependent Role="EmployeeTBL">
+              <PropertyRef Name="OffTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeTBL_JobTitleTBL">
+          <End Role="JobTitleTBL" Type="Self.JobTitleTBL" Multiplicity="0..1" />
+          <End Role="EmployeeTBL" Type="Self.EmployeeTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobTitleTBL">
+              <PropertyRef Name="JobTitleID" />
+            </Principal>
+            <Dependent Role="EmployeeTBL">
+              <PropertyRef Name="JobTitleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeTBL_NationalityTBL">
+          <End Role="NationalityTBL" Type="Self.NationalityTBL" Multiplicity="0..1" />
+          <End Role="EmployeeTBL" Type="Self.EmployeeTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NationalityTBL">
+              <PropertyRef Name="NationalityID" />
+            </Principal>
+            <Dependent Role="EmployeeTBL">
+              <PropertyRef Name="NationalityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetAllDivisions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllEmployeeOffTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllEmployees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllJobTitles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllNationalitys" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetDivisionsByParam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DivisionID" Type="int" Mode="In" />
+          <Parameter Name="ArName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EnName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetEmployeeOffTypesByParam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeeOffTypeID" Type="int" Mode="In" />
+          <Parameter Name="ArName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EnName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetEmployeesByParam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeeID" Type="int" Mode="In" />
+          <Parameter Name="ArName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EnName" Type="nvarchar" Mode="In" />
+          <Parameter Name="StartDate" Type="datetime" Mode="In" />
+          <Parameter Name="BithDate" Type="datetime" Mode="In" />
+          <Parameter Name="NationalityID" Type="int" Mode="In" />
+          <Parameter Name="DivisionID" Type="int" Mode="In" />
+          <Parameter Name="JobTitleID" Type="int" Mode="In" />
+          <Parameter Name="PhoneNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsActiveStatus" Type="bit" Mode="In" />
+          <Parameter Name="EmailAddress" Type="nvarchar" Mode="In" />
+          <Parameter Name="OffDate" Type="datetime" Mode="In" />
+          <Parameter Name="OffTypeID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetJobTitlesByParam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ArName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EnName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetLikeDivisions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ArName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EnName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetLikeEmployeeOffTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ArName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EnName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetLikeEmployees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmployeeID" Type="int" Mode="In" />
+          <Parameter Name="ArName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EnName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EmailAddress" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetLikeJobTitles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ArName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EnName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetLikeNationalitys" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ArName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EnName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetNationalitysByParam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ArName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EnName" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="EmployeeDBGIS2019ModelStoreContainer">
+          <EntitySet Name="DivisionTBL" EntityType="Self.DivisionTBL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeOffType" EntityType="Self.EmployeeOffType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeTBL" EntityType="Self.EmployeeTBL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobTitleTBL" EntityType="Self.JobTitleTBL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NationalityTBL" EntityType="Self.NationalityTBL" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_EmployeeTBL_DivisionTBL" Association="Self.FK_EmployeeTBL_DivisionTBL">
+            <End Role="DivisionTBL" EntitySet="DivisionTBL" />
+            <End Role="EmployeeTBL" EntitySet="EmployeeTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeTBL_EmployeeOffType" Association="Self.FK_EmployeeTBL_EmployeeOffType">
+            <End Role="EmployeeOffType" EntitySet="EmployeeOffType" />
+            <End Role="EmployeeTBL" EntitySet="EmployeeTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeTBL_JobTitleTBL" Association="Self.FK_EmployeeTBL_JobTitleTBL">
+            <End Role="JobTitleTBL" EntitySet="JobTitleTBL" />
+            <End Role="EmployeeTBL" EntitySet="EmployeeTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeTBL_NationalityTBL" Association="Self.FK_EmployeeTBL_NationalityTBL">
+            <End Role="NationalityTBL" EntitySet="NationalityTBL" />
+            <End Role="EmployeeTBL" EntitySet="EmployeeTBL" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EmployeeDBGIS2019Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DivisionTBL">
+          <Key>
+            <PropertyRef Name="DivisionID" />
+          </Key>
+          <Property Name="DivisionID" Type="Int32" Nullable="false" />
+          <Property Name="ArName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EnName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EmployeeTBLs" Relationship="Self.FK_EmployeeTBL_DivisionTBL" FromRole="DivisionTBL" ToRole="EmployeeTBL" />
+        </EntityType>
+        <EntityType Name="EmployeeOffType">
+          <Key>
+            <PropertyRef Name="EmployeeOffTypeID" />
+          </Key>
+          <Property Name="EmployeeOffTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EnName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EmployeeTBLs" Relationship="Self.FK_EmployeeTBL_EmployeeOffType" FromRole="EmployeeOffType" ToRole="EmployeeTBL" />
+        </EntityType>
+        <EntityType Name="EmployeeTBL">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="ArName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="EnName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="BithDate" Type="DateTime" Precision="3" />
+          <Property Name="NationalityID" Type="Int32" />
+          <Property Name="DivisionID" Type="Int32" />
+          <Property Name="JobTitleID" Type="Int32" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsActiveStatus" Type="Boolean" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OffDate" Type="DateTime" Precision="3" />
+          <Property Name="OffTypeID" Type="Int32" />
+          <NavigationProperty Name="DivisionTBL" Relationship="Self.FK_EmployeeTBL_DivisionTBL" FromRole="EmployeeTBL" ToRole="DivisionTBL" />
+          <NavigationProperty Name="EmployeeOffType" Relationship="Self.FK_EmployeeTBL_EmployeeOffType" FromRole="EmployeeTBL" ToRole="EmployeeOffType" />
+          <NavigationProperty Name="JobTitleTBL" Relationship="Self.FK_EmployeeTBL_JobTitleTBL" FromRole="EmployeeTBL" ToRole="JobTitleTBL" />
+          <NavigationProperty Name="NationalityTBL" Relationship="Self.FK_EmployeeTBL_NationalityTBL" FromRole="EmployeeTBL" ToRole="NationalityTBL" />
+        </EntityType>
+        <EntityType Name="JobTitleTBL">
+          <Key>
+            <PropertyRef Name="JobTitleID" />
+          </Key>
+          <Property Name="JobTitleID" Type="Int32" Nullable="false" />
+          <Property Name="ArName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EnName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EmployeeTBLs" Relationship="Self.FK_EmployeeTBL_JobTitleTBL" FromRole="JobTitleTBL" ToRole="EmployeeTBL" />
+        </EntityType>
+        <EntityType Name="NationalityTBL">
+          <Key>
+            <PropertyRef Name="NationalityID" />
+          </Key>
+          <Property Name="NationalityID" Type="Int32" Nullable="false" />
+          <Property Name="ArName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EnName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EmployeeTBLs" Relationship="Self.FK_EmployeeTBL_NationalityTBL" FromRole="NationalityTBL" ToRole="EmployeeTBL" />
+        </EntityType>
+        <Association Name="FK_EmployeeTBL_DivisionTBL">
+          <End Role="DivisionTBL" Type="Self.DivisionTBL" Multiplicity="0..1" />
+          <End Role="EmployeeTBL" Type="Self.EmployeeTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DivisionTBL">
+              <PropertyRef Name="DivisionID" />
+            </Principal>
+            <Dependent Role="EmployeeTBL">
+              <PropertyRef Name="DivisionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeTBL_EmployeeOffType">
+          <End Role="EmployeeOffType" Type="Self.EmployeeOffType" Multiplicity="0..1" />
+          <End Role="EmployeeTBL" Type="Self.EmployeeTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeOffType">
+              <PropertyRef Name="EmployeeOffTypeID" />
+            </Principal>
+            <Dependent Role="EmployeeTBL">
+              <PropertyRef Name="OffTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeTBL_JobTitleTBL">
+          <End Role="JobTitleTBL" Type="Self.JobTitleTBL" Multiplicity="0..1" />
+          <End Role="EmployeeTBL" Type="Self.EmployeeTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobTitleTBL">
+              <PropertyRef Name="JobTitleID" />
+            </Principal>
+            <Dependent Role="EmployeeTBL">
+              <PropertyRef Name="JobTitleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeTBL_NationalityTBL">
+          <End Role="NationalityTBL" Type="Self.NationalityTBL" Multiplicity="0..1" />
+          <End Role="EmployeeTBL" Type="Self.EmployeeTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NationalityTBL">
+              <PropertyRef Name="NationalityID" />
+            </Principal>
+            <Dependent Role="EmployeeTBL">
+              <PropertyRef Name="NationalityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EmployeeDBGIS2019Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DivisionTBLs" EntityType="Self.DivisionTBL" />
+          <EntitySet Name="EmployeeOffTypes" EntityType="Self.EmployeeOffType" />
+          <EntitySet Name="EmployeeTBLs" EntityType="Self.EmployeeTBL" />
+          <EntitySet Name="JobTitleTBLs" EntityType="Self.JobTitleTBL" />
+          <EntitySet Name="NationalityTBLs" EntityType="Self.NationalityTBL" />
+          <AssociationSet Name="FK_EmployeeTBL_DivisionTBL" Association="Self.FK_EmployeeTBL_DivisionTBL">
+            <End Role="DivisionTBL" EntitySet="DivisionTBLs" />
+            <End Role="EmployeeTBL" EntitySet="EmployeeTBLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeTBL_EmployeeOffType" Association="Self.FK_EmployeeTBL_EmployeeOffType">
+            <End Role="EmployeeOffType" EntitySet="EmployeeOffTypes" />
+            <End Role="EmployeeTBL" EntitySet="EmployeeTBLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeTBL_JobTitleTBL" Association="Self.FK_EmployeeTBL_JobTitleTBL">
+            <End Role="JobTitleTBL" EntitySet="JobTitleTBLs" />
+            <End Role="EmployeeTBL" EntitySet="EmployeeTBLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeTBL_NationalityTBL" Association="Self.FK_EmployeeTBL_NationalityTBL">
+            <End Role="NationalityTBL" EntitySet="NationalityTBLs" />
+            <End Role="EmployeeTBL" EntitySet="EmployeeTBLs" />
+          </AssociationSet>
+          <FunctionImport Name="GetAllDivisions" EntitySet="DivisionTBLs" ReturnType="Collection(EmployeeDBGIS2019Model.DivisionTBL)" />
+          <FunctionImport Name="GetAllEmployeeOffTypes" EntitySet="EmployeeOffTypes" ReturnType="Collection(EmployeeDBGIS2019Model.EmployeeOffType)" />
+          <FunctionImport Name="GetAllEmployees" EntitySet="EmployeeTBLs" ReturnType="Collection(EmployeeDBGIS2019Model.EmployeeTBL)" />
+          <FunctionImport Name="GetAllJobTitles" EntitySet="JobTitleTBLs" ReturnType="Collection(EmployeeDBGIS2019Model.JobTitleTBL)" />
+          <FunctionImport Name="GetAllNationalitys" EntitySet="NationalityTBLs" ReturnType="Collection(EmployeeDBGIS2019Model.NationalityTBL)" />
+          <FunctionImport Name="GetDivisionsByParam" EntitySet="DivisionTBLs" ReturnType="Collection(EmployeeDBGIS2019Model.DivisionTBL)">
+            <Parameter Name="DivisionID" Mode="In" Type="Int32" />
+            <Parameter Name="ArName" Mode="In" Type="String" />
+            <Parameter Name="EnName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetEmployeeOffTypesByParam" EntitySet="EmployeeOffTypes" ReturnType="Collection(EmployeeDBGIS2019Model.EmployeeOffType)">
+            <Parameter Name="EmployeeOffTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="ArName" Mode="In" Type="String" />
+            <Parameter Name="EnName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetEmployeesByParam" EntitySet="EmployeeTBLs" ReturnType="Collection(EmployeeDBGIS2019Model.EmployeeTBL)">
+            <Parameter Name="EmployeeID" Mode="In" Type="Int32" />
+            <Parameter Name="ArName" Mode="In" Type="String" />
+            <Parameter Name="EnName" Mode="In" Type="String" />
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="BithDate" Mode="In" Type="DateTime" />
+            <Parameter Name="NationalityID" Mode="In" Type="Int32" />
+            <Parameter Name="DivisionID" Mode="In" Type="Int32" />
+            <Parameter Name="JobTitleID" Mode="In" Type="Int32" />
+            <Parameter Name="PhoneNumber" Mode="In" Type="String" />
+            <Parameter Name="IsActiveStatus" Mode="In" Type="Boolean" />
+            <Parameter Name="EmailAddress" Mode="In" Type="String" />
+            <Parameter Name="OffDate" Mode="In" Type="DateTime" />
+            <Parameter Name="OffTypeID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetJobTitlesByParam" EntitySet="JobTitleTBLs" ReturnType="Collection(EmployeeDBGIS2019Model.JobTitleTBL)">
+            <Parameter Name="ArName" Mode="In" Type="String" />
+            <Parameter Name="EnName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetLikeDivisions" EntitySet="DivisionTBLs" ReturnType="Collection(EmployeeDBGIS2019Model.DivisionTBL)">
+            <Parameter Name="ArName" Mode="In" Type="String" />
+            <Parameter Name="EnName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetLikeEmployeeOffTypes" EntitySet="EmployeeOffTypes" ReturnType="Collection(EmployeeDBGIS2019Model.EmployeeOffType)">
+            <Parameter Name="ArName" Mode="In" Type="String" />
+            <Parameter Name="EnName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetLikeEmployees" EntitySet="EmployeeTBLs" ReturnType="Collection(EmployeeDBGIS2019Model.EmployeeTBL)">
+            <Parameter Name="EmployeeID" Mode="In" Type="Int32" />
+            <Parameter Name="ArName" Mode="In" Type="String" />
+            <Parameter Name="EnName" Mode="In" Type="String" />
+            <Parameter Name="EmailAddress" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetLikeJobTitles" EntitySet="JobTitleTBLs" ReturnType="Collection(EmployeeDBGIS2019Model.JobTitleTBL)">
+            <Parameter Name="ArName" Mode="In" Type="String" />
+            <Parameter Name="EnName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetLikeNationalitys" EntitySet="NationalityTBLs" ReturnType="Collection(EmployeeDBGIS2019Model.NationalityTBL)">
+            <Parameter Name="ArName" Mode="In" Type="String" />
+            <Parameter Name="EnName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetNationalitysByParam" EntitySet="NationalityTBLs" ReturnType="Collection(EmployeeDBGIS2019Model.NationalityTBL)">
+            <Parameter Name="ArName" Mode="In" Type="String" />
+            <Parameter Name="EnName" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetAllDivisions_Result">
+          <Property Type="Int32" Name="DivisionID" Nullable="false" />
+          <Property Type="String" Name="ArName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EnName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetAllEmployeeOffTypes_Result">
+          <Property Type="Int32" Name="EmployeeOffTypeID" Nullable="false" />
+          <Property Type="String" Name="ArName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EnName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetAllEmployees_Result">
+          <Property Type="Int32" Name="EmployeeID" Nullable="false" />
+          <Property Type="String" Name="ArName" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="EnName" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="BithDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="NationalityID" Nullable="true" />
+          <Property Type="Int32" Name="DivisionID" Nullable="true" />
+          <Property Type="Int32" Name="JobTitleID" Nullable="true" />
+          <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="20" />
+          <Property Type="Boolean" Name="IsActiveStatus" Nullable="true" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="OffDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="OffTypeID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetAllJobTitles_Result">
+          <Property Type="Int32" Name="JobTitleID" Nullable="false" />
+          <Property Type="String" Name="ArName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EnName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetAllNationalitys_Result">
+          <Property Type="Int32" Name="NationalityID" Nullable="false" />
+          <Property Type="String" Name="ArName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EnName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetDivisionsByParam_Result">
+          <Property Type="Int32" Name="DivisionID" Nullable="false" />
+          <Property Type="String" Name="ArName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EnName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetEmployeeOffTypesByParam_Result">
+          <Property Type="Int32" Name="EmployeeOffTypeID" Nullable="false" />
+          <Property Type="String" Name="ArName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EnName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetEmployeesByParam_Result">
+          <Property Type="Int32" Name="EmployeeID" Nullable="false" />
+          <Property Type="String" Name="ArName" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="EnName" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="BithDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="NationalityID" Nullable="true" />
+          <Property Type="Int32" Name="DivisionID" Nullable="true" />
+          <Property Type="Int32" Name="JobTitleID" Nullable="true" />
+          <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="20" />
+          <Property Type="Boolean" Name="IsActiveStatus" Nullable="true" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="OffDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="OffTypeID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetJobTitlesByParam_Result">
+          <Property Type="Int32" Name="JobTitleID" Nullable="false" />
+          <Property Type="String" Name="ArName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EnName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetLikeDivisions_Result">
+          <Property Type="Int32" Name="DivisionID" Nullable="false" />
+          <Property Type="String" Name="ArName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EnName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetLikeEmployeeOffTypes_Result">
+          <Property Type="Int32" Name="EmployeeOffTypeID" Nullable="false" />
+          <Property Type="String" Name="ArName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EnName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetLikeEmployees_Result">
+          <Property Type="Int32" Name="EmployeeID" Nullable="false" />
+          <Property Type="String" Name="ArName" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="EnName" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="BithDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="NationalityID" Nullable="true" />
+          <Property Type="Int32" Name="DivisionID" Nullable="true" />
+          <Property Type="Int32" Name="JobTitleID" Nullable="true" />
+          <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="20" />
+          <Property Type="Boolean" Name="IsActiveStatus" Nullable="true" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="OffDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="OffTypeID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetLikeJobTitles_Result">
+          <Property Type="Int32" Name="JobTitleID" Nullable="false" />
+          <Property Type="String" Name="ArName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EnName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetLikeNationalitys_Result">
+          <Property Type="Int32" Name="NationalityID" Nullable="false" />
+          <Property Type="String" Name="ArName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EnName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetNationalitysByParam_Result">
+          <Property Type="Int32" Name="NationalityID" Nullable="false" />
+          <Property Type="String" Name="ArName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EnName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EmployeeDBGIS2019ModelStoreContainer" CdmEntityContainer="EmployeeDBGIS2019Entities">
+          <EntitySetMapping Name="DivisionTBLs">
+            <EntityTypeMapping TypeName="EmployeeDBGIS2019Model.DivisionTBL">
+              <MappingFragment StoreEntitySet="DivisionTBL">
+                <ScalarProperty Name="DivisionID" ColumnName="DivisionID" />
+                <ScalarProperty Name="ArName" ColumnName="ArName" />
+                <ScalarProperty Name="EnName" ColumnName="EnName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeOffTypes">
+            <EntityTypeMapping TypeName="EmployeeDBGIS2019Model.EmployeeOffType">
+              <MappingFragment StoreEntitySet="EmployeeOffType">
+                <ScalarProperty Name="EmployeeOffTypeID" ColumnName="EmployeeOffTypeID" />
+                <ScalarProperty Name="ArName" ColumnName="ArName" />
+                <ScalarProperty Name="EnName" ColumnName="EnName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeTBLs">
+            <EntityTypeMapping TypeName="EmployeeDBGIS2019Model.EmployeeTBL">
+              <MappingFragment StoreEntitySet="EmployeeTBL">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="ArName" ColumnName="ArName" />
+                <ScalarProperty Name="EnName" ColumnName="EnName" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="BithDate" ColumnName="BithDate" />
+                <ScalarProperty Name="NationalityID" ColumnName="NationalityID" />
+                <ScalarProperty Name="DivisionID" ColumnName="DivisionID" />
+                <ScalarProperty Name="JobTitleID" ColumnName="JobTitleID" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="IsActiveStatus" ColumnName="IsActiveStatus" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="OffDate" ColumnName="OffDate" />
+                <ScalarProperty Name="OffTypeID" ColumnName="OffTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobTitleTBLs">
+            <EntityTypeMapping TypeName="EmployeeDBGIS2019Model.JobTitleTBL">
+              <MappingFragment StoreEntitySet="JobTitleTBL">
+                <ScalarProperty Name="JobTitleID" ColumnName="JobTitleID" />
+                <ScalarProperty Name="ArName" ColumnName="ArName" />
+                <ScalarProperty Name="EnName" ColumnName="EnName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NationalityTBLs">
+            <EntityTypeMapping TypeName="EmployeeDBGIS2019Model.NationalityTBL">
+              <MappingFragment StoreEntitySet="NationalityTBL">
+                <ScalarProperty Name="NationalityID" ColumnName="NationalityID" />
+                <ScalarProperty Name="ArName" ColumnName="ArName" />
+                <ScalarProperty Name="EnName" ColumnName="EnName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetAllDivisions" FunctionName="EmployeeDBGIS2019Model.Store.GetAllDivisions">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllEmployeeOffTypes" FunctionName="EmployeeDBGIS2019Model.Store.GetAllEmployeeOffTypes">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllEmployees" FunctionName="EmployeeDBGIS2019Model.Store.GetAllEmployees">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllJobTitles" FunctionName="EmployeeDBGIS2019Model.Store.GetAllJobTitles">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllNationalitys" FunctionName="EmployeeDBGIS2019Model.Store.GetAllNationalitys">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetDivisionsByParam" FunctionName="EmployeeDBGIS2019Model.Store.GetDivisionsByParam">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetEmployeeOffTypesByParam" FunctionName="EmployeeDBGIS2019Model.Store.GetEmployeeOffTypesByParam">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetEmployeesByParam" FunctionName="EmployeeDBGIS2019Model.Store.GetEmployeesByParam">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetJobTitlesByParam" FunctionName="EmployeeDBGIS2019Model.Store.GetJobTitlesByParam">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetLikeDivisions" FunctionName="EmployeeDBGIS2019Model.Store.GetLikeDivisions">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetLikeEmployeeOffTypes" FunctionName="EmployeeDBGIS2019Model.Store.GetLikeEmployeeOffTypes">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetLikeEmployees" FunctionName="EmployeeDBGIS2019Model.Store.GetLikeEmployees">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetLikeJobTitles" FunctionName="EmployeeDBGIS2019Model.Store.GetLikeJobTitles">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetLikeNationalitys" FunctionName="EmployeeDBGIS2019Model.Store.GetLikeNationalitys">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetNationalitysByParam" FunctionName="EmployeeDBGIS2019Model.Store.GetNationalitysByParam">
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,292 @@
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\WebApiService.dll.config
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\WebApiService.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\WebApiService.pdb
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\csc.exe
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\csc.exe.config
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\csc.rsp
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\csi.exe
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\csi.exe.config
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\csi.rsp
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\Microsoft.Managed.Core.targets
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\System.AppContext.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\System.Collections.Immutable.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\System.Console.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\System.IO.Compression.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\System.IO.FileSystem.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\System.IO.Pipes.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\System.Reflection.Metadata.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\System.Security.AccessControl.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\System.Security.Claims.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\System.Security.Principal.Windows.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\System.ValueTuple.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\System.Xml.XmlDocument.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\System.Xml.XPath.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\vbc.exe
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\vbc.exe.config
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\vbc.rsp
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\VBCSCompiler.exe
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\roslyn\VBCSCompiler.exe.config
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\EntityFramework.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\EntityFramework.SqlServer.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\Microsoft.Web.Infrastructure.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\Newtonsoft.Json.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\System.Net.Http.Formatting.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\System.Web.Helpers.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\System.Web.Http.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\System.Web.Http.WebHost.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\System.Web.Mvc.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\System.Web.Razor.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\System.Web.Webpages.Deployment.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\System.Web.Webpages.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\System.Web.Webpages.Razor.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\EntityFramework.xml
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\EntityFramework.SqlServer.xml
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\System.Web.Razor.xml
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\System.Web.Webpages.xml
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\System.Web.Webpages.Deployment.xml
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\System.Web.Webpages.Razor.xml
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\System.Web.Helpers.xml
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\System.Web.Mvc.xml
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\Newtonsoft.Json.xml
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\System.Net.Http.Formatting.xml
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\System.Web.Http.xml
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\System.Web.Http.WebHost.xml
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\D\KA\Project\TODO\the Final Project\WebApiService\obj\Debug\WebApiService.csprojAssemblyReference.cache
+C:\D\KA\Project\TODO\the Final Project\WebApiService\obj\Debug\WebApiService.csproj.CoreCompileInputs.cache
+C:\D\KA\Project\TODO\the Final Project\WebApiService\obj\Debug\WebApiService.csproj.CopyComplete
+C:\D\KA\Project\TODO\the Final Project\WebApiService\obj\Debug\WebApiService.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\obj\Debug\WebApiService.pdb
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\DAL.dll
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\DAL.pdb
+C:\D\KA\Project\TODO\the Final Project\WebApiService\bin\DAL.dll.config
+C:\D\KA\Project\the Final Project\WebApiService\obj\Debug\WebApiService.dll
+C:\D\KA\Project\the Final Project\WebApiService\obj\Debug\WebApiService.pdb
+C:\D\KA\Project\the Final Project\WebApiService\bin\WebApiService.dll.config
+C:\D\KA\Project\the Final Project\WebApiService\bin\WebApiService.dll
+C:\D\KA\Project\the Final Project\WebApiService\bin\WebApiService.pdb
+C:\D\KA\Project\the Final Project\WebApiService\bin\DAL.dll
+C:\D\KA\Project\the Final Project\WebApiService\bin\EntityFramework.dll
+C:\D\KA\Project\the Final Project\WebApiService\bin\EntityFramework.SqlServer.dll
+C:\D\KA\Project\the Final Project\WebApiService\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\D\KA\Project\the Final Project\WebApiService\bin\Microsoft.Web.Infrastructure.dll
+C:\D\KA\Project\the Final Project\WebApiService\bin\Newtonsoft.Json.dll
+C:\D\KA\Project\the Final Project\WebApiService\bin\System.Net.Http.Formatting.dll
+C:\D\KA\Project\the Final Project\WebApiService\bin\System.Web.Helpers.dll
+C:\D\KA\Project\the Final Project\WebApiService\bin\System.Web.Http.dll
+C:\D\KA\Project\the Final Project\WebApiService\bin\System.Web.Http.WebHost.dll
+C:\D\KA\Project\the Final Project\WebApiService\bin\System.Web.Mvc.dll
+C:\D\KA\Project\the Final Project\WebApiService\bin\System.Web.Razor.dll
+C:\D\KA\Project\the Final Project\WebApiService\bin\System.Web.Webpages.Deployment.dll
+C:\D\KA\Project\the Final Project\WebApiService\bin\System.Web.Webpages.dll
+C:\D\KA\Project\the Final Project\WebApiService\bin\System.Web.Webpages.Razor.dll
+C:\D\KA\Project\the Final Project\WebApiService\bin\DAL.pdb
+C:\D\KA\Project\the Final Project\WebApiService\bin\DAL.dll.config
+C:\D\KA\Project\the Final Project\WebApiService\bin\EntityFramework.xml
+C:\D\KA\Project\the Final Project\WebApiService\bin\EntityFramework.SqlServer.xml
+C:\D\KA\Project\the Final Project\WebApiService\bin\System.Web.Razor.xml
+C:\D\KA\Project\the Final Project\WebApiService\bin\System.Web.Webpages.xml
+C:\D\KA\Project\the Final Project\WebApiService\bin\System.Web.Webpages.Deployment.xml
+C:\D\KA\Project\the Final Project\WebApiService\bin\System.Web.Webpages.Razor.xml
+C:\D\KA\Project\the Final Project\WebApiService\bin\System.Web.Helpers.xml
+C:\D\KA\Project\the Final Project\WebApiService\bin\System.Web.Mvc.xml
+C:\D\KA\Project\the Final Project\WebApiService\bin\Newtonsoft.Json.xml
+C:\D\KA\Project\the Final Project\WebApiService\bin\System.Net.Http.Formatting.xml
+C:\D\KA\Project\the Final Project\WebApiService\bin\System.Web.Http.xml
+C:\D\KA\Project\the Final Project\WebApiService\bin\System.Web.Http.WebHost.xml
+C:\D\KA\Project\the Final Project\WebApiService\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\D\KA\Project\the Final Project\WebApiService\obj\Debug\WebApiService.csprojAssemblyReference.cache
+C:\D\KA\Project\the Final Project\WebApiService\obj\Debug\WebApiService.csproj.CoreCompileInputs.cache
+C:\D\KA\Project\the Final Project\WebApiService\obj\Debug\WebApiService.csproj.CopyComplete
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\WebApiService.dll.config
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\WebApiService.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\WebApiService.pdb
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\csc.exe
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\csc.exe.config
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\csc.rsp
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\csi.exe
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\csi.exe.config
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\csi.rsp
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\Microsoft.Managed.Core.targets
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\System.AppContext.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\System.Collections.Immutable.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\System.Console.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\System.IO.Compression.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\System.IO.FileSystem.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\System.IO.Pipes.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\System.Reflection.Metadata.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\System.Security.AccessControl.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\System.Security.Claims.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\System.Security.Principal.Windows.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\System.ValueTuple.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\System.Xml.XmlDocument.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\System.Xml.XPath.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\vbc.exe
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\vbc.exe.config
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\vbc.rsp
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\VBCSCompiler.exe
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\roslyn\VBCSCompiler.exe.config
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\DAL.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\EntityFramework.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\EntityFramework.SqlServer.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\Microsoft.Web.Infrastructure.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\Newtonsoft.Json.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\System.Net.Http.Formatting.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\System.Web.Helpers.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\System.Web.Http.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\System.Web.Http.WebHost.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\System.Web.Mvc.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\System.Web.Razor.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\System.Web.Webpages.Deployment.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\System.Web.Webpages.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\System.Web.Webpages.Razor.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\DAL.pdb
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\DAL.dll.config
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\EntityFramework.xml
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\EntityFramework.SqlServer.xml
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\System.Web.Razor.xml
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\System.Web.Webpages.xml
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\System.Web.Webpages.Deployment.xml
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\System.Web.Webpages.Razor.xml
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\System.Web.Helpers.xml
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\System.Web.Mvc.xml
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\Newtonsoft.Json.xml
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\System.Net.Http.Formatting.xml
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\System.Web.Http.xml
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\System.Web.Http.WebHost.xml
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\obj\Debug\WebApiService.csprojAssemblyReference.cache
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\obj\Debug\WebApiService.csproj.CoreCompileInputs.cache
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\obj\Debug\WebApiService.csproj.CopyComplete
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\obj\Debug\WebApiService.dll
+C:\D\MohamedAbdalglil\AssemShabak\WebApiService\obj\Debug\WebApiService.pdb
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\WebApiService.dll.config
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\WebApiService.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\WebApiService.pdb
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\csc.exe
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\csc.exe.config
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\csc.rsp
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\csi.exe
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\csi.exe.config
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\csi.rsp
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\Microsoft.Managed.Core.targets
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\System.AppContext.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\System.Collections.Immutable.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\System.Console.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\System.IO.Compression.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\System.IO.FileSystem.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\System.IO.Pipes.AccessControl.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\System.IO.Pipes.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\System.Reflection.Metadata.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\System.Security.AccessControl.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\System.Security.Claims.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\System.Security.Principal.Windows.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\System.ValueTuple.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\System.Xml.XmlDocument.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\System.Xml.XPath.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\vbc.exe
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\vbc.exe.config
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\vbc.rsp
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\VBCSCompiler.exe
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\roslyn\VBCSCompiler.exe.config
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\DAL.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\EntityFramework.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\EntityFramework.SqlServer.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\Microsoft.Web.Infrastructure.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\Newtonsoft.Json.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\System.Net.Http.Formatting.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\System.Web.Helpers.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\System.Web.Http.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\System.Web.Http.WebHost.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\System.Web.Mvc.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\System.Web.Razor.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\System.Web.Webpages.Deployment.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\System.Web.Webpages.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\System.Web.Webpages.Razor.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\DAL.pdb
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\DAL.dll.config
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\EntityFramework.xml
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\EntityFramework.SqlServer.xml
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\System.Web.Razor.xml
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\System.Web.Webpages.xml
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\System.Web.Webpages.Deployment.xml
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\System.Web.Webpages.Razor.xml
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\System.Web.Helpers.xml
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\System.Web.Mvc.xml
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\Newtonsoft.Json.xml
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\System.Net.Http.Formatting.xml
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\System.Web.Http.xml
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\System.Web.Http.WebHost.xml
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\obj\Debug\WebApiService.csprojAssemblyReference.cache
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\obj\Debug\WebApiService.csproj.CoreCompileInputs.cache
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\obj\Debug\WebApiService.csproj.CopyComplete
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\obj\Debug\WebApiService.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\obj\Debug\WebApiService.pdb
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\WebActivatorEx.dll
+D:\ShabakTest1\AssemShabak\AssemShabak\WebApiService\bin\Swashbuckle.Core.dll

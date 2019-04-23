@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProjectsDBGIS2019ModelStoreContainer" CdmEntityContainer="ProjectsDBGIS2019Entities">
+    <EntitySetMapping Name="OrganizationBasics">
+      <EntityTypeMapping TypeName="ProjectsDBGIS2019Model.OrganizationBasic">
+        <MappingFragment StoreEntitySet="OrganizationBasics">
+          <ScalarProperty Name="OrgID" ColumnName="OrgID" />
+          <ScalarProperty Name="OrgArName" ColumnName="OrgArName" />
+          <ScalarProperty Name="OrgEnName" ColumnName="OrgEnName" />
+          <ScalarProperty Name="LandLineNumber" ColumnName="LandLineNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

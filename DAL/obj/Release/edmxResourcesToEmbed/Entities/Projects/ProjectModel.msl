@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProjectModelStoreContainer" CdmEntityContainer="ProjectsEntities">
+    <EntitySetMapping Name="ContractsChanges">
+      <EntityTypeMapping TypeName="ProjectModel.ContractsChange">
+        <MappingFragment StoreEntitySet="ContractsChange">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="ChangedDescription" ColumnName="ChangedDescription" />
+          <ScalarProperty Name="OriginalAmount" ColumnName="OriginalAmount" />
+          <ScalarProperty Name="NewAmount" ColumnName="NewAmount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeliverableStages">
+      <EntityTypeMapping TypeName="ProjectModel.DeliverableStage">
+        <MappingFragment StoreEntitySet="DeliverableStage">
+          <ScalarProperty Name="DeliverableID" ColumnName="DeliverableID" />
+          <ScalarProperty Name="StageID" ColumnName="StageID" />
+          <ScalarProperty Name="DeliverableArName" ColumnName="DeliverableArName" />
+          <ScalarProperty Name="DeliverableEnName" ColumnName="DeliverableEnName" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="DeliverableBudget" ColumnName="DeliverableBudget" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OegTypes">
+      <EntityTypeMapping TypeName="ProjectModel.OegType">
+        <MappingFragment StoreEntitySet="OegType">
+          <ScalarProperty Name="OrgTypeID" ColumnName="OrgTypeID" />
+          <ScalarProperty Name="TypeArName" ColumnName="TypeArName" />
+          <ScalarProperty Name="TypeEnName" ColumnName="TypeEnName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrganizationBasics">
+      <EntityTypeMapping TypeName="ProjectModel.OrganizationBasic">
+        <MappingFragment StoreEntitySet="OrganizationBasics">
+          <ScalarProperty Name="OrgID" ColumnName="OrgID" />
+          <ScalarProperty Name="OrgArName" ColumnName="OrgArName" />
+          <ScalarProperty Name="OrgEnName" ColumnName="OrgEnName" />
+          <ScalarProperty Name="LandLineNumber" ColumnName="LandLineNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrganizationsProjects">
+      <EntityTypeMapping TypeName="ProjectModel.OrganizationsProject">
+        <MappingFragment StoreEntitySet="OrganizationsProject">
+          <ScalarProperty Name="SerNum" ColumnName="SerNum" />
+          <ScalarProperty Name="PeopleID" ColumnName="PeopleID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="OrgTypeID" ColumnName="OrgTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PepoleTBLs">
+      <EntityTypeMapping TypeName="ProjectModel.PepoleTBL">
+        <MappingFragment StoreEntitySet="PepoleTBL">
+          <ScalarProperty Name="PeopleID" ColumnName="PeopleID" />
+          <ScalarProperty Name="ArName" ColumnName="ArName" />
+          <ScalarProperty Name="EnName" ColumnName="EnName" />
+          <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+          <ScalarProperty Name="LandLineExt" ColumnName="LandLineExt" />
+          <ScalarProperty Name="EmailAdress" ColumnName="EmailAdress" />
+          <ScalarProperty Name="OrgID" ColumnName="OrgID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PositionInProjects">
+      <EntityTypeMapping TypeName="ProjectModel.PositionInProject">
+        <MappingFragment StoreEntitySet="PositionInProject">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ArName" ColumnName="ArName" />
+          <ScalarProperty Name="EnName" ColumnName="EnName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectEmployees">
+      <EntityTypeMapping TypeName="ProjectModel.ProjectEmployee">
+        <MappingFragment StoreEntitySet="ProjectEmployees">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="StartFrom" ColumnName="StartFrom" />
+          <ScalarProperty Name="EndTo" ColumnName="EndTo" />
+          <ScalarProperty Name="PositionInProject" ColumnName="PositionInProject" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StageProjects">
+      <EntityTypeMapping TypeName="ProjectModel.StageProject">
+        <MappingFragment StoreEntitySet="StageProject">
+          <ScalarProperty Name="StageID" ColumnName="StageID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="StageArName" ColumnName="StageArName" />
+          <ScalarProperty Name="StageEnName" ColumnName="StageEnName" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StageBudget" ColumnName="StageBudget" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SelectAllContractsChange" FunctionName="ProjectModel.Store.SelectAllContractsChange" />
+    <FunctionImportMapping FunctionImportName="SelectAllDeliverableStage" FunctionName="ProjectModel.Store.SelectAllDeliverableStage" />
+    <FunctionImportMapping FunctionImportName="SelectAllOegType" FunctionName="ProjectModel.Store.SelectAllOegType" />
+    <FunctionImportMapping FunctionImportName="SelectAllOrganizationBasics" FunctionName="ProjectModel.Store.SelectAllOrganizationBasics" />
+    <FunctionImportMapping FunctionImportName="SelectAllOrganizationProject" FunctionName="ProjectModel.Store.SelectAllOrganizationProject" />
+    <FunctionImportMapping FunctionImportName="SelectAllPepoleTBL" FunctionName="ProjectModel.Store.SelectAllPepoleTBL" />
+    <FunctionImportMapping FunctionImportName="SelectAllProjectEmployees" FunctionName="ProjectModel.Store.SelectAllProjectEmployees" />
+    <FunctionImportMapping FunctionImportName="SelectAllProjectTBL" FunctionName="ProjectModel.Store.SelectAllProjectTBL" />
+    <FunctionImportMapping FunctionImportName="SelectAllStageProject" FunctionName="ProjectModel.Store.SelectAllStageProject" />
+    <FunctionImportMapping FunctionImportName="SelectlikeContractChange" FunctionName="ProjectModel.Store.SelectlikeContractChange" />
+    <FunctionImportMapping FunctionImportName="SelectlikeDeliverableStage" FunctionName="ProjectModel.Store.SelectlikeDeliverableStage" />
+    <FunctionImportMapping FunctionImportName="SelectlikePepoleTBL" FunctionName="ProjectModel.Store.SelectlikePepoleTBL" />
+    <FunctionImportMapping FunctionImportName="SelectlikeProjectEmployees" FunctionName="ProjectModel.Store.SelectlikeProjectEmployees" />
+    <FunctionImportMapping FunctionImportName="SelectLikeProjectTBL" FunctionName="ProjectModel.Store.SelectLikeProjectTBL" />
+    <FunctionImportMapping FunctionImportName="SelectLikeStageProject" FunctionName="ProjectModel.Store.SelectLikeStageProject" />
+    <FunctionImportMapping FunctionImportName="SelectParamContractChange" FunctionName="ProjectModel.Store.SelectParamContractChange" />
+    <FunctionImportMapping FunctionImportName="SelectParamDeliverableStage" FunctionName="ProjectModel.Store.SelectParamDeliverableStage" />
+    <FunctionImportMapping FunctionImportName="SelectParamOrganizationBasics" FunctionName="ProjectModel.Store.SelectParamOrganizationBasics" />
+    <FunctionImportMapping FunctionImportName="SelectParamOrganizationProject" FunctionName="ProjectModel.Store.SelectParamOrganizationProject" />
+    <FunctionImportMapping FunctionImportName="SelectParamPepoleTBL" FunctionName="ProjectModel.Store.SelectParamPepoleTBL" />
+    <FunctionImportMapping FunctionImportName="SelectParamProjectEmployees" FunctionName="ProjectModel.Store.SelectParamProjectEmployees" />
+    <FunctionImportMapping FunctionImportName="SelectParamProjectTBL" FunctionName="ProjectModel.Store.SelectParamProjectTBL" />
+    <FunctionImportMapping FunctionImportName="SelectParamStageProject" FunctionName="ProjectModel.Store.SelectParamStageProject" />
+    <FunctionImportMapping FunctionImportName="SelectlikeOrganizationBasic" FunctionName="ProjectModel.Store.SelectlikeOrganizationBasic" />
+    <FunctionImportMapping FunctionImportName="SelectAllPositionInProject" FunctionName="ProjectModel.Store.SelectAllPositionInProject" />
+    <FunctionImportMapping FunctionImportName="SelectParamPositionInProject" FunctionName="ProjectModel.Store.SelectParamPositionInProject" />
+    <EntitySetMapping Name="ProjectTBLs">
+      <EntityTypeMapping TypeName="ProjectModel.ProjectTBL">
+        <MappingFragment StoreEntitySet="ProjectTBL">
+          <ScalarProperty Name="IsActiveProject" ColumnName="IsActiveProject" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="MainContractAmount" ColumnName="MainContractAmount" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EnName" ColumnName="EnName" />
+          <ScalarProperty Name="ArName" ColumnName="ArName" />
+          <ScalarProperty Name="ProjectNumber" ColumnName="ProjectNumber" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

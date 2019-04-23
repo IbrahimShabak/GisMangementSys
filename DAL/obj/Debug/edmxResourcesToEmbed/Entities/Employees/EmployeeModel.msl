@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EmployeeDBGIS2019ModelStoreContainer" CdmEntityContainer="EmployeeDBGIS2019Entities">
+    <EntitySetMapping Name="DivisionTBLs">
+      <EntityTypeMapping TypeName="EmployeeDBGIS2019Model.DivisionTBL">
+        <MappingFragment StoreEntitySet="DivisionTBL">
+          <ScalarProperty Name="DivisionID" ColumnName="DivisionID" />
+          <ScalarProperty Name="ArName" ColumnName="ArName" />
+          <ScalarProperty Name="EnName" ColumnName="EnName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeOffTypes">
+      <EntityTypeMapping TypeName="EmployeeDBGIS2019Model.EmployeeOffType">
+        <MappingFragment StoreEntitySet="EmployeeOffType">
+          <ScalarProperty Name="EmployeeOffTypeID" ColumnName="EmployeeOffTypeID" />
+          <ScalarProperty Name="ArName" ColumnName="ArName" />
+          <ScalarProperty Name="EnName" ColumnName="EnName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeTBLs">
+      <EntityTypeMapping TypeName="EmployeeDBGIS2019Model.EmployeeTBL">
+        <MappingFragment StoreEntitySet="EmployeeTBL">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="ArName" ColumnName="ArName" />
+          <ScalarProperty Name="EnName" ColumnName="EnName" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="BithDate" ColumnName="BithDate" />
+          <ScalarProperty Name="NationalityID" ColumnName="NationalityID" />
+          <ScalarProperty Name="DivisionID" ColumnName="DivisionID" />
+          <ScalarProperty Name="JobTitleID" ColumnName="JobTitleID" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="IsActiveStatus" ColumnName="IsActiveStatus" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="OffDate" ColumnName="OffDate" />
+          <ScalarProperty Name="OffTypeID" ColumnName="OffTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobTitleTBLs">
+      <EntityTypeMapping TypeName="EmployeeDBGIS2019Model.JobTitleTBL">
+        <MappingFragment StoreEntitySet="JobTitleTBL">
+          <ScalarProperty Name="JobTitleID" ColumnName="JobTitleID" />
+          <ScalarProperty Name="ArName" ColumnName="ArName" />
+          <ScalarProperty Name="EnName" ColumnName="EnName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NationalityTBLs">
+      <EntityTypeMapping TypeName="EmployeeDBGIS2019Model.NationalityTBL">
+        <MappingFragment StoreEntitySet="NationalityTBL">
+          <ScalarProperty Name="NationalityID" ColumnName="NationalityID" />
+          <ScalarProperty Name="ArName" ColumnName="ArName" />
+          <ScalarProperty Name="EnName" ColumnName="EnName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetAllDivisions" FunctionName="EmployeeDBGIS2019Model.Store.GetAllDivisions" />
+    <FunctionImportMapping FunctionImportName="GetAllEmployeeOffTypes" FunctionName="EmployeeDBGIS2019Model.Store.GetAllEmployeeOffTypes" />
+    <FunctionImportMapping FunctionImportName="GetAllEmployees" FunctionName="EmployeeDBGIS2019Model.Store.GetAllEmployees" />
+    <FunctionImportMapping FunctionImportName="GetAllJobTitles" FunctionName="EmployeeDBGIS2019Model.Store.GetAllJobTitles" />
+    <FunctionImportMapping FunctionImportName="GetAllNationalitys" FunctionName="EmployeeDBGIS2019Model.Store.GetAllNationalitys" />
+    <FunctionImportMapping FunctionImportName="GetDivisionsByParam" FunctionName="EmployeeDBGIS2019Model.Store.GetDivisionsByParam" />
+    <FunctionImportMapping FunctionImportName="GetEmployeeOffTypesByParam" FunctionName="EmployeeDBGIS2019Model.Store.GetEmployeeOffTypesByParam" />
+    <FunctionImportMapping FunctionImportName="GetEmployeesByParam" FunctionName="EmployeeDBGIS2019Model.Store.GetEmployeesByParam" />
+    <FunctionImportMapping FunctionImportName="GetJobTitlesByParam" FunctionName="EmployeeDBGIS2019Model.Store.GetJobTitlesByParam" />
+    <FunctionImportMapping FunctionImportName="GetLikeDivisions" FunctionName="EmployeeDBGIS2019Model.Store.GetLikeDivisions" />
+    <FunctionImportMapping FunctionImportName="GetLikeEmployeeOffTypes" FunctionName="EmployeeDBGIS2019Model.Store.GetLikeEmployeeOffTypes" />
+    <FunctionImportMapping FunctionImportName="GetLikeEmployees" FunctionName="EmployeeDBGIS2019Model.Store.GetLikeEmployees" />
+    <FunctionImportMapping FunctionImportName="GetLikeJobTitles" FunctionName="EmployeeDBGIS2019Model.Store.GetLikeJobTitles" />
+    <FunctionImportMapping FunctionImportName="GetLikeNationalitys" FunctionName="EmployeeDBGIS2019Model.Store.GetLikeNationalitys" />
+    <FunctionImportMapping FunctionImportName="GetNationalitysByParam" FunctionName="EmployeeDBGIS2019Model.Store.GetNationalitysByParam" />
+  </EntityContainerMapping>
+</Mapping>

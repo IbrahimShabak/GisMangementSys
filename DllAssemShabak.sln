@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{8F04016F-0B1A-49E9-8665-C2B4A44D085C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{087668DE-0410-4D62-840E-1C66F031A2AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiService", "WebApiService\WebApiService.csproj", "{9DA75A30-05C9-4542-B102-9811D8812916}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{9AB0C5A6-0AAA-4C4C-A76F-622D00D88CF7}"
+	ProjectSection(SolutionItems) = preProject
+		Script1.js = Script1.js
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{087668DE-0410-4D62-840E-1C66F031A2AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{087668DE-0410-4D62-840E-1C66F031A2AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{087668DE-0410-4D62-840E-1C66F031A2AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{087668DE-0410-4D62-840E-1C66F031A2AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DA75A30-05C9-4542-B102-9811D8812916}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DA75A30-05C9-4542-B102-9811D8812916}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DA75A30-05C9-4542-B102-9811D8812916}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DA75A30-05C9-4542-B102-9811D8812916}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{087668DE-0410-4D62-840E-1C66F031A2AE} = {8F04016F-0B1A-49E9-8665-C2B4A44D085C}
+		{9DA75A30-05C9-4542-B102-9811D8812916} = {8F04016F-0B1A-49E9-8665-C2B4A44D085C}
+		{9AB0C5A6-0AAA-4C4C-A76F-622D00D88CF7} = {8F04016F-0B1A-49E9-8665-C2B4A44D085C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F22C7AE9-480B-4211-BA0B-0839280FBBB0}
+	EndGlobalSection
+EndGlobal

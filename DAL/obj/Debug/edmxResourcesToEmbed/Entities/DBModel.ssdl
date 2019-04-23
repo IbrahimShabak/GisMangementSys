@@ -1,0 +1,466 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ContractsChange">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectID" Type="int" Nullable="false" />
+    <Property Name="ChangedDescription" Type="nvarchar" MaxLength="200" />
+    <Property Name="OriginalAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="NewAmount" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="DeliverableStage">
+    <Key>
+      <PropertyRef Name="DeliverableID" />
+    </Key>
+    <Property Name="DeliverableID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StageID" Type="int" />
+    <Property Name="DeliverableArName" Type="nvarchar" MaxLength="50" />
+    <Property Name="DeliverableEnName" Type="nvarchar" MaxLength="50" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="DeliverableBudget" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="OegType">
+    <Key>
+      <PropertyRef Name="OrgTypeID" />
+    </Key>
+    <Property Name="OrgTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeArName" Type="nvarchar" MaxLength="50" />
+    <Property Name="TypeEnName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="OrganizationBasics">
+    <Key>
+      <PropertyRef Name="OrgID" />
+    </Key>
+    <Property Name="OrgID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrgArName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="OrgEnName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="LandLineNumber" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="OrganizationsProject">
+    <Key>
+      <PropertyRef Name="SerNum" />
+    </Key>
+    <Property Name="SerNum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PeopleID" Type="int" />
+    <Property Name="ProjectID" Type="int" />
+    <Property Name="OrgTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="PepoleTBL">
+    <Key>
+      <PropertyRef Name="PeopleID" />
+    </Key>
+    <Property Name="PeopleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="EnName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="MobilePhone" Type="nvarchar" MaxLength="20" />
+    <Property Name="LandLineExt" Type="nvarchar" MaxLength="10" />
+    <Property Name="EmailAdress" Type="nvarchar" MaxLength="100" />
+    <Property Name="OrgID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PositionInProject">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EnName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectEmployees">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectID" Type="int" Nullable="false" />
+    <Property Name="EmpID" Type="int" Nullable="false" />
+    <Property Name="StartFrom" Type="datetime" />
+    <Property Name="EndTo" Type="datetime" />
+    <Property Name="PositionInProject" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectTBL">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ArName" Type="nvarchar" MaxLength="200" />
+    <Property Name="EnName" Type="nvarchar" MaxLength="200" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="MainContractAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="IsActiveProject" Type="bit" />
+  </EntityType>
+  <EntityType Name="StageProject">
+    <Key>
+      <PropertyRef Name="StageID" />
+    </Key>
+    <Property Name="StageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectID" Type="int" Nullable="false" />
+    <Property Name="StageArName" Type="nvarchar" MaxLength="50" />
+    <Property Name="StageEnName" Type="nvarchar" MaxLength="50" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="StageBudget" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="TicketDetection">
+    <Key>
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="TicketID" Type="int" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="StartTime" Type="datetime" Nullable="false" />
+    <Property Name="ValidTill" Type="datetime" Nullable="false" />
+    <Property Name="StillValied" Type="bit" Nullable="false" />
+    <Property Name="PermissionRul" Type="int" Nullable="false" />
+    <Property Name="ActionsTaken" Type="nvarchar(max)" />
+    <Property Name="MACAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="LocationX" Type="nvarchar" MaxLength="50" />
+    <Property Name="LocationY" Type="nvarchar" MaxLength="50" />
+    <Property Name="DeviceName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectsDBGIS2019.dbo.ArProStgDlivView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ArProStgDlivView">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ArName" Type="nvarchar" MaxLength="200" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="StageArName" Type="nvarchar" MaxLength="50" />
+    <Property Name="StageStartDate" Type="datetime" />
+    <Property Name="StageEndDate" Type="datetime" />
+    <Property Name="DeliverableArName" Type="nvarchar" MaxLength="50" />
+    <Property Name="DeliverableStartDate" Type="datetime" />
+    <Property Name="DeliverableEndDate" Type="datetime" />
+    <Property Name="MainContractAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="StageBudget" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DeliverableBudget" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectsDBGIS2019.dbo.EnEmployeesOfProjectsView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="EnEmployeesOfProjectsView">
+    <Key>
+      <PropertyRef Name="Project Number" />
+    </Key>
+    <Property Name="Employee ID" Type="int" />
+    <Property Name="Project Number" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Project Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="Job In the Project" Type="nvarchar" MaxLength="50" />
+    <Property Name="Project Start Date" Type="datetime" />
+    <Property Name="Employee Join the Project In" Type="datetime" />
+    <Property Name="Leave the Project In" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectsDBGIS2019.dbo.EnProStgDlivView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="EnProStgDlivView">
+    <Key>
+      <PropertyRef Name="Project Number" />
+    </Key>
+    <Property Name="Project Number" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Project Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="Project Start Date" Type="datetime" />
+    <Property Name="Stage Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Stage Start Date" Type="datetime" />
+    <Property Name="Stage End Date" Type="datetime" />
+    <Property Name="Deliverable Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Deliverable Start Date" Type="datetime" />
+    <Property Name="Deliverable End Date" Type="datetime" />
+    <Property Name="Project Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Stage Budget" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Deliverable Budget" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <Association Name="FK_ContractsChange_ProjectTBL">
+    <End Role="ProjectTBL" Type="Self.ProjectTBL" Multiplicity="1" />
+    <End Role="ContractsChange" Type="Self.ContractsChange" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectTBL">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="ContractsChange">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeliverableStage_StageProject">
+    <End Role="StageProject" Type="Self.StageProject" Multiplicity="0..1" />
+    <End Role="DeliverableStage" Type="Self.DeliverableStage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StageProject">
+        <PropertyRef Name="StageID" />
+      </Principal>
+      <Dependent Role="DeliverableStage">
+        <PropertyRef Name="StageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrganizationsProject_OegType">
+    <End Role="OegType" Type="Self.OegType" Multiplicity="0..1" />
+    <End Role="OrganizationsProject" Type="Self.OrganizationsProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OegType">
+        <PropertyRef Name="OrgTypeID" />
+      </Principal>
+      <Dependent Role="OrganizationsProject">
+        <PropertyRef Name="OrgTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrganizationsProject_PepoleTBL">
+    <End Role="PepoleTBL" Type="Self.PepoleTBL" Multiplicity="0..1" />
+    <End Role="OrganizationsProject" Type="Self.OrganizationsProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PepoleTBL">
+        <PropertyRef Name="PeopleID" />
+      </Principal>
+      <Dependent Role="OrganizationsProject">
+        <PropertyRef Name="PeopleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrganizationsProject_ProjectTBL">
+    <End Role="ProjectTBL" Type="Self.ProjectTBL" Multiplicity="0..1" />
+    <End Role="OrganizationsProject" Type="Self.OrganizationsProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectTBL">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="OrganizationsProject">
+        <PropertyRef Name="PeopleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PepoleTBL_OrganizationBasics">
+    <End Role="OrganizationBasics" Type="Self.OrganizationBasics" Multiplicity="1" />
+    <End Role="PepoleTBL" Type="Self.PepoleTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrganizationBasics">
+        <PropertyRef Name="OrgID" />
+      </Principal>
+      <Dependent Role="PepoleTBL">
+        <PropertyRef Name="OrgID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectEmployees_ProjectTBL">
+    <End Role="ProjectTBL" Type="Self.ProjectTBL" Multiplicity="1" />
+    <End Role="ProjectEmployees" Type="Self.ProjectEmployees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectTBL">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="ProjectEmployees">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectManager_PositionInProject">
+    <End Role="PositionInProject" Type="Self.PositionInProject" Multiplicity="1" />
+    <End Role="ProjectEmployees" Type="Self.ProjectEmployees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PositionInProject">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProjectEmployees">
+        <PropertyRef Name="PositionInProject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StageProject_ProjectTBL">
+    <End Role="ProjectTBL" Type="Self.ProjectTBL" Multiplicity="1" />
+    <End Role="StageProject" Type="Self.StageProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectTBL">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="StageProject">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="SelectAllContractsChange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectAllDeliverableStage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectAllOegType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectAllOrganizationBasics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectAllOrganizationProject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectAllPepoleTBL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectAllProjectEmployees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectAllProjectTBL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectAllStageProject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectlikeContractChange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ChangedDescription" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SelectlikeDeliverableStage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DeliverableArName" Type="nvarchar" Mode="In" />
+    <Parameter Name="DeliverableEnName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SelectlikePepoleTBL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ArName" Type="nvarchar" Mode="In" />
+    <Parameter Name="EnName" Type="nvarchar" Mode="In" />
+    <Parameter Name="MobilePhone" Type="nvarchar" Mode="In" />
+    <Parameter Name="EmailAdress" Type="nvarchar" Mode="In" />
+    <Parameter Name="OrgID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SelectlikeProjectEmployees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProjectID" Type="int" Mode="In" />
+    <Parameter Name="EmpID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SelectLikeProjectTBL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProjectNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="ArName" Type="nvarchar" Mode="In" />
+    <Parameter Name="EnName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SelectLikeStageProject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StageArName" Type="nvarchar" Mode="In" />
+    <Parameter Name="StageEnName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SelectParamContractChange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="ProjectID" Type="int" Mode="In" />
+    <Parameter Name="ChangedDescription" Type="nvarchar" Mode="In" />
+    <Parameter Name="OriginalAmount" Type="decimal" Mode="In" />
+    <Parameter Name="NewAmount" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="SelectParamDeliverableStage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DeliverableID" Type="int" Mode="In" />
+    <Parameter Name="StageID" Type="int" Mode="In" />
+    <Parameter Name="DeliverableArName" Type="nvarchar" Mode="In" />
+    <Parameter Name="DeliverableEnName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SelectParamOrganizationBasics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrgID" Type="int" Mode="In" />
+    <Parameter Name="OrgArName" Type="nvarchar" Mode="In" />
+    <Parameter Name="OrgEnName" Type="nvarchar" Mode="In" />
+    <Parameter Name="LandLineNumber" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SelectParamOrganizationProject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerNum" Type="int" Mode="In" />
+    <Parameter Name="PeopleID" Type="int" Mode="In" />
+    <Parameter Name="ProjectID" Type="nvarchar" Mode="In" />
+    <Parameter Name="OrgTypeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SelectParamPepoleTBL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PeopleID" Type="int" Mode="In" />
+    <Parameter Name="ArName" Type="nvarchar" Mode="In" />
+    <Parameter Name="EnName" Type="nvarchar" Mode="In" />
+    <Parameter Name="MobilePhone" Type="nvarchar" Mode="In" />
+    <Parameter Name="LandLineExt" Type="nvarchar" Mode="In" />
+    <Parameter Name="EmailAdress" Type="nvarchar" Mode="In" />
+    <Parameter Name="OrgID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SelectParamProjectEmployees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="ProjectID" Type="int" Mode="In" />
+    <Parameter Name="EmpID" Type="int" Mode="In" />
+    <Parameter Name="PositionInProject" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SelectParamProjectTBL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProjectID" Type="int" Mode="In" />
+    <Parameter Name="ProjectNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="ArName" Type="nvarchar" Mode="In" />
+    <Parameter Name="EnName" Type="nvarchar" Mode="In" />
+    <Parameter Name="MainContractAmount" Type="decimal" Mode="In" />
+    <Parameter Name="IsActiveProject" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="SelectParamStageProject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StageID" Type="int" Mode="In" />
+    <Parameter Name="ProjectID" Type="int" Mode="In" />
+    <Parameter Name="StageArName" Type="nvarchar" Mode="In" />
+    <Parameter Name="StageEnName" Type="nvarchar" Mode="In" />
+    <Parameter Name="StageBudget" Type="decimal" Mode="In" />
+  </Function>
+  <EntityContainer Name="DBModelStoreContainer">
+    <EntitySet Name="ContractsChange" EntityType="Self.ContractsChange" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DeliverableStage" EntityType="Self.DeliverableStage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OegType" EntityType="Self.OegType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrganizationBasics" EntityType="Self.OrganizationBasics" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrganizationsProject" EntityType="Self.OrganizationsProject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PepoleTBL" EntityType="Self.PepoleTBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PositionInProject" EntityType="Self.PositionInProject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectEmployees" EntityType="Self.ProjectEmployees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectTBL" EntityType="Self.ProjectTBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StageProject" EntityType="Self.StageProject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketDetection" EntityType="Self.TicketDetection" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ArProStgDlivView" EntityType="Self.ArProStgDlivView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ArProStgDlivView].[ProjectID] AS [ProjectID], 
+    [ArProStgDlivView].[ArName] AS [ArName], 
+    [ArProStgDlivView].[StartDate] AS [StartDate], 
+    [ArProStgDlivView].[StageArName] AS [StageArName], 
+    [ArProStgDlivView].[StageStartDate] AS [StageStartDate], 
+    [ArProStgDlivView].[StageEndDate] AS [StageEndDate], 
+    [ArProStgDlivView].[DeliverableArName] AS [DeliverableArName], 
+    [ArProStgDlivView].[DeliverableStartDate] AS [DeliverableStartDate], 
+    [ArProStgDlivView].[DeliverableEndDate] AS [DeliverableEndDate], 
+    [ArProStgDlivView].[MainContractAmount] AS [MainContractAmount], 
+    [ArProStgDlivView].[StageBudget] AS [StageBudget], 
+    [ArProStgDlivView].[DeliverableBudget] AS [DeliverableBudget]
+    FROM [dbo].[ArProStgDlivView] AS [ArProStgDlivView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="EnEmployeesOfProjectsView" EntityType="Self.EnEmployeesOfProjectsView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [EnEmployeesOfProjectsView].[Employee ID] AS [Employee ID], 
+    [EnEmployeesOfProjectsView].[Project Number] AS [Project Number], 
+    [EnEmployeesOfProjectsView].[Project Name] AS [Project Name], 
+    [EnEmployeesOfProjectsView].[Job In the Project] AS [Job In the Project], 
+    [EnEmployeesOfProjectsView].[Project Start Date] AS [Project Start Date], 
+    [EnEmployeesOfProjectsView].[Employee Join the Project In] AS [Employee Join the Project In], 
+    [EnEmployeesOfProjectsView].[Leave the Project In] AS [Leave the Project In]
+    FROM [dbo].[EnEmployeesOfProjectsView] AS [EnEmployeesOfProjectsView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="EnProStgDlivView" EntityType="Self.EnProStgDlivView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [EnProStgDlivView].[Project Number] AS [Project Number], 
+    [EnProStgDlivView].[Project Name] AS [Project Name], 
+    [EnProStgDlivView].[Project Start Date] AS [Project Start Date], 
+    [EnProStgDlivView].[Stage Name] AS [Stage Name], 
+    [EnProStgDlivView].[Stage Start Date] AS [Stage Start Date], 
+    [EnProStgDlivView].[Stage End Date] AS [Stage End Date], 
+    [EnProStgDlivView].[Deliverable Name] AS [Deliverable Name], 
+    [EnProStgDlivView].[Deliverable Start Date] AS [Deliverable Start Date], 
+    [EnProStgDlivView].[Deliverable End Date] AS [Deliverable End Date], 
+    [EnProStgDlivView].[Project Amount] AS [Project Amount], 
+    [EnProStgDlivView].[Stage Budget] AS [Stage Budget], 
+    [EnProStgDlivView].[Deliverable Budget] AS [Deliverable Budget]
+    FROM [dbo].[EnProStgDlivView] AS [EnProStgDlivView]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_ContractsChange_ProjectTBL" Association="Self.FK_ContractsChange_ProjectTBL">
+      <End Role="ProjectTBL" EntitySet="ProjectTBL" />
+      <End Role="ContractsChange" EntitySet="ContractsChange" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeliverableStage_StageProject" Association="Self.FK_DeliverableStage_StageProject">
+      <End Role="StageProject" EntitySet="StageProject" />
+      <End Role="DeliverableStage" EntitySet="DeliverableStage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrganizationsProject_OegType" Association="Self.FK_OrganizationsProject_OegType">
+      <End Role="OegType" EntitySet="OegType" />
+      <End Role="OrganizationsProject" EntitySet="OrganizationsProject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrganizationsProject_PepoleTBL" Association="Self.FK_OrganizationsProject_PepoleTBL">
+      <End Role="PepoleTBL" EntitySet="PepoleTBL" />
+      <End Role="OrganizationsProject" EntitySet="OrganizationsProject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrganizationsProject_ProjectTBL" Association="Self.FK_OrganizationsProject_ProjectTBL">
+      <End Role="ProjectTBL" EntitySet="ProjectTBL" />
+      <End Role="OrganizationsProject" EntitySet="OrganizationsProject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PepoleTBL_OrganizationBasics" Association="Self.FK_PepoleTBL_OrganizationBasics">
+      <End Role="OrganizationBasics" EntitySet="OrganizationBasics" />
+      <End Role="PepoleTBL" EntitySet="PepoleTBL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectEmployees_ProjectTBL" Association="Self.FK_ProjectEmployees_ProjectTBL">
+      <End Role="ProjectTBL" EntitySet="ProjectTBL" />
+      <End Role="ProjectEmployees" EntitySet="ProjectEmployees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectManager_PositionInProject" Association="Self.FK_ProjectManager_PositionInProject">
+      <End Role="PositionInProject" EntitySet="PositionInProject" />
+      <End Role="ProjectEmployees" EntitySet="ProjectEmployees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StageProject_ProjectTBL" Association="Self.FK_StageProject_ProjectTBL">
+      <End Role="ProjectTBL" EntitySet="ProjectTBL" />
+      <End Role="StageProject" EntitySet="StageProject" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
