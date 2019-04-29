@@ -15,7 +15,7 @@ using DAL.Operations.DTO.Project;
 //test comand
 namespace WebApiService.Controllers
 {
-    [MyAuthorize(Roles = "admin")]
+    //[MyAuthorize(Roles = "admin")]
     public class ContractsChangesController : ApiController
     {
         private ProjectsEntities db = new ProjectsEntities();
