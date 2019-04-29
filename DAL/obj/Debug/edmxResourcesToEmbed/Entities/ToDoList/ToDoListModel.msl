@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TODoListGISModelStoreContainer" CdmEntityContainer="TODoListGISEntities">
+    <EntitySetMapping Name="ActionTBLs">
+      <EntityTypeMapping TypeName="TODoListGISModel.ActionTBL">
+        <MappingFragment StoreEntitySet="ActionTBL">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EmployeeActionID" ColumnName="EmployeeActionID" />
+          <ScalarProperty Name="ActionTaken" ColumnName="ActionTaken" />
+          <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Attachments" ColumnName="Attachments" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActionTypes">
+      <EntityTypeMapping TypeName="TODoListGISModel.ActionType">
+        <MappingFragment StoreEntitySet="ActionType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ArName" ColumnName="ArName" />
+          <ScalarProperty Name="EnName" ColumnName="EnName" />
+          <ScalarProperty Name="PercentageAdd" ColumnName="PercentageAdd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeTasks">
+      <EntityTypeMapping TypeName="TODoListGISModel.EmployeeTask">
+        <MappingFragment StoreEntitySet="EmployeeTask">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="RoleInTask" ColumnName="RoleInTask" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProiertyTypes">
+      <EntityTypeMapping TypeName="TODoListGISModel.ProiertyType">
+        <MappingFragment StoreEntitySet="ProiertyType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ArName" ColumnName="ArName" />
+          <ScalarProperty Name="EnName" ColumnName="EnName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleInTasks">
+      <EntityTypeMapping TypeName="TODoListGISModel.RoleInTask">
+        <MappingFragment StoreEntitySet="RoleInTask">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ArName" ColumnName="ArName" />
+          <ScalarProperty Name="EnName" ColumnName="EnName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaskOperations">
+      <EntityTypeMapping TypeName="TODoListGISModel.TaskOperation">
+        <MappingFragment StoreEntitySet="TaskOperations">
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="CreatorEmp" ColumnName="CreatorEmp" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="DeliverableID" ColumnName="DeliverableID" />
+          <ScalarProperty Name="TaskStatus" ColumnName="TaskStatus" />
+          <ScalarProperty Name="TaskType" ColumnName="TaskType" />
+          <ScalarProperty Name="TaskProierty" ColumnName="TaskProierty" />
+          <ScalarProperty Name="Attachments" ColumnName="Attachments" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaskTypes">
+      <EntityTypeMapping TypeName="TODoListGISModel.TaskType">
+        <MappingFragment StoreEntitySet="TaskType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ArName" ColumnName="ArName" />
+          <ScalarProperty Name="EnName" ColumnName="EnName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetActionTBLByParam" FunctionName="TODoListGISModel.Store.GetActionTBLByParam" />
+    <FunctionImportMapping FunctionImportName="GetActionTypeByParam" FunctionName="TODoListGISModel.Store.GetActionTypeByParam" />
+    <FunctionImportMapping FunctionImportName="GetAllActionTBL" FunctionName="TODoListGISModel.Store.GetAllActionTBL" />
+    <FunctionImportMapping FunctionImportName="GetAllActionType" FunctionName="TODoListGISModel.Store.GetAllActionType" />
+    <FunctionImportMapping FunctionImportName="GetAllEmployeeTask" FunctionName="TODoListGISModel.Store.GetAllEmployeeTask" />
+    <FunctionImportMapping FunctionImportName="GetAllProiertyType" FunctionName="TODoListGISModel.Store.GetAllProiertyType" />
+    <FunctionImportMapping FunctionImportName="GetAllRoleInTask" FunctionName="TODoListGISModel.Store.GetAllRoleInTask" />
+    <FunctionImportMapping FunctionImportName="GetAllTaskOperations" FunctionName="TODoListGISModel.Store.GetAllTaskOperations" />
+    <FunctionImportMapping FunctionImportName="GetAllTaskType" FunctionName="TODoListGISModel.Store.GetAllTaskType" />
+    <FunctionImportMapping FunctionImportName="GetEmployeeTaskByParam" FunctionName="TODoListGISModel.Store.GetEmployeeTaskByParam" />
+    <FunctionImportMapping FunctionImportName="GetLikeTaskOperations" FunctionName="TODoListGISModel.Store.GetLikeTaskOperations" />
+    <FunctionImportMapping FunctionImportName="GetProiertyTypeByParam" FunctionName="TODoListGISModel.Store.GetProiertyTypeByParam" />
+    <FunctionImportMapping FunctionImportName="GetRoleInTaskByParam" FunctionName="TODoListGISModel.Store.GetRoleInTaskByParam" />
+    <FunctionImportMapping FunctionImportName="GetTaskOperationsByParam" FunctionName="TODoListGISModel.Store.GetTaskOperationsByParam" />
+    <FunctionImportMapping FunctionImportName="GetTaskTypeByParam" FunctionName="TODoListGISModel.Store.GetTaskTypeByParam" />
+  </EntityContainerMapping>
+</Mapping>

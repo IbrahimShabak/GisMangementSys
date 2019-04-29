@@ -22,5 +22,20 @@ namespace WebApiService
                 defaults: new { id = RouteParameter.Optional }
             );
         }
+        public static int GetuserID(System.Security.Principal.IIdentity UserIdentity)
+        {
+            int UserID = -1;
+            try
+            {
+                var identity = (System.Security.Claims.ClaimsIdentity)UserIdentity;
+                string StrUserID = identity.Claims.First(c => c.Type == "UserID").Value;
+                UserID = int.Parse(StrUserID);
+            }
+            catch
+            {
+                UserID = -1;
+            }
+            return UserID;
+        }
     }
 }

@@ -14,7 +14,8 @@ using DAL.Operations.DTO.Project;
 
 namespace WebApiService.Controllers
 {
-    [AllowAnonymous]
+    [MyAuthorize(Roles = "admin")]
+    //[AllowAnonymous]
     public class ProjectTBLsController : ApiController
     {
         private ProjectsEntities db = new ProjectsEntities();
@@ -85,7 +86,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // PUT: api/ProjectTBLs/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(void))]
         [Route("api/ProjectTBLs/Update/{ID:int}")]
         [HttpPut]
@@ -124,7 +125,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // POST: api/ProjectTBLs
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(ProjectDTO))]
         [Route("api/ProjectTBLs/Add")]
         [HttpPost]

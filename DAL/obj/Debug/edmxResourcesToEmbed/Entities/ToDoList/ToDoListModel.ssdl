@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TODoListGISModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ActionTBL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeActionID" Type="int" />
+    <Property Name="ActionTaken" Type="int" />
+    <Property Name="ActionDate" Type="datetime" />
+    <Property Name="Notes" Type="nvarchar(max)" />
+    <Property Name="Attachments" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ActionType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArName" Type="nvarchar" MaxLength="50" />
+    <Property Name="EnName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PercentageAdd" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="EmployeeTask">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TaskID" Type="int" />
+    <Property Name="EmpID" Type="int" />
+    <Property Name="RoleInTask" Type="int" />
+  </EntityType>
+  <EntityType Name="ProiertyType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArName" Type="nvarchar" MaxLength="50" />
+    <Property Name="EnName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RoleInTask">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArName" Type="nvarchar" MaxLength="50" />
+    <Property Name="EnName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TaskOperations">
+    <Key>
+      <PropertyRef Name="TaskID" />
+    </Key>
+    <Property Name="TaskID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TaskName" Type="nvarchar(max)" />
+    <Property Name="CreatorEmp" Type="int" />
+    <Property Name="CreationDate" Type="datetime" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="DeliverableID" Type="int" />
+    <Property Name="TaskStatus" Type="bit" />
+    <Property Name="TaskType" Type="int" />
+    <Property Name="TaskProierty" Type="int" />
+    <Property Name="Attachments" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="TaskType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArName" Type="nvarchar" MaxLength="50" />
+    <Property Name="EnName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_ActionTBL_ActionType">
+    <End Role="ActionType" Type="Self.ActionType" Multiplicity="0..1" />
+    <End Role="ActionTBL" Type="Self.ActionTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ActionType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ActionTBL">
+        <PropertyRef Name="ActionTaken" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActionTBL_EmployeeTask">
+    <End Role="EmployeeTask" Type="Self.EmployeeTask" Multiplicity="0..1" />
+    <End Role="ActionTBL" Type="Self.ActionTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeTask">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ActionTBL">
+        <PropertyRef Name="EmployeeActionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeTask_RoleInTask">
+    <End Role="RoleInTask" Type="Self.RoleInTask" Multiplicity="0..1" />
+    <End Role="EmployeeTask" Type="Self.EmployeeTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoleInTask">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EmployeeTask">
+        <PropertyRef Name="RoleInTask" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeTask_TaskOperations">
+    <End Role="TaskOperations" Type="Self.TaskOperations" Multiplicity="0..1" />
+    <End Role="EmployeeTask" Type="Self.EmployeeTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaskOperations">
+        <PropertyRef Name="TaskID" />
+      </Principal>
+      <Dependent Role="EmployeeTask">
+        <PropertyRef Name="TaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskOperations_ProiertyType">
+    <End Role="ProiertyType" Type="Self.ProiertyType" Multiplicity="0..1" />
+    <End Role="TaskOperations" Type="Self.TaskOperations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProiertyType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TaskOperations">
+        <PropertyRef Name="TaskProierty" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskOperations_TaskOperations">
+    <End Role="TaskOperations" Type="Self.TaskOperations" Multiplicity="0..1" />
+    <End Role="TaskOperations1" Type="Self.TaskOperations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaskOperations">
+        <PropertyRef Name="TaskID" />
+      </Principal>
+      <Dependent Role="TaskOperations1">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskOperations_TaskType">
+    <End Role="TaskType" Type="Self.TaskType" Multiplicity="0..1" />
+    <End Role="TaskOperations" Type="Self.TaskOperations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaskType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TaskOperations">
+        <PropertyRef Name="TaskType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="GetActionTBLByParam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EmployeeActionID" Type="int" Mode="In" />
+    <Parameter Name="ActionTaken" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetActionTypeByParam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ArName" Type="nvarchar" Mode="In" />
+    <Parameter Name="EnName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetAllActionTBL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetAllActionType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetAllEmployeeTask" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetAllProiertyType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetAllRoleInTask" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetAllTaskOperations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetAllTaskType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetEmployeeTaskByParam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TaskID" Type="int" Mode="In" />
+    <Parameter Name="EmpID" Type="int" Mode="In" />
+    <Parameter Name="RoleInTask" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetLikeTaskOperations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TaskName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetProiertyTypeByParam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ArName" Type="nvarchar" Mode="In" />
+    <Parameter Name="EnName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetRoleInTaskByParam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ArName" Type="nvarchar" Mode="In" />
+    <Parameter Name="EnName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetTaskOperationsByParam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TaskID" Type="int" Mode="In" />
+    <Parameter Name="TaskName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="CreatorEmp" Type="int" Mode="In" />
+    <Parameter Name="ParentID" Type="int" Mode="In" />
+    <Parameter Name="DeliverableID" Type="int" Mode="In" />
+    <Parameter Name="TaskStatus" Type="bit" Mode="In" />
+    <Parameter Name="TaskType" Type="int" Mode="In" />
+    <Parameter Name="TaskProierty" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetTaskTypeByParam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ArName" Type="nvarchar" Mode="In" />
+    <Parameter Name="EnName" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="TODoListGISModelStoreContainer">
+    <EntitySet Name="ActionTBL" EntityType="Self.ActionTBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ActionType" EntityType="Self.ActionType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeTask" EntityType="Self.EmployeeTask" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProiertyType" EntityType="Self.ProiertyType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoleInTask" EntityType="Self.RoleInTask" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaskOperations" EntityType="Self.TaskOperations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaskType" EntityType="Self.TaskType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ActionTBL_ActionType" Association="Self.FK_ActionTBL_ActionType">
+      <End Role="ActionType" EntitySet="ActionType" />
+      <End Role="ActionTBL" EntitySet="ActionTBL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActionTBL_EmployeeTask" Association="Self.FK_ActionTBL_EmployeeTask">
+      <End Role="EmployeeTask" EntitySet="EmployeeTask" />
+      <End Role="ActionTBL" EntitySet="ActionTBL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeTask_RoleInTask" Association="Self.FK_EmployeeTask_RoleInTask">
+      <End Role="RoleInTask" EntitySet="RoleInTask" />
+      <End Role="EmployeeTask" EntitySet="EmployeeTask" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeTask_TaskOperations" Association="Self.FK_EmployeeTask_TaskOperations">
+      <End Role="TaskOperations" EntitySet="TaskOperations" />
+      <End Role="EmployeeTask" EntitySet="EmployeeTask" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskOperations_ProiertyType" Association="Self.FK_TaskOperations_ProiertyType">
+      <End Role="ProiertyType" EntitySet="ProiertyType" />
+      <End Role="TaskOperations" EntitySet="TaskOperations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskOperations_TaskOperations" Association="Self.FK_TaskOperations_TaskOperations">
+      <End Role="TaskOperations" EntitySet="TaskOperations" />
+      <End Role="TaskOperations1" EntitySet="TaskOperations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskOperations_TaskType" Association="Self.FK_TaskOperations_TaskType">
+      <End Role="TaskType" EntitySet="TaskType" />
+      <End Role="TaskOperations" EntitySet="TaskOperations" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

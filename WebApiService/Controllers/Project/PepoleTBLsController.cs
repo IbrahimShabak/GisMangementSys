@@ -14,8 +14,10 @@ using DAL.Operations.DTO.Project;
 
 namespace WebApiService.Controllers
 {
+    [MyAuthorize(Roles = "admin")]
     public class PepoleTBLsController : ApiController
     {
+
         private ProjectsEntities db = new ProjectsEntities();
         //--------------------------------------------------------------------------------------------
         //[MyAuthorize(Roles = "Admin")]

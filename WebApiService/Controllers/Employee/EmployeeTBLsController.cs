@@ -14,6 +14,7 @@ using DAL.Operations.DTO.Employee;
 
 namespace WebApiService.Controllers.Employee
 {
+    [MyAuthorize(Roles = "admin")]
     public class EmployeeTBLsController : ApiController
     {
         private EmployeeDBGIS2019Entities db = new EmployeeDBGIS2019Entities();
@@ -40,7 +41,12 @@ namespace WebApiService.Controllers.Employee
                                                                 model.BithDate,
                                                                 model.NationalityID,
                                                                 model.DivisionID,
-                                                                model.JobTitleID
+                                                                model.JobTitleID,
+                                                                model.PhoneNumber,
+                                                                model.IsActiveStatus,
+                                                                model.EmailAddress,
+                                                                model.OffDate,
+                                                                model.OffTypeID
                                                                 );
             var result = employeeTBLs.AsQueryable().Select(EmployeeTBLDTO.Mapper.SelectorExpression);
             return result;

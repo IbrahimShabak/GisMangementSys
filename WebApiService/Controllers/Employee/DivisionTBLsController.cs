@@ -14,6 +14,7 @@ using DAL.Operations.DTO.Employee;
 
 namespace WebApiService.Controllers.Employee
 {
+    [MyAuthorize(Roles = "admin")]
     public class DivisionTBLsController : ApiController
     {
         private EmployeeDBGIS2019Entities db = new EmployeeDBGIS2019Entities();

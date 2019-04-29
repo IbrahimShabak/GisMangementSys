@@ -267,6 +267,87 @@
     <Compile Include="Entities\Projects\StageProject.cs">
       <DependentUpon>ProjectModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\ToDoList\ActionTBL.cs">
+      <DependentUpon>ToDoListModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ToDoList\ActionType.cs">
+      <DependentUpon>ToDoListModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ToDoList\EmployeeTask.cs">
+      <DependentUpon>ToDoListModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ToDoList\GetActionTBLByParam_Result.cs">
+      <DependentUpon>ToDoListModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ToDoList\GetActionTypeByParam_Result.cs">
+      <DependentUpon>ToDoListModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ToDoList\GetAllActionTBL_Result.cs">
+      <DependentUpon>ToDoListModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ToDoList\GetAllActionType_Result.cs">
+      <DependentUpon>ToDoListModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ToDoList\GetAllEmployeeTask_Result.cs">
+      <DependentUpon>ToDoListModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ToDoList\GetAllProiertyType_Result.cs">
+      <DependentUpon>ToDoListModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ToDoList\GetAllRoleInTask_Result.cs">
+      <DependentUpon>ToDoListModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ToDoList\GetAllTaskOperations_Result.cs">
+      <DependentUpon>ToDoListModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ToDoList\GetAllTaskType_Result.cs">
+      <DependentUpon>ToDoListModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ToDoList\GetEmployeeTaskByParam_Result.cs">
+      <DependentUpon>ToDoListModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ToDoList\GetLikeTaskOperations_Result.cs">
+      <DependentUpon>ToDoListModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ToDoList\GetProiertyTypeByParam_Result.cs">
+      <DependentUpon>ToDoListModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ToDoList\GetRoleInTaskByParam_Result.cs">
+      <DependentUpon>ToDoListModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ToDoList\GetTaskOperationsByParam_Result.cs">
+      <DependentUpon>ToDoListModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ToDoList\GetTaskTypeByParam_Result.cs">
+      <DependentUpon>ToDoListModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ToDoList\ProiertyType.cs">
+      <DependentUpon>ToDoListModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ToDoList\RoleInTask.cs">
+      <DependentUpon>ToDoListModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ToDoList\TaskOperation.cs">
+      <DependentUpon>ToDoListModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ToDoList\TaskType.cs">
+      <DependentUpon>ToDoListModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ToDoList\ToDoListModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToDoListModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ToDoList\ToDoListModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToDoListModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ToDoList\ToDoListModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToDoListModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Operations\DTO\Employee\DivisionTBLDTO.cs" />
     <Compile Include="Operations\DTO\Employee\EmployeeOffTypeDTO.cs" />
     <Compile Include="Operations\DTO\Employee\EmployeeTBLDTO.cs" />
@@ -282,6 +363,13 @@
     <Compile Include="Operations\DTO\Project\ProjectDTO.cs" />
     <Compile Include="Operations\DTO\Project\ProjectEmployeeDTO.cs" />
     <Compile Include="Operations\DTO\Project\StageProjectDTO.cs" />
+    <Compile Include="Operations\DTO\ToDoList\ActionTBLDTO.cs" />
+    <Compile Include="Operations\DTO\ToDoList\ActionTypeDTO.cs" />
+    <Compile Include="Operations\DTO\ToDoList\EmployeeTaskDTO.cs" />
+    <Compile Include="Operations\DTO\ToDoList\ProiertyTypeDTO.cs" />
+    <Compile Include="Operations\DTO\ToDoList\RoleInTaskDTO.cs" />
+    <Compile Include="Operations\DTO\ToDoList\TaskOperationDTO.cs" />
+    <Compile Include="Operations\DTO\ToDoList\TaskTypeDTO.cs" />
     <Compile Include="Operations\Infrastructure\MapperBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -303,6 +391,13 @@
     </None>
     <None Include="Entities\Projects\ProjectModel.edmx.diagram">
       <DependentUpon>ProjectModel.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="Entities\ToDoList\ToDoListModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ToDoListModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entities\ToDoList\ToDoListModel.edmx.diagram">
+      <DependentUpon>ToDoListModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -329,6 +424,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ProjectModel.edmx</DependentUpon>
       <LastGenOutput>ProjectModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entities\ToDoList\ToDoListModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ToDoListModel.edmx</DependentUpon>
+      <LastGenOutput>ToDoListModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entities\ToDoList\ToDoListModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ToDoListModel.edmx</DependentUpon>
+      <LastGenOutput>ToDoListModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

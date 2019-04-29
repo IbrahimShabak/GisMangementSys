@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TODoListGISModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ActionTBL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeActionID" Type="Int32" />
+    <Property Name="ActionTaken" Type="Int32" />
+    <Property Name="ActionDate" Type="DateTime" Precision="3" />
+    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Attachments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ActionType" Relationship="Self.FK_ActionTBL_ActionType" FromRole="ActionTBL" ToRole="ActionType" />
+    <NavigationProperty Name="EmployeeTask" Relationship="Self.FK_ActionTBL_EmployeeTask" FromRole="ActionTBL" ToRole="EmployeeTask" />
+  </EntityType>
+  <EntityType Name="ActionType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ArName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EnName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PercentageAdd" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="ActionTBLs" Relationship="Self.FK_ActionTBL_ActionType" FromRole="ActionType" ToRole="ActionTBL" />
+  </EntityType>
+  <EntityType Name="EmployeeTask">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskID" Type="Int32" />
+    <Property Name="EmpID" Type="Int32" />
+    <Property Name="RoleInTask" Type="Int32" />
+    <NavigationProperty Name="ActionTBLs" Relationship="Self.FK_ActionTBL_EmployeeTask" FromRole="EmployeeTask" ToRole="ActionTBL" />
+    <NavigationProperty Name="RoleInTask1" Relationship="Self.FK_EmployeeTask_RoleInTask" FromRole="EmployeeTask" ToRole="RoleInTask" />
+    <NavigationProperty Name="TaskOperation" Relationship="Self.FK_EmployeeTask_TaskOperations" FromRole="EmployeeTask" ToRole="TaskOperations" />
+  </EntityType>
+  <EntityType Name="ProiertyType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ArName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EnName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TaskOperations" Relationship="Self.FK_TaskOperations_ProiertyType" FromRole="ProiertyType" ToRole="TaskOperations" />
+  </EntityType>
+  <EntityType Name="RoleInTask">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ArName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EnName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="EmployeeTasks" Relationship="Self.FK_EmployeeTask_RoleInTask" FromRole="RoleInTask" ToRole="EmployeeTask" />
+  </EntityType>
+  <EntityType Name="TaskOperation">
+    <Key>
+      <PropertyRef Name="TaskID" />
+    </Key>
+    <Property Name="TaskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatorEmp" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="ParentID" Type="Int32" />
+    <Property Name="DeliverableID" Type="Int32" />
+    <Property Name="TaskStatus" Type="Boolean" />
+    <Property Name="TaskType" Type="Int32" />
+    <Property Name="TaskProierty" Type="Int32" />
+    <Property Name="Attachments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="EmployeeTasks" Relationship="Self.FK_EmployeeTask_TaskOperations" FromRole="TaskOperations" ToRole="EmployeeTask" />
+    <NavigationProperty Name="ProiertyType" Relationship="Self.FK_TaskOperations_ProiertyType" FromRole="TaskOperations" ToRole="ProiertyType" />
+    <NavigationProperty Name="TaskOperations1" Relationship="Self.FK_TaskOperations_TaskOperations" FromRole="TaskOperations" ToRole="TaskOperations1" />
+    <NavigationProperty Name="TaskOperation1" Relationship="Self.FK_TaskOperations_TaskOperations" FromRole="TaskOperations1" ToRole="TaskOperations" />
+    <NavigationProperty Name="TaskType1" Relationship="Self.FK_TaskOperations_TaskType" FromRole="TaskOperations" ToRole="TaskType" />
+  </EntityType>
+  <EntityType Name="TaskType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ArName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EnName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TaskOperations" Relationship="Self.FK_TaskOperations_TaskType" FromRole="TaskType" ToRole="TaskOperations" />
+  </EntityType>
+  <Association Name="FK_ActionTBL_ActionType">
+    <End Role="ActionType" Type="Self.ActionType" Multiplicity="0..1" />
+    <End Role="ActionTBL" Type="Self.ActionTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ActionType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ActionTBL">
+        <PropertyRef Name="ActionTaken" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActionTBL_EmployeeTask">
+    <End Role="EmployeeTask" Type="Self.EmployeeTask" Multiplicity="0..1" />
+    <End Role="ActionTBL" Type="Self.ActionTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeTask">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ActionTBL">
+        <PropertyRef Name="EmployeeActionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeTask_RoleInTask">
+    <End Role="RoleInTask" Type="Self.RoleInTask" Multiplicity="0..1" />
+    <End Role="EmployeeTask" Type="Self.EmployeeTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoleInTask">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EmployeeTask">
+        <PropertyRef Name="RoleInTask" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeTask_TaskOperations">
+    <End Role="TaskOperations" Type="Self.TaskOperation" Multiplicity="0..1" />
+    <End Role="EmployeeTask" Type="Self.EmployeeTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaskOperations">
+        <PropertyRef Name="TaskID" />
+      </Principal>
+      <Dependent Role="EmployeeTask">
+        <PropertyRef Name="TaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskOperations_ProiertyType">
+    <End Role="ProiertyType" Type="Self.ProiertyType" Multiplicity="0..1" />
+    <End Role="TaskOperations" Type="Self.TaskOperation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProiertyType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TaskOperations">
+        <PropertyRef Name="TaskProierty" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskOperations_TaskOperations">
+    <End Role="TaskOperations" Type="Self.TaskOperation" Multiplicity="0..1" />
+    <End Role="TaskOperations1" Type="Self.TaskOperation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaskOperations">
+        <PropertyRef Name="TaskID" />
+      </Principal>
+      <Dependent Role="TaskOperations1">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaskOperations_TaskType">
+    <End Role="TaskType" Type="Self.TaskType" Multiplicity="0..1" />
+    <End Role="TaskOperations" Type="Self.TaskOperation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaskType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TaskOperations">
+        <PropertyRef Name="TaskType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TODoListGISEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ActionTBLs" EntityType="Self.ActionTBL" />
+    <EntitySet Name="ActionTypes" EntityType="Self.ActionType" />
+    <EntitySet Name="EmployeeTasks" EntityType="Self.EmployeeTask" />
+    <EntitySet Name="ProiertyTypes" EntityType="Self.ProiertyType" />
+    <EntitySet Name="RoleInTasks" EntityType="Self.RoleInTask" />
+    <EntitySet Name="TaskOperations" EntityType="Self.TaskOperation" />
+    <EntitySet Name="TaskTypes" EntityType="Self.TaskType" />
+    <AssociationSet Name="FK_ActionTBL_ActionType" Association="Self.FK_ActionTBL_ActionType">
+      <End Role="ActionType" EntitySet="ActionTypes" />
+      <End Role="ActionTBL" EntitySet="ActionTBLs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActionTBL_EmployeeTask" Association="Self.FK_ActionTBL_EmployeeTask">
+      <End Role="EmployeeTask" EntitySet="EmployeeTasks" />
+      <End Role="ActionTBL" EntitySet="ActionTBLs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeTask_RoleInTask" Association="Self.FK_EmployeeTask_RoleInTask">
+      <End Role="RoleInTask" EntitySet="RoleInTasks" />
+      <End Role="EmployeeTask" EntitySet="EmployeeTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeTask_TaskOperations" Association="Self.FK_EmployeeTask_TaskOperations">
+      <End Role="TaskOperations" EntitySet="TaskOperations" />
+      <End Role="EmployeeTask" EntitySet="EmployeeTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskOperations_ProiertyType" Association="Self.FK_TaskOperations_ProiertyType">
+      <End Role="ProiertyType" EntitySet="ProiertyTypes" />
+      <End Role="TaskOperations" EntitySet="TaskOperations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskOperations_TaskOperations" Association="Self.FK_TaskOperations_TaskOperations">
+      <End Role="TaskOperations" EntitySet="TaskOperations" />
+      <End Role="TaskOperations1" EntitySet="TaskOperations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaskOperations_TaskType" Association="Self.FK_TaskOperations_TaskType">
+      <End Role="TaskType" EntitySet="TaskTypes" />
+      <End Role="TaskOperations" EntitySet="TaskOperations" />
+    </AssociationSet>
+    <FunctionImport Name="GetActionTBLByParam" EntitySet="ActionTBLs" ReturnType="Collection(TODoListGISModel.ActionTBL)">
+      <Parameter Name="EmployeeActionID" Mode="In" Type="Int32" />
+      <Parameter Name="ActionTaken" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetActionTypeByParam" EntitySet="ActionTypes" ReturnType="Collection(TODoListGISModel.ActionType)">
+      <Parameter Name="ArName" Mode="In" Type="String" />
+      <Parameter Name="EnName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllActionTBL" EntitySet="ActionTBLs" ReturnType="Collection(TODoListGISModel.ActionTBL)" />
+    <FunctionImport Name="GetAllActionType" EntitySet="ActionTypes" ReturnType="Collection(TODoListGISModel.ActionType)" />
+    <FunctionImport Name="GetAllEmployeeTask" EntitySet="EmployeeTasks" ReturnType="Collection(TODoListGISModel.EmployeeTask)" />
+    <FunctionImport Name="GetAllProiertyType" EntitySet="ProiertyTypes" ReturnType="Collection(TODoListGISModel.ProiertyType)" />
+    <FunctionImport Name="GetAllRoleInTask" EntitySet="RoleInTasks" ReturnType="Collection(TODoListGISModel.RoleInTask)" />
+    <FunctionImport Name="GetAllTaskOperations" EntitySet="TaskOperations" ReturnType="Collection(TODoListGISModel.TaskOperation)" />
+    <FunctionImport Name="GetAllTaskType" EntitySet="TaskTypes" ReturnType="Collection(TODoListGISModel.TaskType)" />
+    <FunctionImport Name="GetEmployeeTaskByParam" EntitySet="EmployeeTasks" ReturnType="Collection(TODoListGISModel.EmployeeTask)">
+      <Parameter Name="TaskID" Mode="In" Type="Int32" />
+      <Parameter Name="EmpID" Mode="In" Type="Int32" />
+      <Parameter Name="RoleInTask" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetLikeTaskOperations" EntitySet="TaskOperations" ReturnType="Collection(TODoListGISModel.TaskOperation)">
+      <Parameter Name="TaskName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetProiertyTypeByParam" EntitySet="ProiertyTypes" ReturnType="Collection(TODoListGISModel.ProiertyType)">
+      <Parameter Name="ArName" Mode="In" Type="String" />
+      <Parameter Name="EnName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetRoleInTaskByParam" EntitySet="RoleInTasks" ReturnType="Collection(TODoListGISModel.RoleInTask)">
+      <Parameter Name="ArName" Mode="In" Type="String" />
+      <Parameter Name="EnName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetTaskOperationsByParam" EntitySet="TaskOperations" ReturnType="Collection(TODoListGISModel.TaskOperation)">
+      <Parameter Name="TaskID" Mode="In" Type="Int32" />
+      <Parameter Name="TaskName" Mode="In" Type="String" />
+      <Parameter Name="CreatorEmp" Mode="In" Type="Int32" />
+      <Parameter Name="ParentID" Mode="In" Type="Int32" />
+      <Parameter Name="DeliverableID" Mode="In" Type="Int32" />
+      <Parameter Name="TaskStatus" Mode="In" Type="Boolean" />
+      <Parameter Name="TaskType" Mode="In" Type="Int32" />
+      <Parameter Name="TaskProierty" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetTaskTypeByParam" EntitySet="TaskTypes" ReturnType="Collection(TODoListGISModel.TaskType)">
+      <Parameter Name="ArName" Mode="In" Type="String" />
+      <Parameter Name="EnName" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="GetActionTBLByParam_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="EmployeeActionID" Nullable="true" />
+    <Property Type="Int32" Name="ActionTaken" Nullable="true" />
+    <Property Type="DateTime" Name="ActionDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Notes" Nullable="true" />
+    <Property Type="String" Name="Attachments" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetActionTypeByParam_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="ArName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EnName" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="PercentageAdd" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="GetAllActionTBL_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="EmployeeActionID" Nullable="true" />
+    <Property Type="Int32" Name="ActionTaken" Nullable="true" />
+    <Property Type="DateTime" Name="ActionDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Notes" Nullable="true" />
+    <Property Type="String" Name="Attachments" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetAllActionType_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="ArName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EnName" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="PercentageAdd" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="GetAllEmployeeTask_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="TaskID" Nullable="true" />
+    <Property Type="Int32" Name="EmpID" Nullable="true" />
+    <Property Type="Int32" Name="RoleInTask" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetAllProiertyType_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="ArName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EnName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetAllRoleInTask_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="ArName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EnName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetAllTaskOperations_Result">
+    <Property Type="Int32" Name="TaskID" Nullable="false" />
+    <Property Type="String" Name="TaskName" Nullable="true" />
+    <Property Type="Int32" Name="CreatorEmp" Nullable="true" />
+    <Property Type="DateTime" Name="CreationDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ParentID" Nullable="true" />
+    <Property Type="Int32" Name="DeliverableID" Nullable="true" />
+    <Property Type="Boolean" Name="TaskStatus" Nullable="true" />
+    <Property Type="Int32" Name="TaskType" Nullable="true" />
+    <Property Type="Int32" Name="TaskProierty" Nullable="true" />
+    <Property Type="String" Name="Attachments" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetAllTaskType_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="ArName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EnName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetEmployeeTaskByParam_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="TaskID" Nullable="true" />
+    <Property Type="Int32" Name="EmpID" Nullable="true" />
+    <Property Type="Int32" Name="RoleInTask" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetLikeTaskOperations_Result">
+    <Property Type="Int32" Name="TaskID" Nullable="false" />
+    <Property Type="String" Name="TaskName" Nullable="true" />
+    <Property Type="Int32" Name="CreatorEmp" Nullable="true" />
+    <Property Type="DateTime" Name="CreationDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ParentID" Nullable="true" />
+    <Property Type="Int32" Name="DeliverableID" Nullable="true" />
+    <Property Type="Boolean" Name="TaskStatus" Nullable="true" />
+    <Property Type="Int32" Name="TaskType" Nullable="true" />
+    <Property Type="Int32" Name="TaskProierty" Nullable="true" />
+    <Property Type="String" Name="Attachments" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetProiertyTypeByParam_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="ArName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EnName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetRoleInTaskByParam_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="ArName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EnName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetTaskOperationsByParam_Result">
+    <Property Type="Int32" Name="TaskID" Nullable="false" />
+    <Property Type="String" Name="TaskName" Nullable="true" />
+    <Property Type="Int32" Name="CreatorEmp" Nullable="true" />
+    <Property Type="DateTime" Name="CreationDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="ParentID" Nullable="true" />
+    <Property Type="Int32" Name="DeliverableID" Nullable="true" />
+    <Property Type="Boolean" Name="TaskStatus" Nullable="true" />
+    <Property Type="Int32" Name="TaskType" Nullable="true" />
+    <Property Type="Int32" Name="TaskProierty" Nullable="true" />
+    <Property Type="String" Name="Attachments" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetTaskTypeByParam_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="ArName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EnName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

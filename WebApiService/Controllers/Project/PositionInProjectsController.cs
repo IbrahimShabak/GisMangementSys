@@ -14,6 +14,7 @@ using DAL.Operations.DTO.Project;
 
 namespace WebApiService.Controllers
 {
+    [MyAuthorize(Roles = "admin")]
     public class PositionInProjectsController : ApiController
     {
         private ProjectsEntities db = new ProjectsEntities();
