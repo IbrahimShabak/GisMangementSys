@@ -12,7 +12,7 @@ using System.Web.Http.Description;
 using DAL.Entities.Projects;
 using DAL.Operations.DTO.Project;
 
-
+//test comand
 namespace WebApiService.Controllers
 {
     [MyAuthorize(Roles = "admin")]
