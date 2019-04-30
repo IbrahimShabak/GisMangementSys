@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "\\DAL",
+    "\\DAL\\Operations",
+    "\\DAL\\Operations\\DTO",
+    "\\DAL\\Operations\\DTO\\ToDoList",
+    "\\WebApiService",
+    "\\WebApiService\\Controllers",
+    "\\WebApiService\\Controllers\\ToDoList"
+  ],
+  "PreviewInSolutionExplorer": false
+}
