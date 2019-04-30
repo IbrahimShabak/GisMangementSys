@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using DAL.Entities.ToDoList;
+using DAL.Operations.DTO.ToDoList;
 
 namespace WebApiService.Controllers.ToDoList
 {
@@ -35,20 +36,27 @@ namespace WebApiService.Controllers.ToDoList
         {
             var employeeTask = db.GetEmployeeTaskByParam(model.TaskID,
                                                                 model.EmpID,
-                                                                model.RolInTask
+                                                                model.RoleInTask
                                                                 );
             var result = employeeTask.AsQueryable().Select(EmployeeTaskDTO.Mapper.SelectorExpression);
             return result;
         }
+        //--------------------------------------------------------------------------------------------
         // GET: api/EmployeeTasks
+        //[MyAuthorize(Roles = "Admin")]
+        [Route("api/EmployeeTasks/GetAll")]
+        [HttpGet]
         public IQueryable<EmployeeTask> GetEmployeeTasks()
         {
             return db.EmployeeTasks;
         }
-
+        //--------------------------------------------------------------------------------------------
         // GET: api/EmployeeTasks/5
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(EmployeeTask))]
-        public async Task<IHttpActionResult> GetEmployeeTask(int id)
+        [Route("api/EmployeeTasks/GetByID/{ID:int}")]
+        [HttpGet]
+        public async Task<IHttpActionResult> GetByID(int id)
         {
             EmployeeTask employeeTask = await db.EmployeeTasks.FindAsync(id);
             if (employeeTask == null)
@@ -58,10 +66,13 @@ namespace WebApiService.Controllers.ToDoList
 
             return Ok(employeeTask);
         }
-
+        //--------------------------------------------------------------------------------------------
         // PUT: api/EmployeeTasks/5
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutEmployeeTask(int id, EmployeeTask employeeTask)
+        [Route("api/EmployeeTasks/Update/{ID:int}")]
+        [HttpPut]
+        public async Task<IHttpActionResult> Update(int id, EmployeeTaskDTO employeeTask)
         {
             if (!ModelState.IsValid)
             {
@@ -73,7 +84,9 @@ namespace WebApiService.Controllers.ToDoList
                 return BadRequest();
             }
 
-            db.Entry(employeeTask).State = EntityState.Modified;
+            EmployeeTask TBL = new EmployeeTask();
+            TBL = employeeTask.GetOriginal(TBL);
+            db.Entry(TBL).State = EntityState.Modified;
 
             try
             {
@@ -90,28 +103,36 @@ namespace WebApiService.Controllers.ToDoList
                     throw;
                 }
             }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(EmployeeTaskDTO.GetDTO(TBL));
+           // return StatusCode(HttpStatusCode.NoContent);
         }
-
+        //--------------------------------------------------------------------------------------------
         // POST: api/EmployeeTasks
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(EmployeeTask))]
-        public async Task<IHttpActionResult> PostEmployeeTask(EmployeeTask employeeTask)
+        [Route("api/EmployeeTasks/Add")]
+        [HttpPost]
+        public async Task<IHttpActionResult> Add(EmployeeTaskDTO employeeTask)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.EmployeeTasks.Add(employeeTask);
+            EmployeeTask TBL = new EmployeeTask();
+            TBL = employeeTask.GetOriginal(TBL);
+            db.EmployeeTasks.Add(TBL);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = employeeTask.ID }, employeeTask);
+            return Ok(EmployeeTaskDTO.GetDTO(TBL));
         }
-
+        //--------------------------------------------------------------------------------------------
         // DELETE: api/EmployeeTasks/5
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(EmployeeTask))]
-        public async Task<IHttpActionResult> DeleteEmployeeTask(int id)
+        [Route("api/EmployeeTasks/Delete/{ID:int}")]
+        [HttpDelete]
+        public async Task<IHttpActionResult> Delete(int id)
         {
             EmployeeTask employeeTask = await db.EmployeeTasks.FindAsync(id);
             if (employeeTask == null)
