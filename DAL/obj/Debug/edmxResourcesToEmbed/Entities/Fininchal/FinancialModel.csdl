@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FinancialDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="InvoicesTBL">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InvoicelID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ArName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="EnName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceIssueDate" Type="DateTime" Precision="3" />
+    <Property Name="InvoiceType" Type="Int32" />
+    <Property Name="DeliveryStatus" Type="Boolean" />
+    <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
+    <Property Name="InvoiceAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PaidStatus" Type="Boolean" />
+    <Property Name="PaidAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CopyLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectID" Type="Int32" />
+    <Property Name="EmpID" Type="Int32" />
+    <NavigationProperty Name="InvoiceType1" Relationship="Self.FK_InvoicesTBL_InvoiceType" FromRole="InvoicesTBL" ToRole="InvoiceType" />
+  </EntityType>
+  <EntityType Name="InvoiceType">
+    <Key>
+      <PropertyRef Name="TypeID" />
+    </Key>
+    <Property Name="TypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ArName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EnName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="InvoicesTBLs" Relationship="Self.FK_InvoicesTBL_InvoiceType" FromRole="InvoiceType" ToRole="InvoicesTBL" />
+  </EntityType>
+  <Association Name="FK_InvoicesTBL_InvoiceType">
+    <End Role="InvoiceType" Type="Self.InvoiceType" Multiplicity="0..1" />
+    <End Role="InvoicesTBL" Type="Self.InvoicesTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InvoiceType">
+        <PropertyRef Name="TypeID" />
+      </Principal>
+      <Dependent Role="InvoicesTBL">
+        <PropertyRef Name="InvoiceType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FinancialDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="InvoicesTBLs" EntityType="Self.InvoicesTBL" />
+    <EntitySet Name="InvoiceTypes" EntityType="Self.InvoiceType" />
+    <AssociationSet Name="FK_InvoicesTBL_InvoiceType" Association="Self.FK_InvoicesTBL_InvoiceType">
+      <End Role="InvoiceType" EntitySet="InvoiceTypes" />
+      <End Role="InvoicesTBL" EntitySet="InvoicesTBLs" />
+    </AssociationSet>
+    <FunctionImport Name="GetAllInvoices" EntitySet="InvoicesTBLs" ReturnType="Collection(FinancialDBModel.InvoicesTBL)" />
+    <FunctionImport Name="GetAllInvoiceTypes" EntitySet="InvoiceTypes" ReturnType="Collection(FinancialDBModel.InvoiceType)" />
+    <FunctionImport Name="SelectLikeInvoice" EntitySet="InvoicesTBLs" ReturnType="Collection(FinancialDBModel.InvoicesTBL)">
+      <Parameter Name="InvoicelID" Mode="In" Type="String" />
+      <Parameter Name="ArName" Mode="In" Type="String" />
+      <Parameter Name="EnName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SelectParamInvoice" EntitySet="InvoicesTBLs" ReturnType="Collection(FinancialDBModel.InvoicesTBL)">
+      <Parameter Name="RecordID" Mode="In" Type="Int32" />
+      <Parameter Name="InvoicelID" Mode="In" Type="String" />
+      <Parameter Name="ArName" Mode="In" Type="String" />
+      <Parameter Name="EnName" Mode="In" Type="String" />
+      <Parameter Name="InvoiceType" Mode="In" Type="Int32" />
+      <Parameter Name="DeliveryStatus" Mode="In" Type="Boolean" />
+      <Parameter Name="InvoiceAmount" Mode="In" Type="Decimal" />
+      <Parameter Name="PaidStatus" Mode="In" Type="Boolean" />
+      <Parameter Name="PaidAmount" Mode="In" Type="Decimal" />
+      <Parameter Name="ProjectID" Mode="In" Type="Int32" />
+      <Parameter Name="EmpID" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="GetAllInvoices_Result">
+    <Property Type="Int32" Name="RecordID" Nullable="false" />
+    <Property Type="String" Name="InvoicelID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ArName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="EnName" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="InvoiceIssueDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="InvoiceType" Nullable="true" />
+    <Property Type="Boolean" Name="DeliveryStatus" Nullable="true" />
+    <Property Type="DateTime" Name="DeliveryDate" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="InvoiceAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Boolean" Name="PaidStatus" Nullable="true" />
+    <Property Type="Decimal" Name="PaidAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="CopyLink" Nullable="true" />
+    <Property Type="Int32" Name="ProjectID" Nullable="true" />
+    <Property Type="Int32" Name="EmpID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetAllInvoiceTypes_Result">
+    <Property Type="Int32" Name="TypeID" Nullable="false" />
+    <Property Type="String" Name="ArName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EnName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectLikeInvoice_Result">
+    <Property Type="Int32" Name="RecordID" Nullable="false" />
+    <Property Type="String" Name="InvoicelID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ArName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="EnName" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="InvoiceIssueDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="InvoiceType" Nullable="true" />
+    <Property Type="Boolean" Name="DeliveryStatus" Nullable="true" />
+    <Property Type="DateTime" Name="DeliveryDate" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="InvoiceAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Boolean" Name="PaidStatus" Nullable="true" />
+    <Property Type="Decimal" Name="PaidAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="CopyLink" Nullable="true" />
+    <Property Type="Int32" Name="ProjectID" Nullable="true" />
+    <Property Type="Int32" Name="EmpID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SelectParamInvoice_Result">
+    <Property Type="Int32" Name="RecordID" Nullable="false" />
+    <Property Type="String" Name="InvoicelID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ArName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="EnName" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="InvoiceIssueDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="InvoiceType" Nullable="true" />
+    <Property Type="Boolean" Name="DeliveryStatus" Nullable="true" />
+    <Property Type="DateTime" Name="DeliveryDate" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="InvoiceAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Boolean" Name="PaidStatus" Nullable="true" />
+    <Property Type="Decimal" Name="PaidAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="CopyLink" Nullable="true" />
+    <Property Type="Int32" Name="ProjectID" Nullable="true" />
+    <Property Type="Int32" Name="EmpID" Nullable="true" />
+  </ComplexType>
+</Schema>

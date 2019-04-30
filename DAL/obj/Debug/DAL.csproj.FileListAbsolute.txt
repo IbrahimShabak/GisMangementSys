@@ -74,4 +74,3 @@ C:\AssemShabak\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\AssemShabak\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\AssemShabak\DAL\obj\Debug\DAL.dll
 C:\AssemShabak\DAL\obj\Debug\DAL.pdb
-C:\AssemShabak\DAL\obj\Debug\DAL.csprojAssemblyReference.cache

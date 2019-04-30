@@ -151,6 +151,8 @@
     <Compile Include="Controllers\Employee\EmployeeTBLsController.cs" />
     <Compile Include="Controllers\Employee\JobTitleTBLsController.cs" />
     <Compile Include="Controllers\Employee\NationalityTBLsController.cs" />
+    <Compile Include="Controllers\Fininchal\InvoicesTBLsController.cs" />
+    <Compile Include="Controllers\Fininchal\InvoiceTypesController.cs" />
     <Compile Include="Controllers\Project\ContractsChangesController.cs" />
     <Compile Include="Controllers\Project\DeliverableStagesController.cs" />
     <Compile Include="Controllers\Project\OegTypesController.cs" />

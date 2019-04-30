@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FinancialDBModelStoreContainer" CdmEntityContainer="FinancialDBEntities">
+    <EntitySetMapping Name="InvoicesTBLs">
+      <EntityTypeMapping TypeName="FinancialDBModel.InvoicesTBL">
+        <MappingFragment StoreEntitySet="InvoicesTBL">
+          <ScalarProperty Name="RecordID" ColumnName="RecordID" />
+          <ScalarProperty Name="InvoicelID" ColumnName="InvoicelID" />
+          <ScalarProperty Name="ArName" ColumnName="ArName" />
+          <ScalarProperty Name="EnName" ColumnName="EnName" />
+          <ScalarProperty Name="InvoiceIssueDate" ColumnName="InvoiceIssueDate" />
+          <ScalarProperty Name="InvoiceType" ColumnName="InvoiceType" />
+          <ScalarProperty Name="DeliveryStatus" ColumnName="DeliveryStatus" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="InvoiceAmount" ColumnName="InvoiceAmount" />
+          <ScalarProperty Name="PaidStatus" ColumnName="PaidStatus" />
+          <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+          <ScalarProperty Name="CopyLink" ColumnName="CopyLink" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InvoiceTypes">
+      <EntityTypeMapping TypeName="FinancialDBModel.InvoiceType">
+        <MappingFragment StoreEntitySet="InvoiceType">
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+          <ScalarProperty Name="ArName" ColumnName="ArName" />
+          <ScalarProperty Name="EnName" ColumnName="EnName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetAllInvoices" FunctionName="FinancialDBModel.Store.GetAllInvoices" />
+    <FunctionImportMapping FunctionImportName="GetAllInvoiceTypes" FunctionName="FinancialDBModel.Store.GetAllInvoiceTypes" />
+    <FunctionImportMapping FunctionImportName="SelectLikeInvoice" FunctionName="FinancialDBModel.Store.SelectLikeInvoice" />
+    <FunctionImportMapping FunctionImportName="SelectParamInvoice" FunctionName="FinancialDBModel.Store.SelectParamInvoice" />
+  </EntityContainerMapping>
+</Mapping>

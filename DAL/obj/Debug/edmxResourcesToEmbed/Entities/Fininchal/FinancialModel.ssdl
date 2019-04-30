@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FinancialDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="InvoicesTBL">
+    <Key>
+      <PropertyRef Name="RecordID" />
+    </Key>
+    <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InvoicelID" Type="nvarchar" MaxLength="50" />
+    <Property Name="ArName" Type="nvarchar" MaxLength="200" />
+    <Property Name="EnName" Type="nvarchar" MaxLength="200" />
+    <Property Name="InvoiceIssueDate" Type="datetime" />
+    <Property Name="InvoiceType" Type="int" />
+    <Property Name="DeliveryStatus" Type="bit" />
+    <Property Name="DeliveryDate" Type="datetime" />
+    <Property Name="InvoiceAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PaidStatus" Type="bit" />
+    <Property Name="PaidAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CopyLink" Type="nvarchar(max)" />
+    <Property Name="ProjectID" Type="int" />
+    <Property Name="EmpID" Type="int" />
+  </EntityType>
+  <EntityType Name="InvoiceType">
+    <Key>
+      <PropertyRef Name="TypeID" />
+    </Key>
+    <Property Name="TypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArName" Type="nvarchar" MaxLength="50" />
+    <Property Name="EnName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_InvoicesTBL_InvoiceType">
+    <End Role="InvoiceType" Type="Self.InvoiceType" Multiplicity="0..1" />
+    <End Role="InvoicesTBL" Type="Self.InvoicesTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InvoiceType">
+        <PropertyRef Name="TypeID" />
+      </Principal>
+      <Dependent Role="InvoicesTBL">
+        <PropertyRef Name="InvoiceType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="GetAllInvoices" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetAllInvoiceTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectLikeInvoice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="InvoicelID" Type="nvarchar" Mode="In" />
+    <Parameter Name="ArName" Type="nvarchar" Mode="In" />
+    <Parameter Name="EnName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SelectParamInvoice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecordID" Type="int" Mode="In" />
+    <Parameter Name="InvoicelID" Type="nvarchar" Mode="In" />
+    <Parameter Name="ArName" Type="nvarchar" Mode="In" />
+    <Parameter Name="EnName" Type="nvarchar" Mode="In" />
+    <Parameter Name="InvoiceType" Type="int" Mode="In" />
+    <Parameter Name="DeliveryStatus" Type="bit" Mode="In" />
+    <Parameter Name="InvoiceAmount" Type="decimal" Mode="In" />
+    <Parameter Name="PaidStatus" Type="bit" Mode="In" />
+    <Parameter Name="PaidAmount" Type="decimal" Mode="In" />
+    <Parameter Name="ProjectID" Type="int" Mode="In" />
+    <Parameter Name="EmpID" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="FinancialDBModelStoreContainer">
+    <EntitySet Name="InvoicesTBL" EntityType="Self.InvoicesTBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InvoiceType" EntityType="Self.InvoiceType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_InvoicesTBL_InvoiceType" Association="Self.FK_InvoicesTBL_InvoiceType">
+      <End Role="InvoiceType" EntitySet="InvoiceType" />
+      <End Role="InvoicesTBL" EntitySet="InvoicesTBL" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

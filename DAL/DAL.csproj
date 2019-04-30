@@ -144,6 +144,39 @@
     <Compile Include="Entities\Employees\NationalityTBL.cs">
       <DependentUpon>EmployeeModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Fininchal\FinancialModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FinancialModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Fininchal\FinancialModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FinancialModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Fininchal\FinancialModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FinancialModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Fininchal\GetAllInvoices_Result.cs">
+      <DependentUpon>FinancialModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Fininchal\GetAllInvoiceTypes_Result.cs">
+      <DependentUpon>FinancialModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Fininchal\InvoicesTBL.cs">
+      <DependentUpon>FinancialModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Fininchal\InvoiceType.cs">
+      <DependentUpon>FinancialModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Fininchal\SelectLikeInvoice_Result.cs">
+      <DependentUpon>FinancialModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Fininchal\SelectParamInvoice_Result.cs">
+      <DependentUpon>FinancialModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Projects\ContractsChange.cs">
       <DependentUpon>ProjectModel.tt</DependentUpon>
     </Compile>
@@ -353,6 +386,8 @@
     <Compile Include="Operations\DTO\Employee\EmployeeTBLDTO.cs" />
     <Compile Include="Operations\DTO\Employee\JobTitleTBLDTO.cs" />
     <Compile Include="Operations\DTO\Employee\NationalityTBLDTO.cs" />
+    <Compile Include="Operations\DTO\Fininchal\InvoicesTBLDTO.cs" />
+    <Compile Include="Operations\DTO\Fininchal\InvoiceTypeDTO.cs" />
     <Compile Include="Operations\DTO\Project\ContractsChangeDTO.cs" />
     <Compile Include="Operations\DTO\Project\DeliverableStageDTO.cs" />
     <Compile Include="Operations\DTO\Project\OegTypeDTO.cs" />
@@ -389,6 +424,13 @@
     <None Include="Entities\Employees\EmployeeModel.edmx.diagram">
       <DependentUpon>EmployeeModel.edmx</DependentUpon>
     </None>
+    <EntityDeploy Include="Entities\Fininchal\FinancialModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FinancialModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entities\Fininchal\FinancialModel.edmx.diagram">
+      <DependentUpon>FinancialModel.edmx</DependentUpon>
+    </None>
     <None Include="Entities\Projects\ProjectModel.edmx.diagram">
       <DependentUpon>ProjectModel.edmx</DependentUpon>
     </None>
@@ -414,6 +456,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EmployeeModel.edmx</DependentUpon>
       <LastGenOutput>EmployeeModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entities\Fininchal\FinancialModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FinancialModel.edmx</DependentUpon>
+      <LastGenOutput>FinancialModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entities\Fininchal\FinancialModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FinancialModel.edmx</DependentUpon>
+      <LastGenOutput>FinancialModel.cs</LastGenOutput>
     </Content>
     <Content Include="Entities\Projects\ProjectModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
