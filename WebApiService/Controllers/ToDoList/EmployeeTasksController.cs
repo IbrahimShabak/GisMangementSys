@@ -17,7 +17,29 @@ namespace WebApiService.Controllers.ToDoList
     public class EmployeeTasksController : ApiController
     {
         private TODoListGISEntities db = new TODoListGISEntities();
-
+        //--------------------------------------------------------------------------------------------
+        //[MyAuthorize(Roles = "Admin")]
+        [Route("api/EmployeeTasks/GetAllDTO")]
+        [HttpGet]
+        public IQueryable<EmployeeTaskDTO> GetAllDTO()
+        {
+            var employeeTask = db.GetAllEmployeeTask();
+            var result = employeeTask.AsQueryable().Select(EmployeeTaskDTO.Mapper.SelectorExpression);
+            return result;
+        }
+        //--------------------------------------------------------------------------------------------
+        //[MyAuthorize(Roles = "Admin")]
+        [Route("api/EmployeeTasks/GetByParams")]
+        [HttpGet]
+        public IQueryable<EmployeeTaskDTO> GetByParams(EmployeeTaskDTO model)
+        {
+            var employeeTask = db.GetEmployeeTaskByParam(model.TaskID,
+                                                                model.EmpID,
+                                                                model.RolInTask
+                                                                );
+            var result = employeeTask.AsQueryable().Select(EmployeeTaskDTO.Mapper.SelectorExpression);
+            return result;
+        }
         // GET: api/EmployeeTasks
         public IQueryable<EmployeeTask> GetEmployeeTasks()
         {
