@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using DAL.Entities.ToDoList;
+using DAL.Operations.DTO.ToDoList;
 
 namespace WebApiService.Controllers.ToDoList
 {
@@ -17,16 +18,44 @@ namespace WebApiService.Controllers.ToDoList
     public class TaskTypesController : ApiController
     {
         private TODoListGISEntities db = new TODoListGISEntities();
-
+        //--------------------------------------------------------------------------------------------
+        //[MyAuthorize(Roles = "Admin")]
+        [Route("api/TaskTypes/GetAllDTO")]
+        [HttpGet]
+        public IQueryable<TaskTypeDTO> GetAllDTO()
+        {
+            var taskType = db.GetAllTaskType();
+            var result = taskType.AsQueryable().Select(TaskTypeDTO.Mapper.SelectorExpression);
+            return result;
+        }
+        //--------------------------------------------------------------------------------------------
+        //[MyAuthorize(Roles = "Admin")]
+        [Route("api/TaskTypes/GetByParams")]
+        [HttpGet]
+        public IQueryable<TaskTypeDTO> GetByParams(TaskTypeDTO model)
+        {
+            var taskType = db.GetTaskTypeByParam( model.ArName,
+                                                     model.EnName
+                                                                );
+            var result = taskType.AsQueryable().Select(TaskTypeDTO.Mapper.SelectorExpression);
+            return result;
+        }
+        //--------------------------------------------------------------------------------------------
         // GET: api/TaskTypes
-        public IQueryable<TaskType> GetTaskTypes()
+        //[MyAuthorize(Roles = "Admin")]
+        [Route("api/TaskTypes/GetAll")]
+        [HttpGet]
+        public IQueryable<TaskType> GetAll()
         {
             return db.TaskTypes;
         }
-
+        //--------------------------------------------------------------------------------------------
         // GET: api/TaskTypes/5
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(TaskType))]
-        public async Task<IHttpActionResult> GetTaskType(int id)
+        [Route("api/TaskTypes/GetByID/{ID:int}")]
+        [HttpGet]
+        public async Task<IHttpActionResult> GetByID(int id)
         {
             TaskType taskType = await db.TaskTypes.FindAsync(id);
             if (taskType == null)
@@ -36,10 +65,13 @@ namespace WebApiService.Controllers.ToDoList
 
             return Ok(taskType);
         }
-
+        //--------------------------------------------------------------------------------------------
         // PUT: api/TaskTypes/5
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutTaskType(int id, TaskType taskType)
+        [Route("api/TaskTypes/Update/{ID:int}")]
+        [HttpPut]
+        public async Task<IHttpActionResult> Update(int id, TaskTypeDTO taskType)
         {
             if (!ModelState.IsValid)
             {
@@ -51,7 +83,9 @@ namespace WebApiService.Controllers.ToDoList
                 return BadRequest();
             }
 
-            db.Entry(taskType).State = EntityState.Modified;
+            TaskType TBL = new TaskType();
+            TBL = taskType.GetOriginal(TBL);
+            db.Entry(TBL).State = EntityState.Modified;
 
             try
             {
@@ -68,28 +102,36 @@ namespace WebApiService.Controllers.ToDoList
                     throw;
                 }
             }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(TaskTypeDTO.GetDTO(TBL));
+           // return StatusCode(HttpStatusCode.NoContent);
         }
-
+        //--------------------------------------------------------------------------------------------
         // POST: api/TaskTypes
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(TaskType))]
-        public async Task<IHttpActionResult> PostTaskType(TaskType taskType)
+        [Route("api/TaskTypes/Add")]
+        [HttpPost]
+        public async Task<IHttpActionResult> Add(TaskTypeDTO taskType)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.TaskTypes.Add(taskType);
+            TaskType TBL = new TaskType();
+            TBL = taskType.GetOriginal(TBL);
+            db.TaskTypes.Add(TBL);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = taskType.ID }, taskType);
+            return Ok(TaskTypeDTO.GetDTO(TBL));
         }
-
+        //--------------------------------------------------------------------------------------------
         // DELETE: api/TaskTypes/5
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(TaskType))]
-        public async Task<IHttpActionResult> DeleteTaskType(int id)
+        [Route("api/TaskTypes/Delete/{ID:int}")]
+        [HttpDelete]
+        public async Task<IHttpActionResult> Delete(int id)
         {
             TaskType taskType = await db.TaskTypes.FindAsync(id);
             if (taskType == null)

@@ -57,7 +57,7 @@ namespace WebApiService.Controllers.Employee
         //[MyAuthorize(Roles = "Admin")]
         [Route("api/DivisionTBLs/GetAll")]
         [HttpGet]
-        public IQueryable<DivisionTBL> GetDivisionTBLs()
+        public IQueryable<DivisionTBL> GetAll()
         {
             return db.DivisionTBLs;
         }
@@ -85,7 +85,7 @@ namespace WebApiService.Controllers.Employee
         [Route("api/DivisionTBLs/Update/{ID:int}")]
         [HttpPut]
 
-        public async Task<IHttpActionResult> PutDivisionTBL(int id, DivisionTBLDTO divisionTBL)
+        public async Task<IHttpActionResult> Update(int id, DivisionTBLDTO divisionTBL)
         {
             if (!ModelState.IsValid)
             {
