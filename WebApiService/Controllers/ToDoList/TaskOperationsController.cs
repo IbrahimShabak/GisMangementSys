@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using DAL.Entities.ToDoList;
+using DAL.Operations.DTO.ToDoList;
 
 namespace WebApiService.Controllers.ToDoList
 {
@@ -17,16 +18,61 @@ namespace WebApiService.Controllers.ToDoList
     public class TaskOperationsController : ApiController
     {
         private TODoListGISEntities db = new TODoListGISEntities();
-
+        //--------------------------------------------------------------------------------------------
+        //[MyAuthorize(Roles = "Admin")]
+        [Route("api/TaskOperations/GetAllDTO")]
+        [HttpGet]
+        public IQueryable<TaskOperationDTO> GetAllDTO()
+        {
+            var taskOperation = db.GetAllTaskOperations();
+            var result = taskOperation.AsQueryable().Select(TaskOperationDTO.Mapper.SelectorExpression);
+            return result;
+        }
+        //--------------------------------------------------------------------------------------------
+        //[MyAuthorize(Roles = "Admin")]
+        [Route("api/TaskOperations/GetByParams")]
+        [HttpGet]
+        public IQueryable<TaskOperationDTO> GetByParams(TaskOperationDTO model)
+        {
+            var taskOperation = db.GetTaskOperationsByParam(model.TaskID,
+                                                                model.TaskName,
+                                                                model.CreatorEmp,
+                                                                model.ParentID,
+                                                                model.DeliverableID,
+                                                                model.TaskStatus,
+                                                                model.TaskType,
+                                                                model.TaskProierty
+                                                                );
+            var result = taskOperation.AsQueryable().Select(TaskOperationDTO.Mapper.SelectorExpression);
+            return result;
+        }
+        //--------------------------------------------------------------------------------------------
+        //[MyAuthorize(Roles = "Admin")]
+        [Route("api/TaskOperations/GetByLike")]
+        [HttpGet]
+        public IQueryable<TaskOperationDTO> GetByLike(TaskOperationDTO model)
+        {
+            var taskOperation = db.GetLikeTaskOperations(model.TaskName
+                                                       );
+            var result = taskOperation.AsQueryable().Select(TaskOperationDTO.Mapper.SelectorExpression);
+            return result;
+        }
+        //--------------------------------------------------------------------------------------------
         // GET: api/TaskOperations
-        public IQueryable<TaskOperation> GetTaskOperations()
+        //[MyAuthorize(Roles = "Admin")]
+        [Route("api/TaskOperations/GetAll")]
+        [HttpGet]
+        public IQueryable<TaskOperation> GetAll()
         {
             return db.TaskOperations;
         }
-
+        //--------------------------------------------------------------------------------------------
         // GET: api/TaskOperations/5
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(TaskOperation))]
-        public async Task<IHttpActionResult> GetTaskOperation(int id)
+        [Route("api/TaskOperations/GetByID/{ID:int}")]
+        [HttpGet]
+        public async Task<IHttpActionResult> GetByID(int id)
         {
             TaskOperation taskOperation = await db.TaskOperations.FindAsync(id);
             if (taskOperation == null)
@@ -36,10 +82,13 @@ namespace WebApiService.Controllers.ToDoList
 
             return Ok(taskOperation);
         }
-
+        //--------------------------------------------------------------------------------------------
         // PUT: api/TaskOperations/5
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutTaskOperation(int id, TaskOperation taskOperation)
+        [Route("api/TaskOperations/Update/{ID:int}")]
+        [HttpPut]
+        public async Task<IHttpActionResult> Update(int id, TaskOperationDTO taskOperation)
         {
             if (!ModelState.IsValid)
             {
@@ -51,7 +100,9 @@ namespace WebApiService.Controllers.ToDoList
                 return BadRequest();
             }
 
-            db.Entry(taskOperation).State = EntityState.Modified;
+            TaskOperation TBL = new TaskOperation();
+            TBL = taskOperation.GetOriginal(TBL);
+            db.Entry(TBL).State = EntityState.Modified;
 
             try
             {
@@ -68,28 +119,36 @@ namespace WebApiService.Controllers.ToDoList
                     throw;
                 }
             }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(TaskOperationDTO.GetDTO(TBL));
+          //  return StatusCode(HttpStatusCode.NoContent);
         }
-
+        //--------------------------------------------------------------------------------------------
         // POST: api/TaskOperations
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(TaskOperation))]
-        public async Task<IHttpActionResult> PostTaskOperation(TaskOperation taskOperation)
+        [Route("api/TaskOperations/Add")]
+        [HttpPost]
+        public async Task<IHttpActionResult> Add(TaskOperationDTO taskOperation)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.TaskOperations.Add(taskOperation);
+            TaskOperation TBL = new TaskOperation();
+            TBL = taskOperation.GetOriginal(TBL);
+            db.TaskOperations.Add(TBL);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = taskOperation.TaskID }, taskOperation);
+            return Ok(TaskOperationDTO.GetDTO(TBL));
         }
-
+        //--------------------------------------------------------------------------------------------
         // DELETE: api/TaskOperations/5
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(TaskOperation))]
-        public async Task<IHttpActionResult> DeleteTaskOperation(int id)
+        [Route("api/TaskOperations/Delete/{ID:int}")]
+        [HttpDelete]
+        public async Task<IHttpActionResult> Delete(int id)
         {
             TaskOperation taskOperation = await db.TaskOperations.FindAsync(id);
             if (taskOperation == null)
