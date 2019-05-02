@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ArchiveDBGIS2019Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ArchiveTBL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Details" Type="nvarchar(max)" />
+    <Property Name="ProjectID" Type="int" />
+    <Property Name="DocumentType" Type="int" />
+    <Property Name="FilePathLink" Type="nvarchar(max)" />
+    <Property Name="AddDate" Type="datetime" />
+    <Property Name="WithHardCopy" Type="bit" />
+  </EntityType>
+  <EntityType Name="DocumentType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ArName" Type="nvarchar" MaxLength="50" />
+    <Property Name="EnName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EventType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ArName" Type="nvarchar" MaxLength="50" />
+    <Property Name="EnName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="FollowUpDocumentsCircle">
+    <Key>
+      <PropertyRef Name="ArchiveID" />
+      <PropertyRef Name="EventDatetime" />
+    </Key>
+    <Property Name="ArchiveID" Type="int" Nullable="false" />
+    <Property Name="EventDatetime" Type="datetime" Nullable="false" />
+    <Property Name="EmpID" Type="int" />
+    <Property Name="EventType" Type="int" />
+  </EntityType>
+  <Association Name="FK_ArchiveTBL_DocumentType">
+    <End Role="DocumentType" Type="Self.DocumentType" Multiplicity="0..1" />
+    <End Role="ArchiveTBL" Type="Self.ArchiveTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DocumentType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ArchiveTBL">
+        <PropertyRef Name="DocumentType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FollowUpDocumentsCircle_ArchiveTBL">
+    <End Role="ArchiveTBL" Type="Self.ArchiveTBL" Multiplicity="1" />
+    <End Role="FollowUpDocumentsCircle" Type="Self.FollowUpDocumentsCircle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArchiveTBL">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FollowUpDocumentsCircle">
+        <PropertyRef Name="ArchiveID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FollowUpDocumentsCircle_EventType">
+    <End Role="EventType" Type="Self.EventType" Multiplicity="0..1" />
+    <End Role="FollowUpDocumentsCircle" Type="Self.FollowUpDocumentsCircle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FollowUpDocumentsCircle">
+        <PropertyRef Name="EventType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="GetAllArchiveTBL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetAllDocumentType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetAllEventType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetAllFollowUpDocumentsCircle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetArchiveTBLByParam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Details" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ProjectID" Type="int" Mode="In" />
+    <Parameter Name="DocumentType" Type="int" Mode="In" />
+    <Parameter Name="WithHardCopy" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="GetFollowUpDocumentsCircleByParam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ArchiveID" Type="int" Mode="In" />
+    <Parameter Name="EmpID" Type="int" Mode="In" />
+    <Parameter Name="EventType" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetLikeArchiveTBL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Details" Type="nvarchar" Mode="In" />
+    <Parameter Name="ProjectID" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="ArchiveDBGIS2019ModelStoreContainer">
+    <EntitySet Name="ArchiveTBL" EntityType="Self.ArchiveTBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DocumentType" EntityType="Self.DocumentType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EventType" EntityType="Self.EventType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FollowUpDocumentsCircle" EntityType="Self.FollowUpDocumentsCircle" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ArchiveTBL_DocumentType" Association="Self.FK_ArchiveTBL_DocumentType">
+      <End Role="DocumentType" EntitySet="DocumentType" />
+      <End Role="ArchiveTBL" EntitySet="ArchiveTBL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FollowUpDocumentsCircle_ArchiveTBL" Association="Self.FK_FollowUpDocumentsCircle_ArchiveTBL">
+      <End Role="ArchiveTBL" EntitySet="ArchiveTBL" />
+      <End Role="FollowUpDocumentsCircle" EntitySet="FollowUpDocumentsCircle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FollowUpDocumentsCircle_EventType" Association="Self.FK_FollowUpDocumentsCircle_EventType">
+      <End Role="EventType" EntitySet="EventType" />
+      <End Role="FollowUpDocumentsCircle" EntitySet="FollowUpDocumentsCircle" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

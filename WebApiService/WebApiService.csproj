@@ -146,6 +146,10 @@
     <Compile Include="App_Start\UnauthorizedAccess.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="AuthorizeAttribute.cs" />
+    <Compile Include="Controllers\Archive\ArchiveTBLsController.cs" />
+    <Compile Include="Controllers\Archive\DocumentTypesController.cs" />
+    <Compile Include="Controllers\Archive\EventTypesController.cs" />
+    <Compile Include="Controllers\Archive\FollowUpDocumentsCirclesController.cs" />
     <Compile Include="Controllers\Employee\DivisionTBLsController.cs" />
     <Compile Include="Controllers\Employee\EmployeeOffTypesController.cs" />
     <Compile Include="Controllers\Employee\EmployeeTBLsController.cs" />

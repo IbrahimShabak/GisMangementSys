@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ArchiveDBGIS2019ModelStoreContainer" CdmEntityContainer="ArchiveDBEntities">
+    <EntitySetMapping Name="ArchiveTBLs">
+      <EntityTypeMapping TypeName="ArchiveDBGIS2019Model.ArchiveTBL">
+        <MappingFragment StoreEntitySet="ArchiveTBL">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="DocumentType" ColumnName="DocumentType" />
+          <ScalarProperty Name="FilePathLink" ColumnName="FilePathLink" />
+          <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+          <ScalarProperty Name="WithHardCopy" ColumnName="WithHardCopy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocumentTypes">
+      <EntityTypeMapping TypeName="ArchiveDBGIS2019Model.DocumentType">
+        <MappingFragment StoreEntitySet="DocumentType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ArName" ColumnName="ArName" />
+          <ScalarProperty Name="EnName" ColumnName="EnName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventTypes">
+      <EntityTypeMapping TypeName="ArchiveDBGIS2019Model.EventType">
+        <MappingFragment StoreEntitySet="EventType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ArName" ColumnName="ArName" />
+          <ScalarProperty Name="EnName" ColumnName="EnName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FollowUpDocumentsCircles">
+      <EntityTypeMapping TypeName="ArchiveDBGIS2019Model.FollowUpDocumentsCircle">
+        <MappingFragment StoreEntitySet="FollowUpDocumentsCircle">
+          <ScalarProperty Name="ArchiveID" ColumnName="ArchiveID" />
+          <ScalarProperty Name="EventDatetime" ColumnName="EventDatetime" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="EventType" ColumnName="EventType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetAllArchiveTBL" FunctionName="ArchiveDBGIS2019Model.Store.GetAllArchiveTBL" />
+    <FunctionImportMapping FunctionImportName="GetAllDocumentType" FunctionName="ArchiveDBGIS2019Model.Store.GetAllDocumentType" />
+    <FunctionImportMapping FunctionImportName="GetAllEventType" FunctionName="ArchiveDBGIS2019Model.Store.GetAllEventType" />
+    <FunctionImportMapping FunctionImportName="GetAllFollowUpDocumentsCircle" FunctionName="ArchiveDBGIS2019Model.Store.GetAllFollowUpDocumentsCircle" />
+    <FunctionImportMapping FunctionImportName="GetArchiveTBLByParam" FunctionName="ArchiveDBGIS2019Model.Store.GetArchiveTBLByParam" />
+    <FunctionImportMapping FunctionImportName="GetFollowUpDocumentsCircleByParam" FunctionName="ArchiveDBGIS2019Model.Store.GetFollowUpDocumentsCircleByParam" />
+    <FunctionImportMapping FunctionImportName="GetLikeArchiveTBL" FunctionName="ArchiveDBGIS2019Model.Store.GetLikeArchiveTBL" />
+  </EntityContainerMapping>
+</Mapping>

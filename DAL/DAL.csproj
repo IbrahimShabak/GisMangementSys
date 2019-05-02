@@ -69,6 +69,54 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Archive\ArchiveModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArchiveModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Archive\ArchiveModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArchiveModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Archive\ArchiveModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArchiveModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Archive\ArchiveTBL.cs">
+      <DependentUpon>ArchiveModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Archive\DocumentType.cs">
+      <DependentUpon>ArchiveModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Archive\EventType.cs">
+      <DependentUpon>ArchiveModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Archive\FollowUpDocumentsCircle.cs">
+      <DependentUpon>ArchiveModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Archive\GetAllArchiveTBL_Result.cs">
+      <DependentUpon>ArchiveModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Archive\GetAllDocumentType_Result.cs">
+      <DependentUpon>ArchiveModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Archive\GetAllEventType_Result.cs">
+      <DependentUpon>ArchiveModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Archive\GetAllFollowUpDocumentsCircle_Result.cs">
+      <DependentUpon>ArchiveModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Archive\GetArchiveTBLByParam_Result.cs">
+      <DependentUpon>ArchiveModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Archive\GetFollowUpDocumentsCircleByParam_Result.cs">
+      <DependentUpon>ArchiveModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Archive\GetLikeArchiveTBL_Result.cs">
+      <DependentUpon>ArchiveModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Employees\DivisionTBL.cs">
       <DependentUpon>EmployeeModel.tt</DependentUpon>
     </Compile>
@@ -381,6 +429,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ToDoListModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Operations\DTO\Archive\ArchiveTBLDTO.cs" />
+    <Compile Include="Operations\DTO\Archive\DocumentTypeDTO.cs" />
+    <Compile Include="Operations\DTO\Archive\EventTypeDTO.cs" />
+    <Compile Include="Operations\DTO\Archive\FollowUpDocumentsCircleDTO.cs" />
     <Compile Include="Operations\DTO\Employee\DivisionTBLDTO.cs" />
     <Compile Include="Operations\DTO\Employee\EmployeeOffTypeDTO.cs" />
     <Compile Include="Operations\DTO\Employee\EmployeeTBLDTO.cs" />
@@ -421,6 +473,13 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>EmployeeModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="Entities\Archive\ArchiveModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ArchiveModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entities\Archive\ArchiveModel.edmx.diagram">
+      <DependentUpon>ArchiveModel.edmx</DependentUpon>
+    </None>
     <None Include="Entities\Employees\EmployeeModel.edmx.diagram">
       <DependentUpon>EmployeeModel.edmx</DependentUpon>
     </None>
@@ -447,6 +506,16 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Entities\Archive\ArchiveModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ArchiveModel.edmx</DependentUpon>
+      <LastGenOutput>ArchiveModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entities\Archive\ArchiveModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ArchiveModel.edmx</DependentUpon>
+      <LastGenOutput>ArchiveModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Entities\Employees\EmployeeModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EmployeeModel.edmx</DependentUpon>

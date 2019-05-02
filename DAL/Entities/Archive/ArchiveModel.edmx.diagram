@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0613115e16d149daa6f97d10fde95397" Name="Diagram1">
+        <EntityTypeShape EntityType="ArchiveDBGIS2019Model.ArchiveTBL" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ArchiveDBGIS2019Model.DocumentType" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ArchiveDBGIS2019Model.EventType" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ArchiveDBGIS2019Model.FollowUpDocumentsCircle" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="ArchiveDBGIS2019Model.FK_ArchiveTBL_DocumentType" ManuallyRouted="false" />
+        <AssociationConnector Association="ArchiveDBGIS2019Model.FK_FollowUpDocumentsCircle_ArchiveTBL" ManuallyRouted="false" />
+        <AssociationConnector Association="ArchiveDBGIS2019Model.FK_FollowUpDocumentsCircle_EventType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
