@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using DAL.Entities.ToDoList;
+using DAL.Operations.DTO.ToDoList;
 
 namespace WebApiService.Controllers.ToDoList
 {
@@ -17,16 +18,44 @@ namespace WebApiService.Controllers.ToDoList
     public class RoleInTasksController : ApiController
     {
         private TODoListGISEntities db = new TODoListGISEntities();
-
+        //--------------------------------------------------------------------------------------------
+        //[MyAuthorize(Roles = "Admin")]
+        [Route("api/RoleInTasks/GetAllDTO")]
+        [HttpGet]
+        public IQueryable<RoleInTaskDTO> GetAllDTO()
+        {
+            var roleInTask = db.GetAllRoleInTask();
+            var result = roleInTask.AsQueryable().Select(RoleInTaskDTO.Mapper.SelectorExpression);
+            return result;
+        }
+        //--------------------------------------------------------------------------------------------
+        //[MyAuthorize(Roles = "Admin")]
+        [Route("api/RoleInTasks/GetByParams")]
+        [HttpGet]
+        public IQueryable<RoleInTaskDTO> GetByParams(RoleInTaskDTO model)
+        {
+            var roleInTask = db.GetRoleInTaskByParam(model.ArName,
+                                                     model.EnName
+                                                    );
+            var result = roleInTask.AsQueryable().Select(RoleInTaskDTO.Mapper.SelectorExpression);
+            return result;
+        }
+        //--------------------------------------------------------------------------------------------
         // GET: api/RoleInTasks
-        public IQueryable<RoleInTask> GetRoleInTasks()
+        //[MyAuthorize(Roles = "Admin")]
+        [Route("api/RoleInTasks/GetAll")]
+        [HttpGet]
+        public IQueryable<RoleInTask> GetAll()
         {
             return db.RoleInTasks;
         }
-
+        //--------------------------------------------------------------------------------------------
         // GET: api/RoleInTasks/5
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(RoleInTask))]
-        public async Task<IHttpActionResult> GetRoleInTask(int id)
+        [Route("api/RoleInTasks/GetByID/{ID:int}")]
+        [HttpGet]
+        public async Task<IHttpActionResult> GetByID(int id)
         {
             RoleInTask roleInTask = await db.RoleInTasks.FindAsync(id);
             if (roleInTask == null)
@@ -36,10 +65,13 @@ namespace WebApiService.Controllers.ToDoList
 
             return Ok(roleInTask);
         }
-
+        //--------------------------------------------------------------------------------------------
         // PUT: api/RoleInTasks/5
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutRoleInTask(int id, RoleInTask roleInTask)
+        [Route("api/RoleInTasks/Update/{ID:int}")]
+        [HttpPut]
+        public async Task<IHttpActionResult> Update(int id, RoleInTaskDTO roleInTask)
         {
             if (!ModelState.IsValid)
             {
@@ -51,7 +83,9 @@ namespace WebApiService.Controllers.ToDoList
                 return BadRequest();
             }
 
-            db.Entry(roleInTask).State = EntityState.Modified;
+            RoleInTask TBL = new RoleInTask();
+            TBL = roleInTask.GetOriginal(TBL);
+            db.Entry(TBL).State = EntityState.Modified;
 
             try
             {
@@ -68,28 +102,36 @@ namespace WebApiService.Controllers.ToDoList
                     throw;
                 }
             }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(RoleInTaskDTO.GetDTO(TBL));
+          //  return StatusCode(HttpStatusCode.NoContent);
         }
-
+        //--------------------------------------------------------------------------------------------
         // POST: api/RoleInTasks
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(RoleInTask))]
-        public async Task<IHttpActionResult> PostRoleInTask(RoleInTask roleInTask)
+        [Route("api/RoleInTasks/Add")]
+        [HttpPost]
+        public async Task<IHttpActionResult> Add(RoleInTaskDTO roleInTask)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.RoleInTasks.Add(roleInTask);
+            RoleInTask TBL = new RoleInTask();
+            TBL = roleInTask.GetOriginal(TBL);
+            db.RoleInTasks.Add(TBL);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = roleInTask.ID }, roleInTask);
+            return Ok(RoleInTaskDTO.GetDTO(TBL));
         }
-
+        //--------------------------------------------------------------------------------------------
         // DELETE: api/RoleInTasks/5
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(RoleInTask))]
-        public async Task<IHttpActionResult> DeleteRoleInTask(int id)
+        [Route("api/RoleInTasks/Delete/{ID:int}")]
+        [HttpDelete]
+        public async Task<IHttpActionResult> Delete(int id)
         {
             RoleInTask roleInTask = await db.RoleInTasks.FindAsync(id);
             if (roleInTask == null)

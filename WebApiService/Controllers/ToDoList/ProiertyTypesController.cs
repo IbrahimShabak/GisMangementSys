@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using DAL.Entities.ToDoList;
+using DAL.Operations.DTO.ToDoList;
 
 namespace WebApiService.Controllers.ToDoList
 {
@@ -17,16 +18,44 @@ namespace WebApiService.Controllers.ToDoList
     public class ProiertyTypesController : ApiController
     {
         private TODoListGISEntities db = new TODoListGISEntities();
-
+        //--------------------------------------------------------------------------------------------
+        //[MyAuthorize(Roles = "Admin")]
+        [Route("api/ProiertyTypes/GetAllDTO")]
+        [HttpGet]
+        public IQueryable<ProiertyTypeDTO> GetAllDTO()
+        {
+            var proiertyType = db.GetAllProiertyType();
+            var result = proiertyType.AsQueryable().Select(ProiertyTypeDTO.Mapper.SelectorExpression);
+            return result;
+        }
+        //--------------------------------------------------------------------------------------------
+        //[MyAuthorize(Roles = "Admin")]
+        [Route("api/ProiertyTypes/GetByParams")]
+        [HttpGet]
+        public IQueryable<ProiertyTypeDTO> GetByParams(ProiertyTypeDTO model)
+        {
+            var proiertyType = db.GetProiertyTypeByParam(model.ArName,
+                                                         model.EnName
+                                                         );
+            var result = proiertyType.AsQueryable().Select(ProiertyTypeDTO.Mapper.SelectorExpression);
+            return result;
+        }
+        //--------------------------------------------------------------------------------------------
         // GET: api/ProiertyTypes
-        public IQueryable<ProiertyType> GetProiertyTypes()
+        //[MyAuthorize(Roles = "Admin")]
+        [Route("api/ProiertyTypes/GetAll")]
+        [HttpGet]
+        public IQueryable<ProiertyType> GetAll()
         {
             return db.ProiertyTypes;
         }
-
+        //--------------------------------------------------------------------------------------------
         // GET: api/ProiertyTypes/5
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(ProiertyType))]
-        public async Task<IHttpActionResult> GetProiertyType(int id)
+        [Route("api/DivisionTBLs/GetByID/{ID:int}")]
+        [HttpGet]
+        public async Task<IHttpActionResult> GetByID(int id)
         {
             ProiertyType proiertyType = await db.ProiertyTypes.FindAsync(id);
             if (proiertyType == null)
@@ -36,10 +65,13 @@ namespace WebApiService.Controllers.ToDoList
 
             return Ok(proiertyType);
         }
-
+        //--------------------------------------------------------------------------------------------
         // PUT: api/ProiertyTypes/5
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutProiertyType(int id, ProiertyType proiertyType)
+        [Route("api/ProiertyTypes/Update/{ID:int}")]
+        [HttpPut]
+        public async Task<IHttpActionResult> Update(int id, ProiertyTypeDTO proiertyType)
         {
             if (!ModelState.IsValid)
             {
@@ -51,7 +83,9 @@ namespace WebApiService.Controllers.ToDoList
                 return BadRequest();
             }
 
-            db.Entry(proiertyType).State = EntityState.Modified;
+            ProiertyType TBL = new ProiertyType();
+            TBL = proiertyType.GetOriginal(TBL);
+            db.Entry(TBL).State = EntityState.Modified;
 
             try
             {
@@ -68,28 +102,33 @@ namespace WebApiService.Controllers.ToDoList
                     throw;
                 }
             }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(ProiertyTypeDTO.GetDTO(TBL));
+          //  return StatusCode(HttpStatusCode.NoContent);
         }
-
+        //--------------------------------------------------------------------------------------------
         // POST: api/ProiertyTypes
         [ResponseType(typeof(ProiertyType))]
-        public async Task<IHttpActionResult> PostProiertyType(ProiertyType proiertyType)
+        public async Task<IHttpActionResult> Add(ProiertyTypeDTO proiertyType)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.ProiertyTypes.Add(proiertyType);
+            ProiertyType TBL = new ProiertyType();
+            TBL = proiertyType.GetOriginal(TBL);
+            db.ProiertyTypes.Add(TBL);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = proiertyType.ID }, proiertyType);
+            return Ok(ProiertyTypeDTO.GetDTO(TBL));
         }
-
+        //--------------------------------------------------------------------------------------------
         // DELETE: api/ProiertyTypes/5
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(ProiertyType))]
-        public async Task<IHttpActionResult> DeleteProiertyType(int id)
+        [Route("api/ProiertyTypes/Delete/{ID:int}")]
+        [HttpDelete]      
+        public async Task<IHttpActionResult> Delete(int id)
         {
             ProiertyType proiertyType = await db.ProiertyTypes.FindAsync(id);
             if (proiertyType == null)
