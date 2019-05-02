@@ -30,6 +30,20 @@ namespace DAL.Operations.DTO.Archive
         public Nullable<System.DateTime> AddDate { get; set; }
         [DataMember]
         public Nullable<bool> WithHardCopy { get; set; }
+        //---------------------------------------------------------------------------------------------------------------------------------------
+        public static ArchiveTBLMapper Mapper = new ArchiveTBLMapper();
+        public ArchiveTBL GetOriginal(ArchiveTBL model)
+        {
+            Mapper.MapToModel(this, model);
+            return model;
+        }
+        public static ArchiveTBLDTO GetDTO(ArchiveTBL model)
+        {
+            var result = Mapper.GetDTO(model);
+            return result;
+        }
+
+        //---------------------------------------------------------------------------------------------------------------------------------------
     }
 
     public class ArchiveTBLMapper : MapperBase<ArchiveTBL, ArchiveTBLDTO>

@@ -22,6 +22,20 @@ namespace DAL.Operations.DTO.Archive
         public string ArName { get; set; }
         [DataMember]
         public string EnName { get; set; }
+        //---------------------------------------------------------------------------------------------------------------------------------------
+        public static DocumentTypeMapper Mapper = new DocumentTypeMapper();
+        public DocumentType GetOriginal(DocumentType model)
+        {
+            Mapper.MapToModel(this, model);
+            return model;
+        }
+        public static DocumentTypeDTO GetDTO(DocumentType model)
+        {
+            var result = Mapper.GetDTO(model);
+            return result;
+        }
+
+        //---------------------------------------------------------------------------------------------------------------------------------------
     }
 
     public class DocumentTypeMapper : MapperBase<DocumentType, DocumentTypeDTO>

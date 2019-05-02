@@ -24,6 +24,20 @@ namespace DAL.Operations.DTO.Archive
         public Nullable<int> EmpID { get; set; }
         [DataMember]
         public Nullable<int> EventType { get; set; }
+        //---------------------------------------------------------------------------------------------------------------------------------------
+        public static FollowUpDocumentsCircleMapper Mapper = new FollowUpDocumentsCircleMapper();
+        public FollowUpDocumentsCircle GetOriginal(FollowUpDocumentsCircle model)
+        {
+            Mapper.MapToModel(this, model);
+            return model;
+        }
+        public static FollowUpDocumentsCircleDTO GetDTO(FollowUpDocumentsCircle model)
+        {
+            var result = Mapper.GetDTO(model);
+            return result;
+        }
+
+        //---------------------------------------------------------------------------------------------------------------------------------------
     }
 
     public class FollowUpDocumentsCircleMapper : MapperBase<FollowUpDocumentsCircle, FollowUpDocumentsCircleDTO>

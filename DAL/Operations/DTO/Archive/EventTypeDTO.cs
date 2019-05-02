@@ -22,6 +22,20 @@ namespace DAL.Operations.DTO.Archive
         public string ArName { get; set; }
         [DataMember]
         public string EnName { get; set; }
+        //---------------------------------------------------------------------------------------------------------------------------------------
+        public static EventTypeMapper Mapper = new EventTypeMapper();
+        public EventType GetOriginal(EventType model)
+        {
+            Mapper.MapToModel(this, model);
+            return model;
+        }
+        public static EventTypeDTO GetDTO(EventType model)
+        {
+            var result = Mapper.GetDTO(model);
+            return result;
+        }
+
+        //---------------------------------------------------------------------------------------------------------------------------------------
     }
 
     public class EventTypeMapper : MapperBase<EventType, EventTypeDTO>
