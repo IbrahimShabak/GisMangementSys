@@ -10,22 +10,39 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using DAL.Entities.Archive;
+using DAL.Operations.DTO.Archive;
 
 namespace WebApiService.Controllers.Archive
 {
     public class EventTypesController : ApiController
     {
         private ArchiveDBEntities db = new ArchiveDBEntities();
-
+        //--------------------------------------------------------------------------------------------
+        //[MyAuthorize(Roles = "Admin")]
+        [Route("api/EventTypes/GetAllDTO")]
+        [HttpGet]
+        public IQueryable<EventTypeDTO> GetAllDTO()
+        {
+            var archiveTBL = db.GetAllEventType();
+            var result = archiveTBL.AsQueryable().Select(EventTypeDTO.Mapper.SelectorExpression);
+            return result;
+        }
+        //--------------------------------------------------------------------------------------------
         // GET: api/EventTypes
-        public IQueryable<EventType> GetEventTypes()
+        //[MyAuthorize(Roles = "Admin")]
+        [Route("api/EventTypes/GetAll")]
+        [HttpGet]
+        public IQueryable<EventType> GetAll()
         {
             return db.EventTypes;
         }
-
+        //--------------------------------------------------------------------------------------------
         // GET: api/EventTypes/5
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(EventType))]
-        public async Task<IHttpActionResult> GetEventType(int id)
+        [Route("api/EventTypes/GetByID/{ID:int}")]
+        [HttpGet]
+        public async Task<IHttpActionResult> GetByID(int id)
         {
             EventType eventType = await db.EventTypes.FindAsync(id);
             if (eventType == null)
@@ -35,10 +52,13 @@ namespace WebApiService.Controllers.Archive
 
             return Ok(eventType);
         }
-
+        //--------------------------------------------------------------------------------------------
         // PUT: api/EventTypes/5
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutEventType(int id, EventType eventType)
+        [Route("api/EventTypes/Update/{ID:int}")]
+        [HttpPut]
+        public async Task<IHttpActionResult> Update(int id, EventTypeDTO eventType)
         {
             if (!ModelState.IsValid)
             {
@@ -50,7 +70,9 @@ namespace WebApiService.Controllers.Archive
                 return BadRequest();
             }
 
-            db.Entry(eventType).State = EntityState.Modified;
+            EventType TBL = new EventType();
+            TBL = eventType.GetOriginal(TBL);
+            db.Entry(TBL).State = EntityState.Modified;
 
             try
             {
@@ -67,43 +89,55 @@ namespace WebApiService.Controllers.Archive
                     throw;
                 }
             }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(EventTypeDTO.GetDTO(TBL));
+            //return StatusCode(HttpStatusCode.NoContent);
         }
-
+        //--------------------------------------------------------------------------------------------
         // POST: api/EventTypes
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(EventType))]
-        public async Task<IHttpActionResult> PostEventType(EventType eventType)
+        [Route("api/EventTypes/Add")]
+        [HttpPost]
+        public async Task<IHttpActionResult> Add(EventTypeDTO eventType)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.EventTypes.Add(eventType);
+            EventType TBL = new EventType();
+            TBL = eventType.GetOriginal(TBL);
+            db.EventTypes.Add(TBL);
+            await db.SaveChangesAsync();
 
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (EventTypeExists(eventType.ID))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            return Ok(EventTypeDTO.GetDTO(TBL));
+            //return Ok(ArchiveTBLDTO.GetDTO(TBL));
 
-            return CreatedAtRoute("DefaultApi", new { id = eventType.ID }, eventType);
+            //try
+            //{
+            //    await db.SaveChangesAsync();
+            //}
+            //catch (DbUpdateException)
+            //{
+            //    if (EventTypeExists(eventType.ID))
+            //    {
+            //        return Conflict();
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
+
+            //return CreatedAtRoute("DefaultApi", new { id = eventType.ID }, eventType);
         }
-
+        //--------------------------------------------------------------------------------------------
         // DELETE: api/EventTypes/5
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(EventType))]
-        public async Task<IHttpActionResult> DeleteEventType(int id)
+        [Route("api/EventTypes/Delete/{ID:int}")]
+        [HttpDelete]
+        public async Task<IHttpActionResult> Delete(int id)
         {
             EventType eventType = await db.EventTypes.FindAsync(id);
             if (eventType == null)
