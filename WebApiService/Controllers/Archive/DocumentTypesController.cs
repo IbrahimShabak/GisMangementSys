@@ -14,6 +14,7 @@ using DAL.Operations.DTO.Archive;
 
 namespace WebApiService.Controllers.Archive
 {
+    [MyAuthorize(Roles = "admin")]
     public class DocumentTypesController : ApiController
     {
         private ArchiveDBEntities db = new ArchiveDBEntities();
@@ -110,7 +111,7 @@ namespace WebApiService.Controllers.Archive
             db.DocumentTypes.Add(TBL);
             await db.SaveChangesAsync();
 
-            //return Ok(ArchiveTBLDTO.GetDTO(TBL));
+            return Ok(DocumentTypeDTO.GetDTO(TBL));
 
             //try
             //{

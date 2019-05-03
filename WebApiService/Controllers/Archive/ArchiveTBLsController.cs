@@ -14,8 +14,10 @@ using DAL.Operations.DTO.Archive;
 
 namespace WebApiService.Controllers.Archive
 {
+    [MyAuthorize(Roles = "admin")]
     public class ArchiveTBLsController : ApiController
     {
+       
         private ArchiveDBEntities db = new ArchiveDBEntities();
         //--------------------------------------------------------------------------------------------
         //[MyAuthorize(Roles = "Admin")]
