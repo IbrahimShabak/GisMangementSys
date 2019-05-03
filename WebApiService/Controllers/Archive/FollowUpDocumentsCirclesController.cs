@@ -10,22 +10,52 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using DAL.Entities.Archive;
+using DAL.Operations.DTO.Archive;
 
 namespace WebApiService.Controllers.Archive
 {
     public class FollowUpDocumentsCirclesController : ApiController
     {
         private ArchiveDBEntities db = new ArchiveDBEntities();
-
+        //--------------------------------------------------------------------------------------------
+        //[MyAuthorize(Roles = "Admin")]
+        [Route("api/FollowUpDocumentsCircles/GetAllDTO")]
+        [HttpGet]
+        public IQueryable<FollowUpDocumentsCircleDTO> GetAllDTO()
+        {
+            var followUpDocumentsCircle = db.GetAllFollowUpDocumentsCircle();
+            var result = followUpDocumentsCircle.AsQueryable().Select(FollowUpDocumentsCircleDTO.Mapper.SelectorExpression);
+            return result;
+        }
+        //--------------------------------------------------------------------------------------------
+        //[MyAuthorize(Roles = "Admin")]
+        [Route("api/FollowUpDocumentsCircles/GetByParams")]
+        [HttpGet]
+        public IQueryable<FollowUpDocumentsCircleDTO> GetByParams(FollowUpDocumentsCircleDTO model)
+        {
+            var followUpDocumentsCircle = db.GetFollowUpDocumentsCircleByParam(model.ArchiveID,
+                                                                model.EmpID,
+                                                                model.EventType
+                                                                );
+            var result = followUpDocumentsCircle.AsQueryable().Select(FollowUpDocumentsCircleDTO.Mapper.SelectorExpression);
+            return result;
+        }
+        //--------------------------------------------------------------------------------------------
         // GET: api/FollowUpDocumentsCircles
-        public IQueryable<FollowUpDocumentsCircle> GetFollowUpDocumentsCircles()
+        //[MyAuthorize(Roles = "Admin")]
+        [Route("api/FollowUpDocumentsCircles/GetAll")]
+        [HttpGet]
+        public IQueryable<FollowUpDocumentsCircle> GetAll()
         {
             return db.FollowUpDocumentsCircles;
         }
-
+        //--------------------------------------------------------------------------------------------
         // GET: api/FollowUpDocumentsCircles/5
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(FollowUpDocumentsCircle))]
-        public async Task<IHttpActionResult> GetFollowUpDocumentsCircle(int id)
+        [Route("api/FollowUpDocumentsCircles/GetByID/{ID:int}")]
+        [HttpGet]
+        public async Task<IHttpActionResult> GetByID(int id)
         {
             FollowUpDocumentsCircle followUpDocumentsCircle = await db.FollowUpDocumentsCircles.FindAsync(id);
             if (followUpDocumentsCircle == null)
@@ -35,10 +65,13 @@ namespace WebApiService.Controllers.Archive
 
             return Ok(followUpDocumentsCircle);
         }
-
+        //--------------------------------------------------------------------------------------------
         // PUT: api/FollowUpDocumentsCircles/5
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutFollowUpDocumentsCircle(int id, FollowUpDocumentsCircle followUpDocumentsCircle)
+        [Route("api/FollowUpDocumentsCircles/Update/{ID:int}")]
+        [HttpPut]
+        public async Task<IHttpActionResult> Update(int id, FollowUpDocumentsCircleDTO followUpDocumentsCircle)
         {
             if (!ModelState.IsValid)
             {
@@ -50,7 +83,9 @@ namespace WebApiService.Controllers.Archive
                 return BadRequest();
             }
 
-            db.Entry(followUpDocumentsCircle).State = EntityState.Modified;
+            FollowUpDocumentsCircle TBL = new FollowUpDocumentsCircle();
+            TBL = followUpDocumentsCircle.GetOriginal(TBL);
+            db.Entry(TBL).State = EntityState.Modified;
 
             try
             {
@@ -67,43 +102,54 @@ namespace WebApiService.Controllers.Archive
                     throw;
                 }
             }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(FollowUpDocumentsCircleDTO.GetDTO(TBL));
+           // return StatusCode(HttpStatusCode.NoContent);
         }
-
+        //--------------------------------------------------------------------------------------------
         // POST: api/FollowUpDocumentsCircles
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(FollowUpDocumentsCircle))]
-        public async Task<IHttpActionResult> PostFollowUpDocumentsCircle(FollowUpDocumentsCircle followUpDocumentsCircle)
+        [Route("api/FollowUpDocumentsCircles/Add")]
+        [HttpPost]
+        public async Task<IHttpActionResult> Add(FollowUpDocumentsCircleDTO followUpDocumentsCircle)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.FollowUpDocumentsCircles.Add(followUpDocumentsCircle);
+            FollowUpDocumentsCircle TBL = new FollowUpDocumentsCircle();
+            TBL = followUpDocumentsCircle.GetOriginal(TBL);
+            db.FollowUpDocumentsCircles.Add(TBL);
+            await db.SaveChangesAsync();
 
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (FollowUpDocumentsCircleExists(followUpDocumentsCircle.ArchiveID))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            return Ok(FollowUpDocumentsCircleDTO.GetDTO(TBL));
 
-            return CreatedAtRoute("DefaultApi", new { id = followUpDocumentsCircle.ArchiveID }, followUpDocumentsCircle);
+            //try
+            //{
+            //    await db.SaveChangesAsync();
+            //}
+            //catch (DbUpdateException)
+            //{
+            //    if (FollowUpDocumentsCircleExists(followUpDocumentsCircle.ArchiveID))
+            //    {
+            //        return Conflict();
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
+
+            //return CreatedAtRoute("DefaultApi", new { id = followUpDocumentsCircle.ArchiveID }, followUpDocumentsCircle);
         }
-
+        //--------------------------------------------------------------------------------------------
         // DELETE: api/FollowUpDocumentsCircles/5
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(FollowUpDocumentsCircle))]
-        public async Task<IHttpActionResult> DeleteFollowUpDocumentsCircle(int id)
+        [Route("api/FollowUpDocumentsCircles/Delete/{ID:int}")]
+        [HttpDelete]
+        public async Task<IHttpActionResult> Delete(int id)
         {
             FollowUpDocumentsCircle followUpDocumentsCircle = await db.FollowUpDocumentsCircles.FindAsync(id);
             if (followUpDocumentsCircle == null)
