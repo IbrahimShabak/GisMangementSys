@@ -10,22 +10,39 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using DAL.Entities.Archive;
+using DAL.Operations.DTO.Archive;
 
 namespace WebApiService.Controllers.Archive
 {
     public class DocumentTypesController : ApiController
     {
         private ArchiveDBEntities db = new ArchiveDBEntities();
-
+        //--------------------------------------------------------------------------------------------
+        //[MyAuthorize(Roles = "Admin")]
+        [Route("api/DocumentTypes/GetAllDTO")]
+        [HttpGet]
+        public IQueryable<DocumentTypeDTO> GetAllDTO()
+        {
+            var archiveTBL = db.GetAllDocumentType();
+            var result = archiveTBL.AsQueryable().Select(DocumentTypeDTO.Mapper.SelectorExpression);
+            return result;
+        }
+        //--------------------------------------------------------------------------------------------
         // GET: api/DocumentTypes
-        public IQueryable<DocumentType> GetDocumentTypes()
+        //[MyAuthorize(Roles = "Admin")]
+        [Route("api/DocumentTypes/GetAll")]
+        [HttpGet]
+        public IQueryable<DocumentType> GetAll()
         {
             return db.DocumentTypes;
         }
-
+        //--------------------------------------------------------------------------------------------
         // GET: api/DocumentTypes/5
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(DocumentType))]
-        public async Task<IHttpActionResult> GetDocumentType(int id)
+        [Route("api/DocumentTypes/GetByID/{ID:int}")]
+        [HttpGet]
+        public async Task<IHttpActionResult> GetByID(int id)
         {
             DocumentType documentType = await db.DocumentTypes.FindAsync(id);
             if (documentType == null)
@@ -35,10 +52,13 @@ namespace WebApiService.Controllers.Archive
 
             return Ok(documentType);
         }
-
+        //--------------------------------------------------------------------------------------------
         // PUT: api/DocumentTypes/5
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutDocumentType(int id, DocumentType documentType)
+        [Route("api/DocumentTypes/Update/{ID:int}")]
+        [HttpPut]      
+        public async Task<IHttpActionResult> Update(int id, DocumentTypeDTO documentType)
         {
             if (!ModelState.IsValid)
             {
@@ -50,7 +70,9 @@ namespace WebApiService.Controllers.Archive
                 return BadRequest();
             }
 
-            db.Entry(documentType).State = EntityState.Modified;
+            DocumentType TBL = new DocumentType();
+            TBL = documentType.GetOriginal(TBL);
+            db.Entry(TBL).State = EntityState.Modified;
 
             try
             {
@@ -67,43 +89,54 @@ namespace WebApiService.Controllers.Archive
                     throw;
                 }
             }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(DocumentTypeDTO.GetDTO(TBL));
+          //  return StatusCode(HttpStatusCode.NoContent);
         }
-
+        //--------------------------------------------------------------------------------------------
         // POST: api/DocumentTypes
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(DocumentType))]
-        public async Task<IHttpActionResult> PostDocumentType(DocumentType documentType)
+        [Route("api/DocumentTypes/Add")]
+        [HttpPost]
+        public async Task<IHttpActionResult> Add(DocumentTypeDTO documentType)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.DocumentTypes.Add(documentType);
+            DocumentType TBL = new DocumentType();
+            TBL = documentType.GetOriginal(TBL);
+            db.DocumentTypes.Add(TBL);
+            await db.SaveChangesAsync();
 
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (DocumentTypeExists(documentType.ID))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            //return Ok(ArchiveTBLDTO.GetDTO(TBL));
 
-            return CreatedAtRoute("DefaultApi", new { id = documentType.ID }, documentType);
+            //try
+            //{
+            //    await db.SaveChangesAsync();
+            //}
+            //catch (DbUpdateException)
+            //{
+            //    if (DocumentTypeExists(documentType.ID))
+            //    {
+            //        return Conflict();
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
+
+            //return CreatedAtRoute("DefaultApi", new { id = documentType.ID }, documentType);
         }
-
+        //--------------------------------------------------------------------------------------------
         // DELETE: api/DocumentTypes/5
+        //[MyAuthorize(Roles = "Admin")]
         [ResponseType(typeof(DocumentType))]
-        public async Task<IHttpActionResult> DeleteDocumentType(int id)
+        [Route("api/DocumentTypes/Delete/{ID:int}")]
+        [HttpDelete]
+        public async Task<IHttpActionResult> Delete(int id)
         {
             DocumentType documentType = await db.DocumentTypes.FindAsync(id);
             if (documentType == null)
