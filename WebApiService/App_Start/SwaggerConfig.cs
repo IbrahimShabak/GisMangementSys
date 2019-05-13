@@ -4,6 +4,7 @@ using WebApiService;
 using Swashbuckle.Application;
 using Swashbuckle.Swagger;
 using System.Web.Http.Description;
+using System.Collections.Generic;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
@@ -28,8 +29,11 @@ namespace WebApiService
     {
         public void Apply(Operation operation, SchemaRegistry schemaRegistry, ApiDescription apiDescription)
         {
-            if (operation.parameters != null)
+            try
             {
+                if (operation.parameters == null)
+                    operation.parameters = new List<Parameter>();
+
                 operation.parameters.Add(new Parameter
                 {
                     name = "Authorization",
@@ -38,6 +42,10 @@ namespace WebApiService
                     required = false,
                     type = "string"
                 });
+            }
+            catch (System.Exception e)
+            {
+                var msg = e.Message;
             }
         }
     }

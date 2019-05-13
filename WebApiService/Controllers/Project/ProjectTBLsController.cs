@@ -21,7 +21,7 @@ namespace WebApiService.Controllers
         private ProjectsEntities db = new ProjectsEntities();
 
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/ProjectTBLs/GetAllS")]
         [HttpGet]
         public IQueryable<ProjectDTO> GetAllProjectTBLs()

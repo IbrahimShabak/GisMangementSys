@@ -37,4 +37,7 @@ grant_type=password
 username=admin
 password=123
 
+------------------------
+bearer tokenkey
+
 http://localhost:2749/swagger/ui/index
