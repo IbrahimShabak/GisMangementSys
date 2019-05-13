@@ -37,3 +37,4 @@ grant_type=password
 username=admin
 password=123
 
+http://localhost:2749/swagger/ui/index
