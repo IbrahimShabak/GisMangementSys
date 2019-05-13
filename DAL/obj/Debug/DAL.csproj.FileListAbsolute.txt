@@ -95,3 +95,4 @@ C:\Users\Administrator\Source\Repos\GisMangementSys\DAL\obj\Debug\DAL.csproj.Cor
 C:\Users\Administrator\Source\Repos\GisMangementSys\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\Administrator\Source\Repos\GisMangementSys\DAL\obj\Debug\DAL.dll
 C:\Users\Administrator\Source\Repos\GisMangementSys\DAL\obj\Debug\DAL.pdb
+C:\Users\Administrator\Source\Repos\GisMangementSys\DAL\obj\Debug\DAL.csprojAssemblyReference.cache

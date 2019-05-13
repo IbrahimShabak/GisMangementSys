@@ -27,3 +27,13 @@ Erorr Code will send back to client Side is
 for Assad :http://www.dotnetawesome.com/2016/09/token-based-authentication-in-webapi.html
 for Assad :http://www.dotnetawesome.com/2016/10/token-based-authentication-in-angularjs.html
 ----------------------------------------------------------------------------------
+
+get token key
+url= "http://localhost:2749/Token"
+in headers
+Content-Type: application/x-www-form-urlencoded
+in body
+grant_type=password
+username=admin
+password=123
+
