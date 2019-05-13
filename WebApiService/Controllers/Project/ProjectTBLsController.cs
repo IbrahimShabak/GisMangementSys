@@ -19,17 +19,19 @@ namespace WebApiService.Controllers
     public class ProjectTBLsController : ApiController
     {
         private ProjectsEntities db = new ProjectsEntities();
+
         //--------------------------------------------------------------------------------------------
         //[MyAuthorize(Roles = "Admin")]
         [Route("api/ProjectTBLs/GetAllS")]
         [HttpGet]
         public IQueryable<ProjectDTO> GetAllProjectTBLs()
         {
-              var ProjectTBLs = db.SelectAllProjectTBL();
-           // var ProjectTBLs = db.ProjectTBLs;          
-            var result = ProjectTBLs.AsQueryable().Select(ProjectDTO.Mapper.SelectorExpression); 
-             return result;
+            var ProjectTBLs = db.SelectAllProjectTBL();
+            // var ProjectTBLs = db.ProjectTBLs;
+            var result = ProjectTBLs.AsQueryable().Select(ProjectDTO.Mapper.SelectorExpression);
+            return result;
         }
+
         //--------------------------------------------------------------------------------------------
         //[MyAuthorize(Roles = "Admin")]
         [Route("api/ProjectTBLs/GetByParam")]
@@ -46,6 +48,7 @@ namespace WebApiService.Controllers
             var result = ProjectTBLs.AsQueryable().Select(ProjectDTO.Mapper.SelectorExpression);
             return result;
         }
+
         //--------------------------------------------------------------------------------------------
         //[MyAuthorize(Roles = "Admin")]
         [Route("api/ProjectTBLs/GetByLike")]
@@ -59,15 +62,41 @@ namespace WebApiService.Controllers
             var result = ProjectTBLs.AsQueryable().Select(ProjectDTO.Mapper.SelectorExpression);
             return result;
         }
+
         //--------------------------------------------------------------------------------------------
         // GET: api/ProjectTBLs
         //[MyAuthorize(Roles = "Admin")]
+        /// <summary>
+        /// Get the project TB ls.
+        /// </summary>
+        /// <returns>The <see cref="T:IQueryable{ProjectTBL}"/>.</returns>
         [Route("api/ProjectTBLs/GetAll")]
         [HttpGet]
         public IQueryable<ProjectTBL> GetProjectTBLs()
         {
             return db.ProjectTBLs;
         }
+
+        //--------------------------------------------------------------------------------------------
+        // GET: api/ProjectTBLs/5
+        /// <summary>
+        /// Get the projects by emp ID.
+        /// </summary>
+        /// <param name="EmpID">The EmpID.</param>
+        /// <returns>The <see cref="T:IQueryable{ProjectDTO}"/>.</returns>
+        [MyAuthorize]
+        [ResponseType(typeof(ProjectDTO))]
+        [Route("api/ProjectTBLs/GetProjectsByEmpID/{EmpID:int}")]
+        [HttpGet]
+        public IQueryable<ProjectDTO> GetProjectsByEmpID(int EmpID)
+        {
+            var projects = db.ProjectEmployees
+                .Where(a => a.EmpID == EmpID)
+                .Select(s => s.ProjectTBL).AsQueryable()
+                .Select(ProjectDTO.Mapper.SelectorExpression);
+            return projects;
+        }
+
         //--------------------------------------------------------------------------------------------
         // GET: api/ProjectTBLs/5
         //[MyAuthorize(Roles = "Admin")]
@@ -84,6 +113,7 @@ namespace WebApiService.Controllers
 
             return Ok(projectTBL);
         }
+
         //--------------------------------------------------------------------------------------------
         // PUT: api/ProjectTBLs/5
         [MyAuthorize(Roles = "Admin")]
@@ -121,8 +151,9 @@ namespace WebApiService.Controllers
                 }
             }
             return Ok(ProjectDTO.GetDTO(TBL));
-          //  return StatusCode(HttpStatusCode.NoContent);
+            //  return StatusCode(HttpStatusCode.NoContent);
         }
+
         //--------------------------------------------------------------------------------------------
         // POST: api/ProjectTBLs
         [MyAuthorize(Roles = "Admin")]
@@ -142,6 +173,7 @@ namespace WebApiService.Controllers
 
             return Ok(ProjectDTO.GetDTO(TBL));
         }
+
         //--------------------------------------------------------------------------------------------
         // DELETE: api/ProjectTBLs/5
         //[MyAuthorize(Roles = "Admin")]
