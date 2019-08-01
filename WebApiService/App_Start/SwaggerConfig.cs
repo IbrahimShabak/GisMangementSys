@@ -30,7 +30,7 @@ namespace WebApiService
                 .EnableSwaggerUi(c =>
                     {
                         c.EnableApiKeySupport("Authorization", "header");
-                        c.DocumentTitle("mytitle");
+                        c.DocumentTitle("khatib & alami");
                     });
         }
     }
