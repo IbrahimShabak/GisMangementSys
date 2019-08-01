@@ -15,7 +15,7 @@ namespace WebApiService
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
 
         {
-            context.Validated(); // 
+            context.Validated(); //
         }
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
@@ -25,8 +25,8 @@ namespace WebApiService
             {
                 identity.AddClaim(new Claim("UserID", context.UserName));
                 identity.AddClaim(new Claim(ClaimTypes.Role, "admin"));
-                     var xxx = identity.Claims;
-                        context.Validated(identity);
+                var xxx = identity.Claims;
+                context.Validated(identity);
             }
             //if (UserAutho.login(context.UserName, context.Password))
             //{
@@ -59,9 +59,7 @@ namespace WebApiService
             //        return;
             //    }
 
-
             //}
-
             else
             {
                 context.SetError("invalid_grant", "اسم المستخدم او كلمة السر خطأ");

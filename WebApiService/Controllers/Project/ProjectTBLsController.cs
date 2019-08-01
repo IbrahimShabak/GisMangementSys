@@ -14,7 +14,7 @@ using DAL.Operations.DTO.Project;
 
 namespace WebApiService.Controllers
 {
-    [MyAuthorize(Roles = "admin")]
+    // [MyAuthorize(Roles = "admin")]
     //[AllowAnonymous]
     public class ProjectTBLsController : ApiController
     {
