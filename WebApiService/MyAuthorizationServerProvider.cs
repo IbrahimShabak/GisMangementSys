@@ -1,4 +1,5 @@
-﻿using Microsoft.Owin.Security.OAuth;
+﻿using DAL.Entities.Employees;
+using Microsoft.Owin.Security.OAuth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace WebApiService
     public class MyAuthorizationServerProvider : OAuthAuthorizationServerProvider
     {
         //   AdminDAL.Operations.UserAuthorization UserAutho = new AdminDAL.Operations.UserAuthorization();
+        private EmployeeDBGIS2019Entities db = new EmployeeDBGIS2019Entities();
 
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
 
@@ -21,45 +23,24 @@ namespace WebApiService
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-            if (context.UserName == "admin" && context.Password == "123")
+
+            var Result = db.GetUserByPassWord_Proc(context.UserName, context.Password).ToList();
+            if (Result != null && Result.Count > 0)
             {
-                identity.AddClaim(new Claim("UserID", context.UserName));
-                identity.AddClaim(new Claim(ClaimTypes.Role, "admin"));
-                var xxx = identity.Claims;
+                var MyUser = Result.First();
+                identity.AddClaim(new Claim("UserID", MyUser.EmployeeID.ToString()));
+                identity.AddClaim(new Claim("UserName", MyUser.EmailAddress?.ToString()));
+                identity.AddClaim(new Claim(ClaimTypes.Email, MyUser.EmailAddress == null ? string.Empty : MyUser.EmailAddress));
+                identity.AddClaim(new Claim(ClaimTypes.Name, MyUser.EnName == null ? string.Empty : MyUser.EnName));
+                identity.AddClaim(new Claim(ClaimTypes.MobilePhone, MyUser.PhoneNumber == null ? string.Empty : MyUser.PhoneNumber));
+                identity.AddClaim(new Claim("EnJobTitle", MyUser?.JobTitleTBL?.EnName == null ? string.Empty : MyUser.JobTitleTBL.EnName));
+                identity.AddClaim(new Claim("ArJobTitle", MyUser?.JobTitleTBL?.ArName == null ? string.Empty : MyUser.JobTitleTBL.ArName));
+                identity.AddClaim(new Claim("ArName", MyUser.ArName == null ? string.Empty : MyUser.ArName));
+                identity.AddClaim(new Claim("Group_ID", MyUser.GroupID?.ToString()));
+                identity.AddClaim(new Claim(ClaimTypes.Role, MyUser.GROUP.EN_Name));
+                //var xxx = identity.Claims;
                 context.Validated(identity);
             }
-            //if (UserAutho.login(context.UserName, context.Password))
-            //{
-            //    try
-            //    {
-            //        var MyuserInfo = UserAutho.MyUserData;
-            //        identity.AddClaim(new Claim("UserID", MyuserInfo.MyUser.ID.ToString()));
-            //        identity.AddClaim(new Claim("UserName", MyuserInfo.MyUser.UserName?.ToString()));
-
-            //        identity.AddClaim(new Claim(ClaimTypes.Email, MyuserInfo.MyUser.Email == null ? string.Empty : MyuserInfo.MyUser.Email));
-            //        identity.AddClaim(new Claim(ClaimTypes.Name, MyuserInfo.MyUser.Full_Name == null ? string.Empty : MyuserInfo.MyUser.Full_Name));
-            //        identity.AddClaim(new Claim("Group_ID", MyuserInfo.MyUser.Group_ID?.ToString()));
-            //        if (MyuserInfo.MyManger != null)
-            //        {
-            //            identity.AddClaim(new Claim("MangerID", MyuserInfo.MyManger?.ID.ToString()));
-            //            identity.AddClaim(new Claim("MangerEmail", MyuserInfo.MyManger.Email == null ? string.Empty : MyuserInfo.MyManger.Email));
-            //        }
-
-            //        foreach (var item in MyuserInfo.MyPermissions)
-            //        {
-            //            identity.AddClaim(new Claim(ClaimTypes.Role, item.Code_Name));
-            //        }
-
-            //        var xxx = identity.Claims;
-            //        context.Validated(identity);
-            //    }
-            //    catch (Exception e)
-            //    {
-            //        context.SetError("invalid_grant", e.Message);
-            //        return;
-            //    }
-
-            //}
             else
             {
                 context.SetError("invalid_grant", "اسم المستخدم او كلمة السر خطأ");

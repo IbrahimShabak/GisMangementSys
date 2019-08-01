@@ -70,7 +70,7 @@ namespace WebApiService
                             type = "string",
                             name = "username",
                             required = false,
-                            @default="admin",
+                            @default="Ibrahim.kamel@khatibalami.com",
                             @in = "formData"
                         },
                         new Parameter
@@ -78,7 +78,7 @@ namespace WebApiService
                             type = "string",
                             name = "password",
                             required = false,
-                             @default="123",
+                            @default="123",
                             @in = "formData"
                         },
                     }
