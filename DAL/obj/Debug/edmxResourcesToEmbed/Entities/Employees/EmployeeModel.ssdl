@@ -33,6 +33,18 @@
     <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
     <Property Name="OffDate" Type="datetime" />
     <Property Name="OffTypeID" Type="int" />
+    <Property Name="EncryptPassWord" Type="varbinary" MaxLength="100" />
+    <Property Name="GroupID" Type="int" />
+  </EntityType>
+  <EntityType Name="GROUPS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AR_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="EN_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="AR_Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="EN_Description" Type="nvarchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="JobTitleTBL">
     <Key>
@@ -74,6 +86,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_EmployeeTBL_GroupTBL">
+    <End Role="GROUPS" Type="Self.GROUPS" Multiplicity="0..1" />
+    <End Role="EmployeeTBL" Type="Self.EmployeeTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GROUPS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EmployeeTBL">
+        <PropertyRef Name="GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_EmployeeTBL_JobTitleTBL">
     <End Role="JobTitleTBL" Type="Self.JobTitleTBL" Multiplicity="0..1" />
     <End Role="EmployeeTBL" Type="Self.EmployeeTBL" Multiplicity="*" />
@@ -98,6 +122,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="ChangePassWord_Proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="PassWord" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="CheckPassWord" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="PassWord" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="GetAllDivisions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="GetAllEmployeeOffTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="GetAllEmployees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -158,10 +190,15 @@
     <Parameter Name="ArName" Type="nvarchar" Mode="In" />
     <Parameter Name="EnName" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="GetUserByPassWord_Proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="PassWord" Type="nvarchar" Mode="In" />
+  </Function>
   <EntityContainer Name="EmployeeDBGIS2019ModelStoreContainer">
     <EntitySet Name="DivisionTBL" EntityType="Self.DivisionTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EmployeeOffType" EntityType="Self.EmployeeOffType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EmployeeTBL" EntityType="Self.EmployeeTBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GROUPS" EntityType="Self.GROUPS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="JobTitleTBL" EntityType="Self.JobTitleTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NationalityTBL" EntityType="Self.NationalityTBL" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_EmployeeTBL_DivisionTBL" Association="Self.FK_EmployeeTBL_DivisionTBL">
@@ -170,6 +207,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_EmployeeTBL_EmployeeOffType" Association="Self.FK_EmployeeTBL_EmployeeOffType">
       <End Role="EmployeeOffType" EntitySet="EmployeeOffType" />
+      <End Role="EmployeeTBL" EntitySet="EmployeeTBL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeTBL_GroupTBL" Association="Self.FK_EmployeeTBL_GroupTBL">
+      <End Role="GROUPS" EntitySet="GROUPS" />
       <End Role="EmployeeTBL" EntitySet="EmployeeTBL" />
     </AssociationSet>
     <AssociationSet Name="FK_EmployeeTBL_JobTitleTBL" Association="Self.FK_EmployeeTBL_JobTitleTBL">

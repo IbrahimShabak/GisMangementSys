@@ -39,6 +39,8 @@
     <NavigationProperty Name="EmployeeOffType" Relationship="Self.FK_EmployeeTBL_EmployeeOffType" FromRole="EmployeeTBL" ToRole="EmployeeOffType" />
     <NavigationProperty Name="JobTitleTBL" Relationship="Self.FK_EmployeeTBL_JobTitleTBL" FromRole="EmployeeTBL" ToRole="JobTitleTBL" />
     <NavigationProperty Name="NationalityTBL" Relationship="Self.FK_EmployeeTBL_NationalityTBL" FromRole="EmployeeTBL" ToRole="NationalityTBL" />
+    <Property Name="GroupID" Type="Int32" />
+    <NavigationProperty Name="GROUP" Relationship="EmployeeDBGIS2019Model.FK_EmployeeTBL_GroupTBL" FromRole="EmployeeTBL" ToRole="GROUP" />
   </EntityType>
   <EntityType Name="JobTitleTBL">
     <Key>
@@ -188,6 +190,19 @@
       <Parameter Name="ArName" Mode="In" Type="String" />
       <Parameter Name="EnName" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="GROUPS" EntityType="EmployeeDBGIS2019Model.GROUP" />
+    <FunctionImport Name="ChangePassWord_Proc">
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="PassWord" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetUserByPassWord_Proc" EntitySet="EmployeeTBLs" ReturnType="Collection(EmployeeDBGIS2019Model.EmployeeTBL)">
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="PassWord" Mode="In" Type="String" />
+    </FunctionImport>
+    <AssociationSet Name="FK_EmployeeTBL_GroupTBL" Association="EmployeeDBGIS2019Model.FK_EmployeeTBL_GroupTBL">
+      <End Role="GROUP" EntitySet="GROUPS" />
+      <End Role="EmployeeTBL" EntitySet="EmployeeTBLs" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="GetAllDivisions_Result">
     <Property Type="Int32" Name="DivisionID" Nullable="false" />
@@ -294,4 +309,27 @@
     <Property Type="String" Name="ArName" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="EnName" Nullable="true" MaxLength="50" />
   </ComplexType>
+  <EntityType Name="GROUP">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AR_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EN_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AR_Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="EN_Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="EmployeeTBLs" Relationship="EmployeeDBGIS2019Model.FK_EmployeeTBL_GroupTBL" FromRole="GROUP" ToRole="EmployeeTBL" />
+  </EntityType>
+  <Association Name="FK_EmployeeTBL_GroupTBL">
+    <End Type="EmployeeDBGIS2019Model.GROUP" Role="GROUP" Multiplicity="0..1" />
+    <End Type="EmployeeDBGIS2019Model.EmployeeTBL" Role="EmployeeTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GROUP">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EmployeeTBL">
+        <PropertyRef Name="GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

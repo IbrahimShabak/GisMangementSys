@@ -14,6 +14,8 @@
         <AssociationConnector Association="EmployeeDBGIS2019Model.FK_EmployeeTBL_EmployeeOffType" ManuallyRouted="false" />
         <AssociationConnector Association="EmployeeDBGIS2019Model.FK_EmployeeTBL_JobTitleTBL" ManuallyRouted="false" />
         <AssociationConnector Association="EmployeeDBGIS2019Model.FK_EmployeeTBL_NationalityTBL" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EmployeeDBGIS2019Model.GROUP" Width="1.5" PointX="5.375" PointY="0.75" />
+        <AssociationConnector Association="EmployeeDBGIS2019Model.FK_EmployeeTBL_GroupTBL" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -32,6 +32,7 @@ namespace DAL.Entities.Employees
         public virtual DbSet<EmployeeTBL> EmployeeTBLs { get; set; }
         public virtual DbSet<JobTitleTBL> JobTitleTBLs { get; set; }
         public virtual DbSet<NationalityTBL> NationalityTBLs { get; set; }
+        public virtual DbSet<GROUP> GROUPS { get; set; }
     
         public virtual ObjectResult<DivisionTBL> GetAllDivisions()
         {
@@ -461,6 +462,45 @@ namespace DAL.Entities.Employees
                 new ObjectParameter("EnName", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<NationalityTBL>("GetNationalitysByParam", mergeOption, arNameParameter, enNameParameter);
+        }
+    
+        public virtual int ChangePassWord_Proc(string userName, string passWord)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var passWordParameter = passWord != null ?
+                new ObjectParameter("PassWord", passWord) :
+                new ObjectParameter("PassWord", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ChangePassWord_Proc", userNameParameter, passWordParameter);
+        }
+    
+        public virtual ObjectResult<EmployeeTBL> GetUserByPassWord_Proc(string userName, string passWord)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var passWordParameter = passWord != null ?
+                new ObjectParameter("PassWord", passWord) :
+                new ObjectParameter("PassWord", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeeTBL>("GetUserByPassWord_Proc", userNameParameter, passWordParameter);
+        }
+    
+        public virtual ObjectResult<EmployeeTBL> GetUserByPassWord_Proc(string userName, string passWord, MergeOption mergeOption)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var passWordParameter = passWord != null ?
+                new ObjectParameter("PassWord", passWord) :
+                new ObjectParameter("PassWord", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeeTBL>("GetUserByPassWord_Proc", mergeOption, userNameParameter, passWordParameter);
         }
     }
 }

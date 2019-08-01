@@ -22,6 +22,7 @@
     <EntitySetMapping Name="EmployeeTBLs">
       <EntityTypeMapping TypeName="EmployeeDBGIS2019Model.EmployeeTBL">
         <MappingFragment StoreEntitySet="EmployeeTBL">
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
           <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
           <ScalarProperty Name="ArName" ColumnName="ArName" />
           <ScalarProperty Name="EnName" ColumnName="EnName" />
@@ -71,5 +72,18 @@
     <FunctionImportMapping FunctionImportName="GetLikeJobTitles" FunctionName="EmployeeDBGIS2019Model.Store.GetLikeJobTitles" />
     <FunctionImportMapping FunctionImportName="GetLikeNationalitys" FunctionName="EmployeeDBGIS2019Model.Store.GetLikeNationalitys" />
     <FunctionImportMapping FunctionImportName="GetNationalitysByParam" FunctionName="EmployeeDBGIS2019Model.Store.GetNationalitysByParam" />
+    <EntitySetMapping Name="GROUPS">
+      <EntityTypeMapping TypeName="EmployeeDBGIS2019Model.GROUP">
+        <MappingFragment StoreEntitySet="GROUPS">
+          <ScalarProperty Name="EN_Description" ColumnName="EN_Description" />
+          <ScalarProperty Name="AR_Description" ColumnName="AR_Description" />
+          <ScalarProperty Name="EN_Name" ColumnName="EN_Name" />
+          <ScalarProperty Name="AR_Name" ColumnName="AR_Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ChangePassWord_Proc" FunctionName="EmployeeDBGIS2019Model.Store.ChangePassWord_Proc" />
+    <FunctionImportMapping FunctionImportName="GetUserByPassWord_Proc" FunctionName="EmployeeDBGIS2019Model.Store.GetUserByPassWord_Proc" />
   </EntityContainerMapping>
 </Mapping>

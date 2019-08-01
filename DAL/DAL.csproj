@@ -186,6 +186,9 @@
     <Compile Include="Entities\Employees\GetNationalitysByParam_Result.cs">
       <DependentUpon>EmployeeModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Employees\GROUP.cs">
+      <DependentUpon>EmployeeModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Employees\JobTitleTBL.cs">
       <DependentUpon>EmployeeModel.tt</DependentUpon>
     </Compile>

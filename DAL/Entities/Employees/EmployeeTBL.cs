@@ -27,10 +27,12 @@ namespace DAL.Entities.Employees
         public string EmailAddress { get; set; }
         public Nullable<System.DateTime> OffDate { get; set; }
         public Nullable<int> OffTypeID { get; set; }
+        public Nullable<int> GroupID { get; set; }
     
         public virtual DivisionTBL DivisionTBL { get; set; }
         public virtual EmployeeOffType EmployeeOffType { get; set; }
         public virtual JobTitleTBL JobTitleTBL { get; set; }
         public virtual NationalityTBL NationalityTBL { get; set; }
+        public virtual GROUP GROUP { get; set; }
     }
 }

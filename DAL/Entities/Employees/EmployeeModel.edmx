@@ -38,6 +38,18 @@
           <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
           <Property Name="OffDate" Type="datetime" />
           <Property Name="OffTypeID" Type="int" />
+          <Property Name="EncryptPassWord" Type="varbinary" MaxLength="100" />
+          <Property Name="GroupID" Type="int" />
+        </EntityType>
+        <EntityType Name="GROUPS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AR_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="EN_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="AR_Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="EN_Description" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="JobTitleTBL">
           <Key>
@@ -79,6 +91,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EmployeeTBL_GroupTBL">
+          <End Role="GROUPS" Type="Self.GROUPS" Multiplicity="0..1" />
+          <End Role="EmployeeTBL" Type="Self.EmployeeTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GROUPS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmployeeTBL">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_EmployeeTBL_JobTitleTBL">
           <End Role="JobTitleTBL" Type="Self.JobTitleTBL" Multiplicity="0..1" />
           <End Role="EmployeeTBL" Type="Self.EmployeeTBL" Multiplicity="*" />
@@ -103,6 +127,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="ChangePassWord_Proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="PassWord" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="CheckPassWord" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="PassWord" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="GetAllDivisions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllEmployeeOffTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllEmployees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -163,10 +195,15 @@
           <Parameter Name="ArName" Type="nvarchar" Mode="In" />
           <Parameter Name="EnName" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="GetUserByPassWord_Proc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="PassWord" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="EmployeeDBGIS2019ModelStoreContainer">
           <EntitySet Name="DivisionTBL" EntityType="Self.DivisionTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeOffType" EntityType="Self.EmployeeOffType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeTBL" EntityType="Self.EmployeeTBL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GROUPS" EntityType="Self.GROUPS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobTitleTBL" EntityType="Self.JobTitleTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NationalityTBL" EntityType="Self.NationalityTBL" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_EmployeeTBL_DivisionTBL" Association="Self.FK_EmployeeTBL_DivisionTBL">
@@ -175,6 +212,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_EmployeeTBL_EmployeeOffType" Association="Self.FK_EmployeeTBL_EmployeeOffType">
             <End Role="EmployeeOffType" EntitySet="EmployeeOffType" />
+            <End Role="EmployeeTBL" EntitySet="EmployeeTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeTBL_GroupTBL" Association="Self.FK_EmployeeTBL_GroupTBL">
+            <End Role="GROUPS" EntitySet="GROUPS" />
             <End Role="EmployeeTBL" EntitySet="EmployeeTBL" />
           </AssociationSet>
           <AssociationSet Name="FK_EmployeeTBL_JobTitleTBL" Association="Self.FK_EmployeeTBL_JobTitleTBL">
@@ -229,6 +270,8 @@
           <NavigationProperty Name="EmployeeOffType" Relationship="Self.FK_EmployeeTBL_EmployeeOffType" FromRole="EmployeeTBL" ToRole="EmployeeOffType" />
           <NavigationProperty Name="JobTitleTBL" Relationship="Self.FK_EmployeeTBL_JobTitleTBL" FromRole="EmployeeTBL" ToRole="JobTitleTBL" />
           <NavigationProperty Name="NationalityTBL" Relationship="Self.FK_EmployeeTBL_NationalityTBL" FromRole="EmployeeTBL" ToRole="NationalityTBL" />
+          <Property Name="GroupID" Type="Int32" />
+          <NavigationProperty Name="GROUP" Relationship="EmployeeDBGIS2019Model.FK_EmployeeTBL_GroupTBL" FromRole="EmployeeTBL" ToRole="GROUP" />
         </EntityType>
         <EntityType Name="JobTitleTBL">
           <Key>
@@ -378,6 +421,19 @@
             <Parameter Name="ArName" Mode="In" Type="String" />
             <Parameter Name="EnName" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="GROUPS" EntityType="EmployeeDBGIS2019Model.GROUP" />
+          <FunctionImport Name="ChangePassWord_Proc">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="PassWord" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetUserByPassWord_Proc" EntitySet="EmployeeTBLs" ReturnType="Collection(EmployeeDBGIS2019Model.EmployeeTBL)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="PassWord" Mode="In" Type="String" />
+          </FunctionImport>
+          <AssociationSet Name="FK_EmployeeTBL_GroupTBL" Association="EmployeeDBGIS2019Model.FK_EmployeeTBL_GroupTBL">
+            <End Role="GROUP" EntitySet="GROUPS" />
+            <End Role="EmployeeTBL" EntitySet="EmployeeTBLs" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="GetAllDivisions_Result">
           <Property Type="Int32" Name="DivisionID" Nullable="false" />
@@ -484,6 +540,29 @@
           <Property Type="String" Name="ArName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="EnName" Nullable="true" MaxLength="50" />
         </ComplexType>
+        <EntityType Name="GROUP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AR_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EN_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AR_Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EN_Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EmployeeTBLs" Relationship="EmployeeDBGIS2019Model.FK_EmployeeTBL_GroupTBL" FromRole="GROUP" ToRole="EmployeeTBL" />
+        </EntityType>
+        <Association Name="FK_EmployeeTBL_GroupTBL">
+          <End Type="EmployeeDBGIS2019Model.GROUP" Role="GROUP" Multiplicity="0..1" />
+          <End Type="EmployeeDBGIS2019Model.EmployeeTBL" Role="EmployeeTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GROUP">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmployeeTBL">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -511,6 +590,7 @@
           <EntitySetMapping Name="EmployeeTBLs">
             <EntityTypeMapping TypeName="EmployeeDBGIS2019Model.EmployeeTBL">
               <MappingFragment StoreEntitySet="EmployeeTBL">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
                 <ScalarProperty Name="ArName" ColumnName="ArName" />
                 <ScalarProperty Name="EnName" ColumnName="EnName" />
@@ -574,6 +654,20 @@
           <FunctionImportMapping FunctionImportName="GetLikeNationalitys" FunctionName="EmployeeDBGIS2019Model.Store.GetLikeNationalitys">
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetNationalitysByParam" FunctionName="EmployeeDBGIS2019Model.Store.GetNationalitysByParam">
+          </FunctionImportMapping>
+          <EntitySetMapping Name="GROUPS">
+            <EntityTypeMapping TypeName="EmployeeDBGIS2019Model.GROUP">
+              <MappingFragment StoreEntitySet="GROUPS">
+                <ScalarProperty Name="EN_Description" ColumnName="EN_Description" />
+                <ScalarProperty Name="AR_Description" ColumnName="AR_Description" />
+                <ScalarProperty Name="EN_Name" ColumnName="EN_Name" />
+                <ScalarProperty Name="AR_Name" ColumnName="AR_Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ChangePassWord_Proc" FunctionName="EmployeeDBGIS2019Model.Store.ChangePassWord_Proc" />
+          <FunctionImportMapping FunctionImportName="GetUserByPassWord_Proc" FunctionName="EmployeeDBGIS2019Model.Store.GetUserByPassWord_Proc">
           </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
