@@ -95,3 +95,25 @@ C:\Users\Administrator\Source\Repos\GisMangementSys\DAL\obj\Debug\DAL.csproj.Cor
 C:\Users\Administrator\Source\Repos\GisMangementSys\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\Administrator\Source\Repos\GisMangementSys\DAL\obj\Debug\DAL.dll
 C:\Users\Administrator\Source\Repos\GisMangementSys\DAL\obj\Debug\DAL.pdb
+D:\GIS Managment System\DAL\bin\Debug\DAL.dll.config
+D:\GIS Managment System\DAL\bin\Debug\DAL.dll
+D:\GIS Managment System\DAL\bin\Debug\DAL.pdb
+D:\GIS Managment System\DAL\bin\Debug\EntityFramework.dll
+D:\GIS Managment System\DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\GIS Managment System\DAL\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\GIS Managment System\DAL\bin\Debug\Newtonsoft.Json.dll
+D:\GIS Managment System\DAL\bin\Debug\System.Net.Http.Formatting.dll
+D:\GIS Managment System\DAL\bin\Debug\System.Web.Http.dll
+D:\GIS Managment System\DAL\bin\Debug\System.Web.Http.WebHost.dll
+D:\GIS Managment System\DAL\bin\Debug\WebActivatorEx.dll
+D:\GIS Managment System\DAL\bin\Debug\EntityFramework.xml
+D:\GIS Managment System\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\GIS Managment System\DAL\bin\Debug\Newtonsoft.Json.xml
+D:\GIS Managment System\DAL\bin\Debug\System.Net.Http.Formatting.xml
+D:\GIS Managment System\DAL\bin\Debug\System.Web.Http.xml
+D:\GIS Managment System\DAL\bin\Debug\System.Web.Http.WebHost.xml
+D:\GIS Managment System\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+D:\GIS Managment System\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\GIS Managment System\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\GIS Managment System\DAL\obj\Debug\DAL.dll
+D:\GIS Managment System\DAL\obj\Debug\DAL.pdb

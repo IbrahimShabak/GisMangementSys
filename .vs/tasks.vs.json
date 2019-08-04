@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskName": "task-ArchiveModel.Context",
+      "appliesTo": "DAL/Entities/Archive/ArchiveModel.Context.cs",
+      "type": "launch"
+    }
+  ]
+}

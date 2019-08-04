@@ -19,7 +19,7 @@ namespace WebApiService.Controllers.Archive
     {
         private ArchiveDBEntities db = new ArchiveDBEntities();
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/FollowUpDocumentsCircles/GetAllDTO")]
         [HttpGet]
         public IQueryable<FollowUpDocumentsCircleDTO> GetAllDTO()
@@ -29,7 +29,8 @@ namespace WebApiService.Controllers.Archive
             return result;
         }
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
+
         [Route("api/FollowUpDocumentsCircles/GetByParams")]
         [HttpGet]
         public IQueryable<FollowUpDocumentsCircleDTO> GetByParams(FollowUpDocumentsCircleDTO model)
@@ -43,7 +44,7 @@ namespace WebApiService.Controllers.Archive
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/FollowUpDocumentsCircles
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/FollowUpDocumentsCircles/GetAll")]
         [HttpGet]
         public IQueryable<FollowUpDocumentsCircle> GetAll()
@@ -52,7 +53,7 @@ namespace WebApiService.Controllers.Archive
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/FollowUpDocumentsCircles/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(FollowUpDocumentsCircle))]
         [Route("api/FollowUpDocumentsCircles/GetByID/{ID:int}")]
         [HttpGet]
@@ -68,7 +69,7 @@ namespace WebApiService.Controllers.Archive
         }
         //--------------------------------------------------------------------------------------------
         // PUT: api/FollowUpDocumentsCircles/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [Route("api/FollowUpDocumentsCircles/Update/{ID:int}")]
         [HttpPut]
@@ -108,7 +109,7 @@ namespace WebApiService.Controllers.Archive
         }
         //--------------------------------------------------------------------------------------------
         // POST: api/FollowUpDocumentsCircles
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(FollowUpDocumentsCircle))]
         [Route("api/FollowUpDocumentsCircles/Add")]
         [HttpPost]
@@ -146,7 +147,7 @@ namespace WebApiService.Controllers.Archive
         }
         //--------------------------------------------------------------------------------------------
         // DELETE: api/FollowUpDocumentsCircles/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(FollowUpDocumentsCircle))]
         [Route("api/FollowUpDocumentsCircles/Delete/{ID:int}")]
         [HttpDelete]

@@ -9,5 +9,6 @@
     "\\WebApiService\\Controllers",
     "\\WebApiService\\Controllers\\ToDoList"
   ],
+  "SelectedNode": "\\DAL\\Operations\\DTO\\ToDoList\\ActionTBLDTO.cs",
   "PreviewInSolutionExplorer": false
 }
