@@ -20,7 +20,7 @@ namespace WebApiService.Controllers
 
         private ProjectsEntities db = new ProjectsEntities();
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/PepoleTBLs/GetAllS")]
         [HttpGet]
         public IQueryable<PepoleTBLDTO> GetAllPepole()
@@ -30,7 +30,7 @@ namespace WebApiService.Controllers
             return result;
         }
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/PepoleTBLs/GetByParam")]
         [HttpGet]
         public IQueryable<PepoleTBLDTO> SelectParamContractChange(PepoleTBLDTO model)
@@ -47,7 +47,7 @@ namespace WebApiService.Controllers
             return result;
         }
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/PepoleTBLs/GetByLike")]
         [HttpGet]
         public IQueryable<PepoleTBLDTO> SelectlikeContractChange(PepoleTBLDTO model)
@@ -63,7 +63,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/PepoleTBLs
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/PepoleTBLs/GetAll")]
         [HttpGet]
         public IQueryable<PepoleTBL> GetPepoleTBLs()
@@ -72,7 +72,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/PepoleTBLs/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(PepoleTBL))]
         [Route("api/PepoleTBLs/GetByID/{ID:int}")]
         [HttpGet]
@@ -88,7 +88,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // PUT: api/PepoleTBLs/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [Route("api/PepoleTBLs/Update/{ID:int}")]
         [HttpPut]
@@ -128,7 +128,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // POST: api/PepoleTBLs
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(PepoleTBL))]
         [Route("api/PepoleTBLs/Add")]
         [HttpPost]
@@ -148,7 +148,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // DELETE: api/PepoleTBLs/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(PepoleTBL))]
         [Route("api/PepoleTBLs/Delete/{ID:int}")]
         [HttpDelete]

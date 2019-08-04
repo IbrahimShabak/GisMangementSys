@@ -19,7 +19,7 @@ namespace WebApiService.Controllers.Employee
     {
         private EmployeeDBGIS2019Entities db = new EmployeeDBGIS2019Entities();
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/JobTitleTBLs/GetAllDTO")]
         [HttpGet]
         public IQueryable<JobTitleTBLDTO> GetAllDTO()
@@ -29,7 +29,7 @@ namespace WebApiService.Controllers.Employee
             return result;
         }
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/JobTitleTBLs/GetByParams")]
         [HttpGet]
         public IQueryable<JobTitleTBLDTO> GetByParams(JobTitleTBLDTO model)
@@ -41,7 +41,7 @@ namespace WebApiService.Controllers.Employee
             return result;
         }
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/JobTitleTBLs/GetByLike")]
         [HttpGet]
         public IQueryable<JobTitleTBLDTO> GetByLike(JobTitleTBLDTO model)
@@ -53,7 +53,7 @@ namespace WebApiService.Controllers.Employee
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/JobTitleTBLs
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/JobTitleTBLs/GetAll")]
         [HttpGet]
         public IQueryable<JobTitleTBL> GetJobTitleTBLs()
@@ -62,7 +62,7 @@ namespace WebApiService.Controllers.Employee
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/JobTitleTBLs/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(JobTitleTBL))]
         [Route("api/JobTitleTBLs/GetByID/{ID:int}")]
         [HttpGet]
@@ -78,7 +78,7 @@ namespace WebApiService.Controllers.Employee
         }
         //--------------------------------------------------------------------------------------------
         // PUT: api/JobTitleTBLs/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [Route("api/JobTitleTBLs/Update/{ID:int}")]
         [HttpPut]
@@ -118,7 +118,7 @@ namespace WebApiService.Controllers.Employee
         }
         //--------------------------------------------------------------------------------------------
         // POST: api/JobTitleTBLs
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(JobTitleTBL))]
         [Route("api/JobTitleTBLs/Add")]
         [HttpPost]
@@ -158,7 +158,7 @@ namespace WebApiService.Controllers.Employee
         }
         //--------------------------------------------------------------------------------------------
         // DELETE: api/JobTitleTBLs/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(JobTitleTBL))]
         [Route("api/JobTitleTBLs/Delete/{ID:int}")]
         [HttpDelete]

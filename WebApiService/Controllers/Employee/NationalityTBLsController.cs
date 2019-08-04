@@ -19,7 +19,7 @@ namespace WebApiService.Controllers.Employee
     {
         private EmployeeDBGIS2019Entities db = new EmployeeDBGIS2019Entities();
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/NationalityTBLs/GetAllDTO")]
         [HttpGet]
         public IQueryable<NationalityTBLDTO> GetAllDTO()
@@ -29,7 +29,7 @@ namespace WebApiService.Controllers.Employee
             return result;
         }
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/NationalityTBLs/GetByParams")]
         [HttpGet]
         public IQueryable<NationalityTBLDTO> GetByParams(NationalityTBLDTO model)
@@ -41,7 +41,7 @@ namespace WebApiService.Controllers.Employee
             return result;
         }
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/NationalityTBLs/GetByLike")]
         [HttpGet]
         public IQueryable<NationalityTBLDTO> GetByLike(NationalityTBLDTO model)
@@ -53,7 +53,7 @@ namespace WebApiService.Controllers.Employee
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/NationalityTBLs
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/NationalityTBLs/GetAll")]
         [HttpGet]
         public IQueryable<NationalityTBL> GetNationalityTBLs()
@@ -62,7 +62,7 @@ namespace WebApiService.Controllers.Employee
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/NationalityTBLs/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(NationalityTBL))]
         [Route("api/NationalityTBLs/GetByID/{ID:int}")]
         [HttpGet]
@@ -78,7 +78,7 @@ namespace WebApiService.Controllers.Employee
         }
         //--------------------------------------------------------------------------------------------
         // PUT: api/NationalityTBLs/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [Route("api/NationalityTBLs/Update/{ID:int}")]
         [HttpPut]
@@ -118,7 +118,7 @@ namespace WebApiService.Controllers.Employee
         }
         //--------------------------------------------------------------------------------------------
         // POST: api/NationalityTBLs
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(NationalityTBL))]
         [Route("api/NationalityTBLs/Add")]
         [HttpPost]
@@ -154,8 +154,11 @@ namespace WebApiService.Controllers.Employee
 
             //return CreatedAtRoute("DefaultApi", new { id = nationalityTBL.NationalityID }, nationalityTBL);
         }
+        //*******************************************************************************************************
 
         // DELETE: api/NationalityTBLs/5
+        [MyAuthorize(Roles = "admin")]
+
         [ResponseType(typeof(NationalityTBL))]
         public async Task<IHttpActionResult> DeleteNationalityTBL(int id)
         {

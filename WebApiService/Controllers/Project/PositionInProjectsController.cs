@@ -19,7 +19,7 @@ namespace WebApiService.Controllers
     {
         private ProjectsEntities db = new ProjectsEntities();
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/PositionInProjects/GetAllS")]
         [HttpGet]
         public IQueryable<PositionInProjectDTO> GetAllPositionInProjects()
@@ -29,7 +29,7 @@ namespace WebApiService.Controllers
             return result;
         }
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/PositionInProjects/GetByParam")]
         [HttpGet]
         public IQueryable<PositionInProjectDTO> SelectParamContractChange(PositionInProjectDTO model)
@@ -43,7 +43,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/PositionInProjects
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/PositionInProjects/GetAll")]
         [HttpGet]
         public IQueryable<PositionInProject> GetPositionInProjects()
@@ -52,7 +52,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/PositionInProjects/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(PositionInProject))]
         [Route("api/PositionInProjects/GetByID/{ID:int}")]
         [HttpGet]
@@ -68,7 +68,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // PUT: api/PositionInProjects/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [Route("api/PositionInProjects/Update/{ID:int}")]
         [HttpPut]
@@ -109,7 +109,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // POST: api/PositionInProjects
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(PositionInProject))]
         [Route("api/PositionInProjects/Add")]
         [HttpPost]
@@ -129,7 +129,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // DELETE: api/PositionInProjects/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(PositionInProject))]
         [Route("api/PositionInProjects/Delete/{ID:int}")]
         [HttpDelete]

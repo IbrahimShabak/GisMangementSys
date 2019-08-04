@@ -20,7 +20,7 @@ namespace WebApiService.Controllers.Archive
        
         private ArchiveDBEntities db = new ArchiveDBEntities();
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/ArchiveTBLs/GetAllDTO")]
         [HttpGet]
         public IQueryable<ArchiveTBLDTO> GetAllDTO()
@@ -30,7 +30,7 @@ namespace WebApiService.Controllers.Archive
             return result;
         }
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/ArchiveTBLs/GetByParams")]
         [HttpGet]
         public IQueryable<ArchiveTBLDTO> GetByParams(ArchiveTBLDTO model)
@@ -44,7 +44,7 @@ namespace WebApiService.Controllers.Archive
             return result;
         }
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/ArchiveTBLs/GetByLike")]
         [HttpGet]
         public IQueryable<ArchiveTBLDTO> GetByLike(ArchiveTBLDTO model)
@@ -56,7 +56,7 @@ namespace WebApiService.Controllers.Archive
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/ArchiveTBLs
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/ArchiveTBLs/GetAll")]
         [HttpGet]
         public IQueryable<ArchiveTBL> GetAll()
@@ -65,7 +65,7 @@ namespace WebApiService.Controllers.Archive
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/ArchiveTBLs/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(ArchiveTBL))]
         [Route("api/ArchiveTBLs/GetByID/{ID:int}")]
         [HttpGet]
@@ -81,7 +81,7 @@ namespace WebApiService.Controllers.Archive
         }
         //--------------------------------------------------------------------------------------------
         // PUT: api/ArchiveTBLs/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [Route("api/ArchiveTBLs/Update/{ID:int}")]
         [HttpPut]      
@@ -121,7 +121,7 @@ namespace WebApiService.Controllers.Archive
         }
         //--------------------------------------------------------------------------------------------
         // POST: api/ArchiveTBLs
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(ArchiveTBL))]
         [Route("api/ArchiveTBLs/Add")]
         [HttpPost]
@@ -159,7 +159,7 @@ namespace WebApiService.Controllers.Archive
         }
         //--------------------------------------------------------------------------------------------
         // DELETE: api/ArchiveTBLs/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(ArchiveTBL))]
         [Route("api/ArchiveTBLs/Delete/{ID:int}")]
         [HttpDelete]

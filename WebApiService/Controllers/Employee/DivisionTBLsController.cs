@@ -19,7 +19,7 @@ namespace WebApiService.Controllers.Employee
     {
         private EmployeeDBGIS2019Entities db = new EmployeeDBGIS2019Entities();
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/DivisionTBLs/GetAllDTO")]
         [HttpGet]
         public IQueryable<DivisionTBLDTO> GetAllDTO()
@@ -29,7 +29,7 @@ namespace WebApiService.Controllers.Employee
             return result;
         }
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/DivisionTBLs/GetByParams")]
         [HttpGet]
         public IQueryable<DivisionTBLDTO> GetByParams(DivisionTBLDTO model)
@@ -42,7 +42,7 @@ namespace WebApiService.Controllers.Employee
             return result;
         }
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/DivisionTBLs/GetByLike")]
         [HttpGet]
         public IQueryable<DivisionTBLDTO> GetByLike(DivisionTBLDTO model)
@@ -54,7 +54,7 @@ namespace WebApiService.Controllers.Employee
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/DivisionTBLs
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/DivisionTBLs/GetAll")]
         [HttpGet]
         public IQueryable<DivisionTBL> GetAll()
@@ -63,7 +63,7 @@ namespace WebApiService.Controllers.Employee
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/DivisionTBLs/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(DivisionTBL))]
         [Route("api/DivisionTBLs/GetByID/{ID:int}")]
         [HttpGet]
@@ -80,7 +80,7 @@ namespace WebApiService.Controllers.Employee
         }
         //--------------------------------------------------------------------------------------------
         // PUT: api/DivisionTBLs/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [Route("api/DivisionTBLs/Update/{ID:int}")]
         [HttpPut]
@@ -121,7 +121,7 @@ namespace WebApiService.Controllers.Employee
         }
         //--------------------------------------------------------------------------------------------
         // POST: api/DivisionTBLs
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(DivisionTBL))]
         [Route("api/DivisionTBLs/Add")]
         [HttpPost]
@@ -142,7 +142,7 @@ namespace WebApiService.Controllers.Employee
         }
         //--------------------------------------------------------------------------------------------
         // DELETE: api/DivisionTBLs/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(DivisionTBL))]
         [Route("api/DivisionTBLs/Delete/{ID:int}")]
         [HttpDelete]

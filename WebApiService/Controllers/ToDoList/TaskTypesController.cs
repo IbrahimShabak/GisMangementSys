@@ -19,7 +19,7 @@ namespace WebApiService.Controllers.ToDoList
     {
         private TODoListGISEntities db = new TODoListGISEntities();
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/TaskTypes/GetAllDTO")]
         [HttpGet]
         public IQueryable<TaskTypeDTO> GetAllDTO()
@@ -29,7 +29,7 @@ namespace WebApiService.Controllers.ToDoList
             return result;
         }
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/TaskTypes/GetByParams")]
         [HttpGet]
         public IQueryable<TaskTypeDTO> GetByParams(TaskTypeDTO model)
@@ -42,7 +42,7 @@ namespace WebApiService.Controllers.ToDoList
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/TaskTypes
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/TaskTypes/GetAll")]
         [HttpGet]
         public IQueryable<TaskType> GetAll()
@@ -51,7 +51,7 @@ namespace WebApiService.Controllers.ToDoList
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/TaskTypes/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(TaskType))]
         [Route("api/TaskTypes/GetByID/{ID:int}")]
         [HttpGet]
@@ -67,7 +67,7 @@ namespace WebApiService.Controllers.ToDoList
         }
         //--------------------------------------------------------------------------------------------
         // PUT: api/TaskTypes/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [Route("api/TaskTypes/Update/{ID:int}")]
         [HttpPut]
@@ -107,7 +107,7 @@ namespace WebApiService.Controllers.ToDoList
         }
         //--------------------------------------------------------------------------------------------
         // POST: api/TaskTypes
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(TaskType))]
         [Route("api/TaskTypes/Add")]
         [HttpPost]
@@ -127,7 +127,7 @@ namespace WebApiService.Controllers.ToDoList
         }
         //--------------------------------------------------------------------------------------------
         // DELETE: api/TaskTypes/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(TaskType))]
         [Route("api/TaskTypes/Delete/{ID:int}")]
         [HttpDelete]

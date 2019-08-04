@@ -19,7 +19,7 @@ namespace WebApiService.Controllers.ToDoList
     {
         private TODoListGISEntities db = new TODoListGISEntities();
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/ProiertyTypes/GetAllDTO")]
         [HttpGet]
         public IQueryable<ProiertyTypeDTO> GetAllDTO()
@@ -29,7 +29,7 @@ namespace WebApiService.Controllers.ToDoList
             return result;
         }
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/ProiertyTypes/GetByParams")]
         [HttpGet]
         public IQueryable<ProiertyTypeDTO> GetByParams(ProiertyTypeDTO model)
@@ -42,7 +42,7 @@ namespace WebApiService.Controllers.ToDoList
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/ProiertyTypes
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/ProiertyTypes/GetAll")]
         [HttpGet]
         public IQueryable<ProiertyType> GetAll()
@@ -51,7 +51,7 @@ namespace WebApiService.Controllers.ToDoList
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/ProiertyTypes/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(ProiertyType))]
         [Route("api/DivisionTBLs/GetByID/{ID:int}")]
         [HttpGet]
@@ -67,7 +67,7 @@ namespace WebApiService.Controllers.ToDoList
         }
         //--------------------------------------------------------------------------------------------
         // PUT: api/ProiertyTypes/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [Route("api/ProiertyTypes/Update/{ID:int}")]
         [HttpPut]
@@ -107,6 +107,7 @@ namespace WebApiService.Controllers.ToDoList
         }
         //--------------------------------------------------------------------------------------------
         // POST: api/ProiertyTypes
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(ProiertyType))]
         public async Task<IHttpActionResult> Add(ProiertyTypeDTO proiertyType)
         {
@@ -124,7 +125,7 @@ namespace WebApiService.Controllers.ToDoList
         }
         //--------------------------------------------------------------------------------------------
         // DELETE: api/ProiertyTypes/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(ProiertyType))]
         [Route("api/ProiertyTypes/Delete/{ID:int}")]
         [HttpDelete]      

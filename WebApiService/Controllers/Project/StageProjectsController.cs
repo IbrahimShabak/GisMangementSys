@@ -19,7 +19,7 @@ namespace WebApiService.Controllers
     {
         private ProjectsEntities db = new ProjectsEntities();
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/StageProjects/GetAllS")]
         [HttpGet]
         public IQueryable<StageProjectDTO> GetAllStageProject()
@@ -29,7 +29,7 @@ namespace WebApiService.Controllers
             return result;
         }
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/StageProjects/GetByParam")]
         [HttpGet]
         public IQueryable<StageProjectDTO> SelectParamStageProjects(StageProjectDTO model)
@@ -44,7 +44,7 @@ namespace WebApiService.Controllers
             return result;
         }
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/StageProjects/GetByLike")]
         [HttpGet]
         public IQueryable<StageProjectDTO> SelectlikeStageProjects(StageProjectDTO model)
@@ -57,7 +57,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/StageProjects
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/StageProjects/GetAll")]
         [HttpGet]
         public IQueryable<StageProject> GetStageProjects()
@@ -66,7 +66,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/StageProjects/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(StageProject))]
         [Route("api/StageProjects/GetByID/{ID:int}")]
         [HttpGet]
@@ -82,7 +82,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // PUT: api/StageProjects/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [Route("api/StageProjects/Update/{ID:int}")]
         [HttpPut]
@@ -122,7 +122,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // POST: api/StageProjects
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(StageProject))]
         [Route("api/StageProjects/Add")]
         [HttpPost]
@@ -142,7 +142,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // DELETE: api/StageProjects/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(StageProject))]
         [Route("api/StageProjects/Delete/{ID:int}")]
         [HttpDelete]

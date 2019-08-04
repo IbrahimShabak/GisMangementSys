@@ -19,7 +19,7 @@ namespace WebApiService.Controllers.Employee
     {
         private EmployeeDBGIS2019Entities db = new EmployeeDBGIS2019Entities();
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/EmployeeOffTypes/GetAllDTO")]
         [HttpGet]
         public IQueryable<EmployeeOffTypeDTO> GetAllDTO()
@@ -29,7 +29,7 @@ namespace WebApiService.Controllers.Employee
             return result;
         }
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/EmployeeOffTypes/GetByParams")]
         [HttpGet]
         public IQueryable<EmployeeOffTypeDTO> GetByParams(EmployeeOffTypeDTO model)
@@ -42,7 +42,7 @@ namespace WebApiService.Controllers.Employee
             return result;
         }
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/EmployeeOffTypes/GetByLike")]
         [HttpGet]
         public IQueryable<EmployeeOffTypeDTO> GetByLike(EmployeeOffTypeDTO model)
@@ -54,7 +54,7 @@ namespace WebApiService.Controllers.Employee
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/EmployeeOffTypes
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/EmployeeOffTypes/GetAll")]
         [HttpGet]
        
@@ -64,7 +64,7 @@ namespace WebApiService.Controllers.Employee
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/EmployeeOffTypes/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(EmployeeOffType))]
         [Route("api/EmployeeOffTypes/GetByID/{ID:int}")]
         [HttpGet]
@@ -81,7 +81,7 @@ namespace WebApiService.Controllers.Employee
         }
         //--------------------------------------------------------------------------------------------
         // PUT: api/EmployeeOffTypes/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [Route("api/EmployeeOffTypes/Update/{ID:int}")]
         [HttpPut]
@@ -122,7 +122,7 @@ namespace WebApiService.Controllers.Employee
         }
         //--------------------------------------------------------------------------------------------
         // POST: api/EmployeeOffTypes
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(EmployeeOffType))]
         [Route("api/EmployeeOffTypes/Add")]
         [HttpPost]
@@ -143,7 +143,7 @@ namespace WebApiService.Controllers.Employee
         }
         //--------------------------------------------------------------------------------------------
         // DELETE: api/EmployeeOffTypes/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(EmployeeOffType))]
         [Route("api/EmployeeOffTypes/Delete/{ID:int}")]
         [HttpDelete]

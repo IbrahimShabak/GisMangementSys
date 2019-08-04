@@ -19,7 +19,7 @@ namespace WebApiService.Controllers
     {
         private ProjectsEntities db = new ProjectsEntities();
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/DeliverableStages/GetAllS")]
         [HttpGet]
         public IQueryable<DeliverableStageDTO> GetAllDeliverableStages()
@@ -29,7 +29,7 @@ namespace WebApiService.Controllers
             return result;
         }
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/DeliverableStages/GetByParam")]
         [HttpGet]
         public IQueryable<DeliverableStageDTO> SelectParamDeliverableStages(DeliverableStageDTO model)
@@ -43,7 +43,7 @@ namespace WebApiService.Controllers
             return result;
         }
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/DeliverableStages/GetByLike")]
         [HttpGet]
         public IQueryable<DeliverableStageDTO> SelectlikeDeliverableStage(DeliverableStageDTO model)
@@ -56,7 +56,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/DeliverableStages
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/DeliverableStages/GetAll")]
         [HttpGet]
         public IQueryable<DeliverableStage> GetDeliverableStages()
@@ -65,7 +65,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/DeliverableStages/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(DeliverableStage))]
         [Route("api/DeliverableStages/GetByID/{ID:int}")]
         [HttpGet]
@@ -81,7 +81,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // PUT: api/DeliverableStages/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [Route("api/DeliverableStages/Update/{ID:int}")]
         [HttpPut]
@@ -121,7 +121,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // POST: api/DeliverableStages
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(DeliverableStage))]
         [Route("api/DeliverableStages/Add")]
         [HttpPost]
@@ -141,7 +141,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // DELETE: api/DeliverableStages/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(DeliverableStage))]
         [Route("api/DeliverableStages/Delete/{ID:int}")]
         [HttpDelete] 

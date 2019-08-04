@@ -13,17 +13,25 @@ using DAL.Entities.Fininchal;
 
 namespace WebApiService.Controllers.Fininchal
 {
+    [MyAuthorize(Roles = "admin")]
+
     public class InvoicesTBLsController : ApiController
     {
         private FinancialDBEntities db = new FinancialDBEntities();
+        //****************************************************************************************
 
         // GET: api/InvoicesTBLs
+        [MyAuthorize(Roles = "admin")]
+
         public IQueryable<InvoicesTBL> GetInvoicesTBLs()
         {
             return db.InvoicesTBLs;
         }
+        //****************************************************************************************
 
         // GET: api/InvoicesTBLs/5
+        [MyAuthorize(Roles = "admin")]
+
         [ResponseType(typeof(InvoicesTBL))]
         public async Task<IHttpActionResult> GetInvoicesTBL(int id)
         {
@@ -35,8 +43,11 @@ namespace WebApiService.Controllers.Fininchal
 
             return Ok(invoicesTBL);
         }
+        //****************************************************************************************
 
         // PUT: api/InvoicesTBLs/5
+        [MyAuthorize(Roles = "admin")]
+
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutInvoicesTBL(int id, InvoicesTBL invoicesTBL)
         {
@@ -70,8 +81,11 @@ namespace WebApiService.Controllers.Fininchal
 
             return StatusCode(HttpStatusCode.NoContent);
         }
+        //****************************************************************************************
 
         // POST: api/InvoicesTBLs
+        [MyAuthorize(Roles = "admin")]
+
         [ResponseType(typeof(InvoicesTBL))]
         public async Task<IHttpActionResult> PostInvoicesTBL(InvoicesTBL invoicesTBL)
         {
@@ -85,8 +99,11 @@ namespace WebApiService.Controllers.Fininchal
 
             return CreatedAtRoute("DefaultApi", new { id = invoicesTBL.RecordID }, invoicesTBL);
         }
+        //****************************************************************************************
 
         // DELETE: api/InvoicesTBLs/5
+        [MyAuthorize(Roles = "admin")]
+
         [ResponseType(typeof(InvoicesTBL))]
         public async Task<IHttpActionResult> DeleteInvoicesTBL(int id)
         {

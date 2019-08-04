@@ -14,7 +14,7 @@ using DAL.Operations.DTO.Project;
 
 namespace WebApiService.Controllers
 {
-    // [MyAuthorize(Roles = "admin")]
+    [MyAuthorize(Roles = "admin")]
     //[AllowAnonymous]
     public class ProjectTBLsController : ApiController
     {
@@ -33,7 +33,7 @@ namespace WebApiService.Controllers
         }
 
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/ProjectTBLs/GetByParam")]
         [HttpGet]
         public IQueryable<ProjectDTO> SelectParamProjectTBL(ProjectDTO model)
@@ -50,7 +50,7 @@ namespace WebApiService.Controllers
         }
 
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/ProjectTBLs/GetByLike")]
         [HttpGet]
         public IQueryable<ProjectDTO> SelectlikeContractChange(ProjectDTO model)
@@ -70,6 +70,7 @@ namespace WebApiService.Controllers
         /// Get the project TB ls.
         /// </summary>
         /// <returns>The <see cref="T:IQueryable{ProjectTBL}"/>.</returns>
+        [MyAuthorize(Roles = "admin")]
         [Route("api/ProjectTBLs/GetAll")]
         [HttpGet]
         public IQueryable<ProjectTBL> GetProjectTBLs()
@@ -84,6 +85,8 @@ namespace WebApiService.Controllers
         /// </summary>
         /// <param name="EmpID">The EmpID.</param>
         /// <returns>The <see cref="T:IQueryable{ProjectDTO}"/>.</returns>
+        /// 
+        [MyAuthorize(Roles = "admin")]
         [MyAuthorize]
         [ResponseType(typeof(ProjectDTO))]
         [Route("api/ProjectTBLs/GetProjectsByEmpID/{EmpID:int}")]
@@ -99,7 +102,7 @@ namespace WebApiService.Controllers
 
         //--------------------------------------------------------------------------------------------
         // GET: api/ProjectTBLs/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(ProjectTBL))]
         [Route("api/ProjectTBLs/GetByID/{ID:int}")]
         [HttpGet]
@@ -116,7 +119,7 @@ namespace WebApiService.Controllers
 
         //--------------------------------------------------------------------------------------------
         // PUT: api/ProjectTBLs/5
-        [MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [Route("api/ProjectTBLs/Update/{ID:int}")]
         [HttpPut]
@@ -156,7 +159,7 @@ namespace WebApiService.Controllers
 
         //--------------------------------------------------------------------------------------------
         // POST: api/ProjectTBLs
-        [MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(ProjectDTO))]
         [Route("api/ProjectTBLs/Add")]
         [HttpPost]
@@ -176,7 +179,7 @@ namespace WebApiService.Controllers
 
         //--------------------------------------------------------------------------------------------
         // DELETE: api/ProjectTBLs/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(ProjectTBL))]
         [Route("api/ProjectTBLs/Delete/{ID:int}")]
         [HttpDelete]

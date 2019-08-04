@@ -19,7 +19,7 @@ namespace WebApiService.Controllers.Archive
     {
         private ArchiveDBEntities db = new ArchiveDBEntities();
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/DocumentTypes/GetAllDTO")]
         [HttpGet]
         public IQueryable<DocumentTypeDTO> GetAllDTO()
@@ -30,7 +30,7 @@ namespace WebApiService.Controllers.Archive
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/DocumentTypes
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/DocumentTypes/GetAll")]
         [HttpGet]
         public IQueryable<DocumentType> GetAll()
@@ -39,7 +39,7 @@ namespace WebApiService.Controllers.Archive
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/DocumentTypes/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(DocumentType))]
         [Route("api/DocumentTypes/GetByID/{ID:int}")]
         [HttpGet]
@@ -55,7 +55,7 @@ namespace WebApiService.Controllers.Archive
         }
         //--------------------------------------------------------------------------------------------
         // PUT: api/DocumentTypes/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [Route("api/DocumentTypes/Update/{ID:int}")]
         [HttpPut]      
@@ -95,7 +95,7 @@ namespace WebApiService.Controllers.Archive
         }
         //--------------------------------------------------------------------------------------------
         // POST: api/DocumentTypes
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(DocumentType))]
         [Route("api/DocumentTypes/Add")]
         [HttpPost]
@@ -133,7 +133,7 @@ namespace WebApiService.Controllers.Archive
         }
         //--------------------------------------------------------------------------------------------
         // DELETE: api/DocumentTypes/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(DocumentType))]
         [Route("api/DocumentTypes/Delete/{ID:int}")]
         [HttpDelete]

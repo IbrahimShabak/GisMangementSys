@@ -19,7 +19,7 @@ namespace WebApiService.Controllers
     {
         private ProjectsEntities db = new ProjectsEntities();
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/OegTypes/GetAllS")]
         [HttpGet]
         public IQueryable<OegTypeDTO> GetAllOegType()
@@ -30,7 +30,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/OegTypes
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/OegTypes/GetAll")]
         [HttpGet]
         public IQueryable<OegType> GetOegTypes()
@@ -39,7 +39,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/OegTypes/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(OegType))]
         [Route("api/OegTypes/GetByID/{ID:int}")]
         [HttpGet]
@@ -55,7 +55,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // PUT: api/OegTypes/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [Route("api/OegTypes/Update/{ID:int}")]
         [HttpPut]   
@@ -95,7 +95,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // POST: api/OegTypes
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(OegType))]
         [Route("api/OegTypes/Add")]
         [HttpPost]
@@ -115,7 +115,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // DELETE: api/OegTypes/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(OegType))]
         [Route("api/OegTypes/Delete/{ID:int}")]
         [HttpDelete]

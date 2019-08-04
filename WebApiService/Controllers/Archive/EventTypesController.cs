@@ -19,7 +19,7 @@ namespace WebApiService.Controllers.Archive
     {
         private ArchiveDBEntities db = new ArchiveDBEntities();
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/EventTypes/GetAllDTO")]
         [HttpGet]
         public IQueryable<EventTypeDTO> GetAllDTO()
@@ -30,7 +30,7 @@ namespace WebApiService.Controllers.Archive
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/EventTypes
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/EventTypes/GetAll")]
         [HttpGet]
         public IQueryable<EventType> GetAll()
@@ -39,7 +39,7 @@ namespace WebApiService.Controllers.Archive
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/EventTypes/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(EventType))]
         [Route("api/EventTypes/GetByID/{ID:int}")]
         [HttpGet]
@@ -55,7 +55,7 @@ namespace WebApiService.Controllers.Archive
         }
         //--------------------------------------------------------------------------------------------
         // PUT: api/EventTypes/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [Route("api/EventTypes/Update/{ID:int}")]
         [HttpPut]
@@ -95,7 +95,7 @@ namespace WebApiService.Controllers.Archive
         }
         //--------------------------------------------------------------------------------------------
         // POST: api/EventTypes
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(EventType))]
         [Route("api/EventTypes/Add")]
         [HttpPost]
@@ -134,7 +134,7 @@ namespace WebApiService.Controllers.Archive
         }
         //--------------------------------------------------------------------------------------------
         // DELETE: api/EventTypes/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(EventType))]
         [Route("api/EventTypes/Delete/{ID:int}")]
         [HttpDelete]

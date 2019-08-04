@@ -13,17 +13,22 @@ using DAL.Entities.Fininchal;
 
 namespace WebApiService.Controllers.Fininchal
 {
+    [MyAuthorize(Roles = "admin")]
     public class InvoiceTypesController : ApiController
     {
         private FinancialDBEntities db = new FinancialDBEntities();
 
+        //****************************************************************************************
         // GET: api/InvoiceTypes
+        [MyAuthorize(Roles = "admin")]
         public IQueryable<InvoiceType> GetInvoiceTypes()
         {
             return db.InvoiceTypes;
         }
+        //****************************************************************************************
 
         // GET: api/InvoiceTypes/5
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(InvoiceType))]
         public async Task<IHttpActionResult> GetInvoiceType(int id)
         {
@@ -35,8 +40,10 @@ namespace WebApiService.Controllers.Fininchal
 
             return Ok(invoiceType);
         }
+        //****************************************************************************************
 
         // PUT: api/InvoiceTypes/5
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutInvoiceType(int id, InvoiceType invoiceType)
         {
@@ -70,8 +77,10 @@ namespace WebApiService.Controllers.Fininchal
 
             return StatusCode(HttpStatusCode.NoContent);
         }
+        //****************************************************************************************
 
         // POST: api/InvoiceTypes
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(InvoiceType))]
         public async Task<IHttpActionResult> PostInvoiceType(InvoiceType invoiceType)
         {
@@ -85,8 +94,10 @@ namespace WebApiService.Controllers.Fininchal
 
             return CreatedAtRoute("DefaultApi", new { id = invoiceType.TypeID }, invoiceType);
         }
+        //****************************************************************************************
 
         // DELETE: api/InvoiceTypes/5
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(InvoiceType))]
         public async Task<IHttpActionResult> DeleteInvoiceType(int id)
         {

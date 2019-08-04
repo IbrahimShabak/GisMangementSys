@@ -19,7 +19,7 @@ namespace WebApiService.Controllers
     {
         private ProjectsEntities db = new ProjectsEntities();
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/OrganizationBasics/GetAllS")]
         [HttpGet]
         public IQueryable<OrganizationBasicDTO> GetAllOrganizationBasics()
@@ -29,7 +29,7 @@ namespace WebApiService.Controllers
             return result;
         }
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/OrganizationBasics/GetByParam")]
         [HttpGet]
         public IQueryable<OrganizationBasicDTO> SelectParamOrganizationBasic(OrganizationBasicDTO model)
@@ -43,7 +43,7 @@ namespace WebApiService.Controllers
             return result;
         }
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/OrganizationBasics/GetByLike")]
         [HttpGet]
         public IQueryable<OrganizationBasicDTO> SelectlikeOrganizationBasic(OrganizationBasicDTO model)
@@ -56,7 +56,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/OrganizationBasics
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/OrganizationBasics/GetAll")]
         [HttpGet]
        
@@ -66,7 +66,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/OrganizationBasics/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(OrganizationBasic))]
         [Route("api/OrganizationBasics/GetByID/{ID:int}")]
         [HttpGet]
@@ -82,7 +82,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // PUT: api/OrganizationBasics/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [Route("api/OrganizationBasics/Update/{ID:int}")]
         [HttpPut]
@@ -122,7 +122,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // POST: api/OrganizationBasics
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(OrganizationBasic))]
         [Route("api/OrganizationBasics/Add")]
         [HttpPost]
@@ -142,7 +142,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // DELETE: api/OrganizationBasics/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(OrganizationBasic))]
         [Route("api/OrganizationBasics/Delete/{ID:int}")]
         [HttpDelete]

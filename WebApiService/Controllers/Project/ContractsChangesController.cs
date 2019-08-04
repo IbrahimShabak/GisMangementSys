@@ -20,7 +20,7 @@ namespace WebApiService.Controllers
     {
         private ProjectsEntities db = new ProjectsEntities();
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/ContractsChanges/GetAllDTO")]
         [HttpGet]
         public IQueryable<ContractsChangeDTO> GetAllDTO()
@@ -30,7 +30,7 @@ namespace WebApiService.Controllers
             return result;
         }
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/ContractsChanges/GetByParams")]
         [HttpGet]
         public IQueryable<ContractsChangeDTO> GetByParams(ContractsChangeDTO model)
@@ -45,7 +45,7 @@ namespace WebApiService.Controllers
             return result;
         }
         //--------------------------------------------------------------------------------------------
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/ContractsChanges/GetByLike")]
         [HttpGet]
         public IQueryable<ContractsChangeDTO> GetByLike(ContractsChangeDTO model)
@@ -57,7 +57,7 @@ namespace WebApiService.Controllers
 
         //--------------------------------------------------------------------------------------------
         // GET: api/ContractsChanges
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [Route("api/ContractsChanges/GetAll")]
         [HttpGet]
         public IQueryable<ContractsChange> GetAll()
@@ -66,7 +66,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // GET: api/ContractsChanges/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(ContractsChange))]
         [Route("api/ContractsChanges/GetByID/{ID:int}")]
         [HttpGet]
@@ -83,7 +83,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // PUT: api/ContractsChanges/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(void))]
         [Route("api/ContractsChanges/Update/{ID:int}")]
         [HttpPut]
@@ -123,7 +123,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // POST: api/ContractsChanges
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(ContractsChange))]
         [Route("api/ContractsChanges/Add")]
         [HttpPost]
@@ -142,7 +142,7 @@ namespace WebApiService.Controllers
         }
         //--------------------------------------------------------------------------------------------
         // DELETE: api/ContractsChanges/5
-        //[MyAuthorize(Roles = "Admin")]
+        [MyAuthorize(Roles = "admin")]
         [ResponseType(typeof(ContractsChange))]
         [Route("api/ContractsChanges/Delete/{ID:int}")]
         [HttpDelete]
